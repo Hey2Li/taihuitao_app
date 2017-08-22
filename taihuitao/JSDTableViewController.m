@@ -105,7 +105,7 @@
 - (UITableView *)tableView {
     if (!_tableView) {
         
-        _tableView  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _tableView  = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44)];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         [_tableView registerClass:[JQBTHomeTableViewCell class] forCellReuseIdentifier:NSStringFromClass([JQBTHomeTableViewCell class])];

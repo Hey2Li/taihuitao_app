@@ -50,7 +50,6 @@
         self.titleButtons = [[NSMutableArray alloc]initWithCapacity:CATEGORY.count];
         self.controlleres  =[[NSMutableArray alloc]initWithCapacity:CATEGORY.count];
         self.tableViews  = [[NSMutableArray alloc]initWithCapacity:CATEGORY.count];
-        self.view.backgroundColor = [UIColor blueColor];
         
         [self.view addSubview:self.bottomScrollView];
         self.naviView.tableViews = [NSMutableArray arrayWithArray:self.tableViews];
@@ -68,10 +67,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.title = @"首页";
-    self.view.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44);
 }
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.view setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44)];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -121,7 +121,6 @@
     if (scrollView !=self.bottomScrollView) {
         return ;
     }
-    
     int index =  scrollView.contentOffset.x/scrollView.frame.size.width;
     
     UIButton *currentButton = self.titleButtons[index];
@@ -227,17 +226,16 @@
 - (UIScrollView *)bottomScrollView {
     
     if (!_bottomScrollView) {
-        _bottomScrollView = [[UIScrollView new]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+        _bottomScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44)];
         _bottomScrollView.delegate = self;
         _bottomScrollView.pagingEnabled = YES;
-        
         
         NSArray *colors = @[[UIColor redColor],[UIColor blueColor],[UIColor grayColor],[UIColor greenColor],[UIColor purpleColor],[UIColor orangeColor],[UIColor whiteColor],[UIColor redColor],[UIColor blueColor],[UIColor grayColor],[UIColor greenColor]];
         
         for (int i = 0; i<CATEGORY.count; i++) {
             
             JSDTableViewController *jsdTableViewController = [[JSDTableViewController alloc] init];
-            jsdTableViewController.view.frame = CGRectMake(SCREEN_WIDTH * i, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
+            jsdTableViewController.view.frame = CGRectMake(SCREEN_WIDTH * i, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44);
             
             jsdTableViewController.view.backgroundColor = colors[i];
             [self.bottomScrollView addSubview:jsdTableViewController.view];
