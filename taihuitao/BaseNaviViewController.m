@@ -26,7 +26,7 @@
     
     self.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回白"];
     self.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回白"];
-
+    
     //自定义一个NavigationBar
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     //消除阴影

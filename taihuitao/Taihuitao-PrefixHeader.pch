@@ -20,6 +20,10 @@
 #import "Tool.h"
 #import "MJExtension.h"
 #import "SDCycleScrollView.h"
+#import "UIView+Extension.h"
+#import "UIView+Frame.h"
+#import "UIButton+Size.h"
+#import "UIImage+JQImage.h"
 
 //-----------------color----------------------
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
