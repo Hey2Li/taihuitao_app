@@ -57,6 +57,12 @@
         [self.view addSubview:self.cycleScrollView];
         [self.view addSubview:self.segmentScrollView];
         [self.view addSubview:self.naviView];
+        self.naviView.qrCodeBtnClick = ^(UIButton *btn) {
+            NSLog(@"qrcodebtnclick");
+        };
+        self.naviView.searchBtnClick = ^(UIButton *btn) {
+            NSLog(@"searchbtnclick");
+        };
     }
     return self;
 }

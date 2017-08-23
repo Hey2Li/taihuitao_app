@@ -98,6 +98,44 @@
 		1CFBF9011F4ACB4500BEFF7F /* refresh09.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CFBF8EC1F4ACB4500BEFF7F /* refresh09.png */; };
 		1CFBF9021F4ACB4500BEFF7F /* refresh10.png in Resources */ = {isa = PBXBuildFile; fileRef = 1CFBF8ED1F4ACB4500BEFF7F /* refresh10.png */; };
 		1CFBF9051F4ACB6900BEFF7F /* JQRefreshHeaader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9041F4ACB6900BEFF7F /* JQRefreshHeaader.m */; };
+		1CFBF9091F4D561400BEFF7F /* BearupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9081F4D561400BEFF7F /* BearupViewController.m */; };
+		1CFBF90F1F4D833600BEFF7F /* VideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF90E1F4D833600BEFF7F /* VideoTableViewCell.m */; };
+		1CFBF9121F4D834C00BEFF7F /* VideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9111F4D834C00BEFF7F /* VideoModel.m */; };
+		1CFBF9151F4D836B00BEFF7F /* LTHttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9141F4D836B00BEFF7F /* LTHttpManager.m */; };
+		1CFBF91E1F4D838600BEFF7F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9171F4D838600BEFF7F /* LoginViewController.m */; };
+		1CFBF91F1F4D838600BEFF7F /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9191F4D838600BEFF7F /* RegisterViewController.m */; };
+		1CFBF9201F4D838600BEFF7F /* FindPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF91B1F4D838600BEFF7F /* FindPasswordViewController.m */; };
+		1CFBF9211F4D838600BEFF7F /* LaunchScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF91D1F4D838600BEFF7F /* LaunchScrollViewController.m */; };
+		1CFBF9391F4D83AB00BEFF7F /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CFBF9251F4D83AB00BEFF7F /* libSocialQQ.a */; };
+		1CFBF93A1F4D83AB00BEFF7F /* libSocialSina.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CFBF9281F4D83AB00BEFF7F /* libSocialSina.a */; };
+		1CFBF93B1F4D83AB00BEFF7F /* libSocialUniqueId.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CFBF92B1F4D83AB00BEFF7F /* libSocialUniqueId.a */; };
+		1CFBF93C1F4D83AB00BEFF7F /* libSocialWeChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CFBF92E1F4D83AB00BEFF7F /* libSocialWeChat.a */; };
+		1CFBF93D1F4D83AB00BEFF7F /* UMSocialCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CFBF9311F4D83AB00BEFF7F /* UMSocialCore.framework */; };
+		1CFBF93E1F4D83AB00BEFF7F /* UMSocialNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CFBF9321F4D83AB00BEFF7F /* UMSocialNetwork.framework */; };
+		1CFBF93F1F4D83AB00BEFF7F /* UMSocialSDKPromptResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1CFBF9331F4D83AB00BEFF7F /* UMSocialSDKPromptResources.bundle */; };
+		1CFBF9401F4D83AB00BEFF7F /* libUMSocialLog.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CFBF9351F4D83AB00BEFF7F /* libUMSocialLog.a */; };
+		1CFBF9411F4D83AB00BEFF7F /* UMSocialSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1CFBF9371F4D83AB00BEFF7F /* UMSocialSDKResources.bundle */; };
+		1CFBF9421F4D83AB00BEFF7F /* UShareUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CFBF9381F4D83AB00BEFF7F /* UShareUI.framework */; };
+		1CFBF9641F4D848B00BEFF7F /* ASValuePopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9451F4D848B00BEFF7F /* ASValuePopUpView.m */; };
+		1CFBF9651F4D848B00BEFF7F /* ASValueTrackingSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9471F4D848B00BEFF7F /* ASValueTrackingSlider.m */; };
+		1CFBF9661F4D848B00BEFF7F /* UIAlertController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF94A1F4D848B00BEFF7F /* UIAlertController+ZFPlayerRotation.m */; };
+		1CFBF9671F4D848B00BEFF7F /* UIImageView+ZFCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF94C1F4D848B00BEFF7F /* UIImageView+ZFCache.m */; };
+		1CFBF9681F4D848B00BEFF7F /* UINavigationController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF94E1F4D848B00BEFF7F /* UINavigationController+ZFPlayerRotation.m */; };
+		1CFBF9691F4D848B00BEFF7F /* UITabBarController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9501F4D848B00BEFF7F /* UITabBarController+ZFPlayerRotation.m */; };
+		1CFBF96A1F4D848B00BEFF7F /* UIView+CustomControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9521F4D848B00BEFF7F /* UIView+CustomControlView.m */; };
+		1CFBF96B1F4D848B00BEFF7F /* UIViewController+ZFPlayerRotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9541F4D848B00BEFF7F /* UIViewController+ZFPlayerRotation.m */; };
+		1CFBF96C1F4D848B00BEFF7F /* UIWindow+CurrentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9561F4D848B00BEFF7F /* UIWindow+CurrentViewController.m */; };
+		1CFBF96D1F4D848B00BEFF7F /* MMMaterialDesignSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9581F4D848B00BEFF7F /* MMMaterialDesignSpinner.m */; };
+		1CFBF96E1F4D848B00BEFF7F /* ZFBrightnessView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF95A1F4D848B00BEFF7F /* ZFBrightnessView.m */; };
+		1CFBF96F1F4D848B00BEFF7F /* ZFPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1CFBF95B1F4D848B00BEFF7F /* ZFPlayer.bundle */; };
+		1CFBF9701F4D848B00BEFF7F /* ZFPlayerControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF95E1F4D848B00BEFF7F /* ZFPlayerControlView.m */; };
+		1CFBF9711F4D848B00BEFF7F /* ZFPlayerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9611F4D848B00BEFF7F /* ZFPlayerModel.m */; };
+		1CFBF9721F4D848B00BEFF7F /* ZFPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9631F4D848B00BEFF7F /* ZFPlayerView.m */; };
+		1CFBF9741F4D852800BEFF7F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CFBF9731F4D852800BEFF7F /* libsqlite3.0.tbd */; };
+		1CFBF9761F4D853700BEFF7F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CFBF9751F4D853700BEFF7F /* CoreGraphics.framework */; };
+		1CFBF97C1F4D85A400BEFF7F /* videoData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CFBF9771F4D85A400BEFF7F /* videoData.json */; };
+		1CFBF97D1F4D85A400BEFF7F /* ZFVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9791F4D85A400BEFF7F /* ZFVideoModel.m */; };
+		1CFBF97E1F4D85A400BEFF7F /* ZFPVideoResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF97B1F4D85A400BEFF7F /* ZFPVideoResolution.m */; };
 		B726D09BBB1D4131D3FF829E /* libPods-taihuitao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BA8CE20519E21513CE0EF1 /* libPods-taihuitao.a */; };
 /* End PBXBuildFile section */
 
@@ -237,6 +275,74 @@
 		1CFBF8ED1F4ACB4500BEFF7F /* refresh10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh10.png; sourceTree = "<group>"; };
 		1CFBF9031F4ACB6900BEFF7F /* JQRefreshHeaader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JQRefreshHeaader.h; sourceTree = "<group>"; };
 		1CFBF9041F4ACB6900BEFF7F /* JQRefreshHeaader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JQRefreshHeaader.m; sourceTree = "<group>"; };
+		1CFBF9071F4D561400BEFF7F /* BearupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BearupViewController.h; sourceTree = "<group>"; };
+		1CFBF9081F4D561400BEFF7F /* BearupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BearupViewController.m; sourceTree = "<group>"; };
+		1CFBF90D1F4D833600BEFF7F /* VideoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoTableViewCell.h; sourceTree = "<group>"; };
+		1CFBF90E1F4D833600BEFF7F /* VideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoTableViewCell.m; sourceTree = "<group>"; };
+		1CFBF9101F4D834C00BEFF7F /* VideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoModel.h; sourceTree = "<group>"; };
+		1CFBF9111F4D834C00BEFF7F /* VideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoModel.m; sourceTree = "<group>"; };
+		1CFBF9131F4D836B00BEFF7F /* LTHttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTHttpManager.h; sourceTree = "<group>"; };
+		1CFBF9141F4D836B00BEFF7F /* LTHttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTHttpManager.m; sourceTree = "<group>"; };
+		1CFBF9161F4D838600BEFF7F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		1CFBF9171F4D838600BEFF7F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		1CFBF9181F4D838600BEFF7F /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		1CFBF9191F4D838600BEFF7F /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		1CFBF91A1F4D838600BEFF7F /* FindPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindPasswordViewController.h; sourceTree = "<group>"; };
+		1CFBF91B1F4D838600BEFF7F /* FindPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindPasswordViewController.m; sourceTree = "<group>"; };
+		1CFBF91C1F4D838600BEFF7F /* LaunchScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchScrollViewController.h; sourceTree = "<group>"; };
+		1CFBF91D1F4D838600BEFF7F /* LaunchScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchScrollViewController.m; sourceTree = "<group>"; };
+		1CFBF9251F4D83AB00BEFF7F /* libSocialQQ.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialQQ.a; sourceTree = "<group>"; };
+		1CFBF9261F4D83AB00BEFF7F /* UMSocialQQHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialQQHandler.h; sourceTree = "<group>"; };
+		1CFBF9281F4D83AB00BEFF7F /* libSocialSina.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialSina.a; sourceTree = "<group>"; };
+		1CFBF9291F4D83AB00BEFF7F /* UMSocialSinaHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialSinaHandler.h; sourceTree = "<group>"; };
+		1CFBF92B1F4D83AB00BEFF7F /* libSocialUniqueId.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialUniqueId.a; sourceTree = "<group>"; };
+		1CFBF92C1F4D83AB00BEFF7F /* UMSocialUniqueIdHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialUniqueIdHandler.h; sourceTree = "<group>"; };
+		1CFBF92E1F4D83AB00BEFF7F /* libSocialWeChat.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSocialWeChat.a; sourceTree = "<group>"; };
+		1CFBF92F1F4D83AB00BEFF7F /* UMSocialWechatHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialWechatHandler.h; sourceTree = "<group>"; };
+		1CFBF9311F4D83AB00BEFF7F /* UMSocialCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMSocialCore.framework; sourceTree = "<group>"; };
+		1CFBF9321F4D83AB00BEFF7F /* UMSocialNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMSocialNetwork.framework; sourceTree = "<group>"; };
+		1CFBF9331F4D83AB00BEFF7F /* UMSocialSDKPromptResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKPromptResources.bundle; sourceTree = "<group>"; };
+		1CFBF9351F4D83AB00BEFF7F /* libUMSocialLog.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libUMSocialLog.a; sourceTree = "<group>"; };
+		1CFBF9371F4D83AB00BEFF7F /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
+		1CFBF9381F4D83AB00BEFF7F /* UShareUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UShareUI.framework; sourceTree = "<group>"; };
+		1CFBF9441F4D848B00BEFF7F /* ASValuePopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValuePopUpView.h; sourceTree = "<group>"; };
+		1CFBF9451F4D848B00BEFF7F /* ASValuePopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASValuePopUpView.m; sourceTree = "<group>"; };
+		1CFBF9461F4D848B00BEFF7F /* ASValueTrackingSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASValueTrackingSlider.h; sourceTree = "<group>"; };
+		1CFBF9471F4D848B00BEFF7F /* ASValueTrackingSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASValueTrackingSlider.m; sourceTree = "<group>"; };
+		1CFBF9491F4D848B00BEFF7F /* UIAlertController+ZFPlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+ZFPlayerRotation.h"; sourceTree = "<group>"; };
+		1CFBF94A1F4D848B00BEFF7F /* UIAlertController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
+		1CFBF94B1F4D848B00BEFF7F /* UIImageView+ZFCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+ZFCache.h"; sourceTree = "<group>"; };
+		1CFBF94C1F4D848B00BEFF7F /* UIImageView+ZFCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+ZFCache.m"; sourceTree = "<group>"; };
+		1CFBF94D1F4D848B00BEFF7F /* UINavigationController+ZFPlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+ZFPlayerRotation.h"; sourceTree = "<group>"; };
+		1CFBF94E1F4D848B00BEFF7F /* UINavigationController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
+		1CFBF94F1F4D848B00BEFF7F /* UITabBarController+ZFPlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITabBarController+ZFPlayerRotation.h"; sourceTree = "<group>"; };
+		1CFBF9501F4D848B00BEFF7F /* UITabBarController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITabBarController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
+		1CFBF9511F4D848B00BEFF7F /* UIView+CustomControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CustomControlView.h"; sourceTree = "<group>"; };
+		1CFBF9521F4D848B00BEFF7F /* UIView+CustomControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CustomControlView.m"; sourceTree = "<group>"; };
+		1CFBF9531F4D848B00BEFF7F /* UIViewController+ZFPlayerRotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+ZFPlayerRotation.h"; sourceTree = "<group>"; };
+		1CFBF9541F4D848B00BEFF7F /* UIViewController+ZFPlayerRotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+ZFPlayerRotation.m"; sourceTree = "<group>"; };
+		1CFBF9551F4D848B00BEFF7F /* UIWindow+CurrentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+CurrentViewController.h"; sourceTree = "<group>"; };
+		1CFBF9561F4D848B00BEFF7F /* UIWindow+CurrentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+CurrentViewController.m"; sourceTree = "<group>"; };
+		1CFBF9571F4D848B00BEFF7F /* MMMaterialDesignSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMMaterialDesignSpinner.h; sourceTree = "<group>"; };
+		1CFBF9581F4D848B00BEFF7F /* MMMaterialDesignSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMMaterialDesignSpinner.m; sourceTree = "<group>"; };
+		1CFBF9591F4D848B00BEFF7F /* ZFBrightnessView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFBrightnessView.h; sourceTree = "<group>"; };
+		1CFBF95A1F4D848B00BEFF7F /* ZFBrightnessView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFBrightnessView.m; sourceTree = "<group>"; };
+		1CFBF95B1F4D848B00BEFF7F /* ZFPlayer.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ZFPlayer.bundle; sourceTree = "<group>"; };
+		1CFBF95C1F4D848B00BEFF7F /* ZFPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayer.h; sourceTree = "<group>"; };
+		1CFBF95D1F4D848B00BEFF7F /* ZFPlayerControlView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerControlView.h; sourceTree = "<group>"; };
+		1CFBF95E1F4D848B00BEFF7F /* ZFPlayerControlView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerControlView.m; sourceTree = "<group>"; };
+		1CFBF95F1F4D848B00BEFF7F /* ZFPlayerControlViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerControlViewDelegate.h; sourceTree = "<group>"; };
+		1CFBF9601F4D848B00BEFF7F /* ZFPlayerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerModel.h; sourceTree = "<group>"; };
+		1CFBF9611F4D848B00BEFF7F /* ZFPlayerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerModel.m; sourceTree = "<group>"; };
+		1CFBF9621F4D848B00BEFF7F /* ZFPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFPlayerView.h; sourceTree = "<group>"; };
+		1CFBF9631F4D848B00BEFF7F /* ZFPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPlayerView.m; sourceTree = "<group>"; };
+		1CFBF9731F4D852800BEFF7F /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		1CFBF9751F4D853700BEFF7F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1CFBF9771F4D85A400BEFF7F /* videoData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = videoData.json; sourceTree = "<group>"; };
+		1CFBF9781F4D85A400BEFF7F /* ZFVideoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFVideoModel.h; sourceTree = "<group>"; };
+		1CFBF9791F4D85A400BEFF7F /* ZFVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFVideoModel.m; sourceTree = "<group>"; };
+		1CFBF97A1F4D85A400BEFF7F /* ZFVideoResolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFVideoResolution.h; sourceTree = "<group>"; };
+		1CFBF97B1F4D85A400BEFF7F /* ZFPVideoResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPVideoResolution.m; sourceTree = "<group>"; };
 		45C73994DFE049FEEF53D863 /* Pods-taihuitao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taihuitao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-taihuitao/Pods-taihuitao.debug.xcconfig"; sourceTree = "<group>"; };
 		96BA8CE20519E21513CE0EF1 /* libPods-taihuitao.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-taihuitao.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC763474ECBF432EC4B9D0A1 /* Pods-taihuitao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taihuitao.release.xcconfig"; path = "Pods/Target Support Files/Pods-taihuitao/Pods-taihuitao.release.xcconfig"; sourceTree = "<group>"; };
@@ -247,7 +353,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CFBF9761F4D853700BEFF7F /* CoreGraphics.framework in Frameworks */,
+				1CFBF9741F4D852800BEFF7F /* libsqlite3.0.tbd in Frameworks */,
+				1CFBF93B1F4D83AB00BEFF7F /* libSocialUniqueId.a in Frameworks */,
+				1CFBF93C1F4D83AB00BEFF7F /* libSocialWeChat.a in Frameworks */,
+				1CFBF9391F4D83AB00BEFF7F /* libSocialQQ.a in Frameworks */,
 				B726D09BBB1D4131D3FF829E /* libPods-taihuitao.a in Frameworks */,
+				1CFBF93D1F4D83AB00BEFF7F /* UMSocialCore.framework in Frameworks */,
+				1CFBF9401F4D83AB00BEFF7F /* libUMSocialLog.a in Frameworks */,
+				1CFBF93E1F4D83AB00BEFF7F /* UMSocialNetwork.framework in Frameworks */,
+				1CFBF93A1F4D83AB00BEFF7F /* libSocialSina.a in Frameworks */,
+				1CFBF9421F4D83AB00BEFF7F /* UShareUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,6 +409,7 @@
 		1CF655091F4538F900DBD64D /* taihuitao */ = {
 			isa = PBXGroup;
 			children = (
+				1CFBF9061F4D55FC00BEFF7F /* BearUp */,
 				1CF656A21F45846F00DBD64D /* Personal */,
 				1CF656A11F45845100DBD64D /* Category */,
 				1CF656A01F45844900DBD64D /* Video */,
@@ -345,6 +462,7 @@
 		1CF6553D1F45423900DBD64D /* SDK  */ = {
 			isa = PBXGroup;
 			children = (
+				1CFBF9221F4D83AB00BEFF7F /* UMSocial */,
 			);
 			name = "SDK ";
 			sourceTree = "<group>";
@@ -352,6 +470,7 @@
 		1CF6553E1F45424000DBD64D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1CFBF9431F4D848B00BEFF7F /* ZFPlayer */,
 				1CF656941F456D8000DBD64D /* Tool.h */,
 				1CF656951F456D8000DBD64D /* Tool.m */,
 				1CF656961F456D8000DBD64D /* WebContentViewController.h */,
@@ -374,6 +493,8 @@
 			children = (
 				1CF656911F456D6500DBD64D /* LTHTTPSessionManager.h */,
 				1CF656921F456D6500DBD64D /* LTHTTPSessionManager.m */,
+				1CFBF9131F4D836B00BEFF7F /* LTHttpManager.h */,
+				1CFBF9141F4D836B00BEFF7F /* LTHttpManager.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -381,6 +502,14 @@
 		1CF655401F45426700DBD64D /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				1CFBF9161F4D838600BEFF7F /* LoginViewController.h */,
+				1CFBF9171F4D838600BEFF7F /* LoginViewController.m */,
+				1CFBF9181F4D838600BEFF7F /* RegisterViewController.h */,
+				1CFBF9191F4D838600BEFF7F /* RegisterViewController.m */,
+				1CFBF91A1F4D838600BEFF7F /* FindPasswordViewController.h */,
+				1CFBF91B1F4D838600BEFF7F /* FindPasswordViewController.m */,
+				1CFBF91C1F4D838600BEFF7F /* LaunchScrollViewController.h */,
+				1CFBF91D1F4D838600BEFF7F /* LaunchScrollViewController.m */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -422,8 +551,9 @@
 		1CF656A01F45844900DBD64D /* Video */ = {
 			isa = PBXGroup;
 			children = (
-				1CF656A61F45849F00DBD64D /* VideoViewController.h */,
-				1CF656A71F45849F00DBD64D /* VideoViewController.m */,
+				1CFBF90C1F4D830400BEFF7F /* Model */,
+				1CFBF90B1F4D82FF00BEFF7F /* View */,
+				1CFBF90A1F4D82F000BEFF7F /* ViewController */,
 			);
 			name = Video;
 			sourceTree = "<group>";
@@ -546,9 +676,183 @@
 			path = Refresh;
 			sourceTree = "<group>";
 		};
+		1CFBF9061F4D55FC00BEFF7F /* BearUp */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF9071F4D561400BEFF7F /* BearupViewController.h */,
+				1CFBF9081F4D561400BEFF7F /* BearupViewController.m */,
+			);
+			name = BearUp;
+			sourceTree = "<group>";
+		};
+		1CFBF90A1F4D82F000BEFF7F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1CF656A61F45849F00DBD64D /* VideoViewController.h */,
+				1CF656A71F45849F00DBD64D /* VideoViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		1CFBF90B1F4D82FF00BEFF7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF90D1F4D833600BEFF7F /* VideoTableViewCell.h */,
+				1CFBF90E1F4D833600BEFF7F /* VideoTableViewCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1CFBF90C1F4D830400BEFF7F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF9101F4D834C00BEFF7F /* VideoModel.h */,
+				1CFBF9111F4D834C00BEFF7F /* VideoModel.m */,
+				1CFBF9771F4D85A400BEFF7F /* videoData.json */,
+				1CFBF9781F4D85A400BEFF7F /* ZFVideoModel.h */,
+				1CFBF9791F4D85A400BEFF7F /* ZFVideoModel.m */,
+				1CFBF97A1F4D85A400BEFF7F /* ZFVideoResolution.h */,
+				1CFBF97B1F4D85A400BEFF7F /* ZFPVideoResolution.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		1CFBF9221F4D83AB00BEFF7F /* UMSocial */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF9231F4D83AB00BEFF7F /* SocialLibraries */,
+				1CFBF9301F4D83AB00BEFF7F /* UMSocialSDK */,
+				1CFBF9341F4D83AB00BEFF7F /* UMSocialSDKPlugin */,
+				1CFBF9361F4D83AB00BEFF7F /* UMSocialUI */,
+			);
+			path = UMSocial;
+			sourceTree = "<group>";
+		};
+		1CFBF9231F4D83AB00BEFF7F /* SocialLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF9241F4D83AB00BEFF7F /* QQ */,
+				1CFBF9271F4D83AB00BEFF7F /* Sina */,
+				1CFBF92A1F4D83AB00BEFF7F /* UniqueId */,
+				1CFBF92D1F4D83AB00BEFF7F /* WeChat */,
+			);
+			path = SocialLibraries;
+			sourceTree = "<group>";
+		};
+		1CFBF9241F4D83AB00BEFF7F /* QQ */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF9251F4D83AB00BEFF7F /* libSocialQQ.a */,
+				1CFBF9261F4D83AB00BEFF7F /* UMSocialQQHandler.h */,
+			);
+			path = QQ;
+			sourceTree = "<group>";
+		};
+		1CFBF9271F4D83AB00BEFF7F /* Sina */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF9281F4D83AB00BEFF7F /* libSocialSina.a */,
+				1CFBF9291F4D83AB00BEFF7F /* UMSocialSinaHandler.h */,
+			);
+			path = Sina;
+			sourceTree = "<group>";
+		};
+		1CFBF92A1F4D83AB00BEFF7F /* UniqueId */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF92B1F4D83AB00BEFF7F /* libSocialUniqueId.a */,
+				1CFBF92C1F4D83AB00BEFF7F /* UMSocialUniqueIdHandler.h */,
+			);
+			path = UniqueId;
+			sourceTree = "<group>";
+		};
+		1CFBF92D1F4D83AB00BEFF7F /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF92E1F4D83AB00BEFF7F /* libSocialWeChat.a */,
+				1CFBF92F1F4D83AB00BEFF7F /* UMSocialWechatHandler.h */,
+			);
+			path = WeChat;
+			sourceTree = "<group>";
+		};
+		1CFBF9301F4D83AB00BEFF7F /* UMSocialSDK */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF9311F4D83AB00BEFF7F /* UMSocialCore.framework */,
+				1CFBF9321F4D83AB00BEFF7F /* UMSocialNetwork.framework */,
+				1CFBF9331F4D83AB00BEFF7F /* UMSocialSDKPromptResources.bundle */,
+			);
+			path = UMSocialSDK;
+			sourceTree = "<group>";
+		};
+		1CFBF9341F4D83AB00BEFF7F /* UMSocialSDKPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF9351F4D83AB00BEFF7F /* libUMSocialLog.a */,
+			);
+			path = UMSocialSDKPlugin;
+			sourceTree = "<group>";
+		};
+		1CFBF9361F4D83AB00BEFF7F /* UMSocialUI */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF9371F4D83AB00BEFF7F /* UMSocialSDKResources.bundle */,
+				1CFBF9381F4D83AB00BEFF7F /* UShareUI.framework */,
+			);
+			path = UMSocialUI;
+			sourceTree = "<group>";
+		};
+		1CFBF9431F4D848B00BEFF7F /* ZFPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF9441F4D848B00BEFF7F /* ASValuePopUpView.h */,
+				1CFBF9451F4D848B00BEFF7F /* ASValuePopUpView.m */,
+				1CFBF9461F4D848B00BEFF7F /* ASValueTrackingSlider.h */,
+				1CFBF9471F4D848B00BEFF7F /* ASValueTrackingSlider.m */,
+				1CFBF9481F4D848B00BEFF7F /* Category */,
+				1CFBF9571F4D848B00BEFF7F /* MMMaterialDesignSpinner.h */,
+				1CFBF9581F4D848B00BEFF7F /* MMMaterialDesignSpinner.m */,
+				1CFBF9591F4D848B00BEFF7F /* ZFBrightnessView.h */,
+				1CFBF95A1F4D848B00BEFF7F /* ZFBrightnessView.m */,
+				1CFBF95B1F4D848B00BEFF7F /* ZFPlayer.bundle */,
+				1CFBF95C1F4D848B00BEFF7F /* ZFPlayer.h */,
+				1CFBF95D1F4D848B00BEFF7F /* ZFPlayerControlView.h */,
+				1CFBF95E1F4D848B00BEFF7F /* ZFPlayerControlView.m */,
+				1CFBF95F1F4D848B00BEFF7F /* ZFPlayerControlViewDelegate.h */,
+				1CFBF9601F4D848B00BEFF7F /* ZFPlayerModel.h */,
+				1CFBF9611F4D848B00BEFF7F /* ZFPlayerModel.m */,
+				1CFBF9621F4D848B00BEFF7F /* ZFPlayerView.h */,
+				1CFBF9631F4D848B00BEFF7F /* ZFPlayerView.m */,
+			);
+			path = ZFPlayer;
+			sourceTree = "<group>";
+		};
+		1CFBF9481F4D848B00BEFF7F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				1CFBF9491F4D848B00BEFF7F /* UIAlertController+ZFPlayerRotation.h */,
+				1CFBF94A1F4D848B00BEFF7F /* UIAlertController+ZFPlayerRotation.m */,
+				1CFBF94B1F4D848B00BEFF7F /* UIImageView+ZFCache.h */,
+				1CFBF94C1F4D848B00BEFF7F /* UIImageView+ZFCache.m */,
+				1CFBF94D1F4D848B00BEFF7F /* UINavigationController+ZFPlayerRotation.h */,
+				1CFBF94E1F4D848B00BEFF7F /* UINavigationController+ZFPlayerRotation.m */,
+				1CFBF94F1F4D848B00BEFF7F /* UITabBarController+ZFPlayerRotation.h */,
+				1CFBF9501F4D848B00BEFF7F /* UITabBarController+ZFPlayerRotation.m */,
+				1CFBF9511F4D848B00BEFF7F /* UIView+CustomControlView.h */,
+				1CFBF9521F4D848B00BEFF7F /* UIView+CustomControlView.m */,
+				1CFBF9531F4D848B00BEFF7F /* UIViewController+ZFPlayerRotation.h */,
+				1CFBF9541F4D848B00BEFF7F /* UIViewController+ZFPlayerRotation.m */,
+				1CFBF9551F4D848B00BEFF7F /* UIWindow+CurrentViewController.h */,
+				1CFBF9561F4D848B00BEFF7F /* UIWindow+CurrentViewController.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		7B3EA581E1304B28B9015BCE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1CFBF9751F4D853700BEFF7F /* CoreGraphics.framework */,
+				1CFBF9731F4D852800BEFF7F /* libsqlite3.0.tbd */,
 				96BA8CE20519E21513CE0EF1 /* libPods-taihuitao.a */,
 			);
 			name = Frameworks;
@@ -692,9 +996,11 @@
 				1CFBF8F31F4ACB4500BEFF7F /* header06@2x.jpg in Resources */,
 				1CFBF8CB1F4AC9CF00BEFF7F /* recomand_11.jpg in Resources */,
 				1CFBF8D21F4AC9CF00BEFF7F /* recomand_18.jpg in Resources */,
+				1CFBF9411F4D83AB00BEFF7F /* UMSocialSDKResources.bundle in Resources */,
 				1CFBF88F1F4AC9BC00BEFF7F /* home_emared.png in Resources */,
 				1CFBF9021F4ACB4500BEFF7F /* refresh10.png in Resources */,
 				1CFBF8C41F4AC9CF00BEFF7F /* recomand_04.jpg in Resources */,
+				1CFBF97C1F4D85A400BEFF7F /* videoData.json in Resources */,
 				1CFBF8FE1F4ACB4500BEFF7F /* refresh06.png in Resources */,
 				1CFBF8A71F4AC9C400BEFF7F /* cycle_04.jpg in Resources */,
 				1CFBF8F41F4ACB4500BEFF7F /* header07@2x.jpg in Resources */,
@@ -707,6 +1013,7 @@
 				1CFBF9011F4ACB4500BEFF7F /* refresh09.png in Resources */,
 				1CFBF8FD1F4ACB4500BEFF7F /* refresh05.png in Resources */,
 				1CFBF8951F4AC9BC00BEFF7F /* tab_publish_add.png in Resources */,
+				1CFBF93F1F4D83AB00BEFF7F /* UMSocialSDKPromptResources.bundle in Resources */,
 				1CFBF8EF1F4ACB4500BEFF7F /* header02@2x.jpg in Resources */,
 				1CFBF8FB1F4ACB4500BEFF7F /* refresh03.png in Resources */,
 				1CFBF8D11F4AC9CF00BEFF7F /* recomand_17.jpg in Resources */,
@@ -727,6 +1034,7 @@
 				1CFBF8CD1F4AC9CF00BEFF7F /* recomand_13.jpg in Resources */,
 				1CFBF8981F4AC9BC00BEFF7F /* tab_我的_pressed.png in Resources */,
 				1CFBF8F61F4ACB4500BEFF7F /* header09@2x.jpg in Resources */,
+				1CFBF96F1F4D848B00BEFF7F /* ZFPlayer.bundle in Resources */,
 				1CFBF8911F4AC9BC00BEFF7F /* home_search_icon.png in Resources */,
 				1CFBF8D31F4AC9CF00BEFF7F /* recomand_19.jpg in Resources */,
 				1CF6569D1F456D8000DBD64D /* WebContentViewController.xib in Resources */,
@@ -814,26 +1122,50 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CFBF4621F4AB85400BEFF7F /* UIView+Extension.m in Sources */,
+				1CFBF97D1F4D85A400BEFF7F /* ZFVideoModel.m in Sources */,
+				1CFBF9651F4D848B00BEFF7F /* ASValueTrackingSlider.m in Sources */,
+				1CFBF9681F4D848B00BEFF7F /* UINavigationController+ZFPlayerRotation.m in Sources */,
+				1CFBF97E1F4D85A400BEFF7F /* ZFPVideoResolution.m in Sources */,
 				1CF6568F1F456D3D00DBD64D /* BaseNaviViewController.m in Sources */,
+				1CFBF91E1F4D838600BEFF7F /* LoginViewController.m in Sources */,
+				1CFBF9691F4D848B00BEFF7F /* UITabBarController+ZFPlayerRotation.m in Sources */,
+				1CFBF96C1F4D848B00BEFF7F /* UIWindow+CurrentViewController.m in Sources */,
 				1CFBF9051F4ACB6900BEFF7F /* JQRefreshHeaader.m in Sources */,
+				1CFBF9671F4D848B00BEFF7F /* UIImageView+ZFCache.m in Sources */,
+				1CFBF96A1F4D848B00BEFF7F /* UIView+CustomControlView.m in Sources */,
+				1CFBF9711F4D848B00BEFF7F /* ZFPlayerModel.m in Sources */,
+				1CFBF9721F4D848B00BEFF7F /* ZFPlayerView.m in Sources */,
+				1CFBF91F1F4D838600BEFF7F /* RegisterViewController.m in Sources */,
+				1CFBF9151F4D836B00BEFF7F /* LTHttpManager.m in Sources */,
 				1CF656901F456D3D00DBD64D /* BaseTabBarViewController.m in Sources */,
+				1CFBF9701F4D848B00BEFF7F /* ZFPlayerControlView.m in Sources */,
 				1CFBF4851F4AC88000BEFF7F /* JSDTableViewController.m in Sources */,
 				1CF656A81F45849F00DBD64D /* VideoViewController.m in Sources */,
+				1CFBF9211F4D838600BEFF7F /* LaunchScrollViewController.m in Sources */,
 				1CF6569B1F456D8000DBD64D /* Tool.m in Sources */,
+				1CFBF9641F4D848B00BEFF7F /* ASValuePopUpView.m in Sources */,
 				1CF656AB1F4584B400DBD64D /* CategoryViewController.m in Sources */,
 				1CFBF4881F4AC8AF00BEFF7F /* JQBTHomeTableViewCell.m in Sources */,
 				1CF656A51F45849200DBD64D /* HomeViewController.m in Sources */,
 				1CF6569E1F456D8000DBD64D /* UIView+Frame.m in Sources */,
+				1CFBF9661F4D848B00BEFF7F /* UIAlertController+ZFPlayerRotation.m in Sources */,
+				1CFBF96B1F4D848B00BEFF7F /* UIViewController+ZFPlayerRotation.m in Sources */,
 				1CFBF5DB1F4AC8C100BEFF7F /* JSDTHomeRecomandModel.m in Sources */,
+				1CFBF96E1F4D848B00BEFF7F /* ZFBrightnessView.m in Sources */,
 				1CF656931F456D6500DBD64D /* LTHTTPSessionManager.m in Sources */,
 				1CF655121F4538F900DBD64D /* ViewController.m in Sources */,
+				1CFBF90F1F4D833600BEFF7F /* VideoTableViewCell.m in Sources */,
+				1CFBF9201F4D838600BEFF7F /* FindPasswordViewController.m in Sources */,
 				1CF6569C1F456D8000DBD64D /* WebContentViewController.m in Sources */,
 				1CFBF8D71F4ACA1E00BEFF7F /* UIImage+JQImage.m in Sources */,
+				1CFBF96D1F4D848B00BEFF7F /* MMMaterialDesignSpinner.m in Sources */,
 				1CF6550F1F4538F900DBD64D /* AppDelegate.m in Sources */,
 				1CF6550C1F4538F900DBD64D /* main.m in Sources */,
 				1CFBF4611F4AB85400BEFF7F /* UIButton+Size.m in Sources */,
+				1CFBF9091F4D561400BEFF7F /* BearupViewController.m in Sources */,
 				1CFBF4651F4AB90900BEFF7F /* NaviView.m in Sources */,
 				1CF656AE1F4584C400DBD64D /* PersonalViewController.m in Sources */,
+				1CFBF9121F4D834C00BEFF7F /* VideoModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -990,6 +1322,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/taihuitao/BearUp/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/taihuitao/BearUp/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/UMSocialUI",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/taihuitao/Taihuitao-PrefixHeader.pch";
 				INFOPLIST_FILE = taihuitao/Info.plist;
@@ -1002,6 +1336,11 @@
 					"$(PROJECT_DIR)/taihuitao/BearUp/UMSocial/SocialLibraries/UniqueId",
 					"$(PROJECT_DIR)/taihuitao/BearUp/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/taihuitao/BearUp/UMSocial/UMSocialSDKPlugin",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/SocialLibraries/Sina",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/SocialLibraries/UniqueId",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/UMSocialSDKPlugin",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tebuy.taihuitao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1019,6 +1358,8 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/taihuitao/BearUp/UMSocial/UMSocialSDK",
 					"$(PROJECT_DIR)/taihuitao/BearUp/UMSocial/UMSocialUI",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/UMSocialSDK",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/UMSocialUI",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/taihuitao/Taihuitao-PrefixHeader.pch";
 				INFOPLIST_FILE = taihuitao/Info.plist;
@@ -1031,6 +1372,11 @@
 					"$(PROJECT_DIR)/taihuitao/BearUp/UMSocial/SocialLibraries/UniqueId",
 					"$(PROJECT_DIR)/taihuitao/BearUp/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/taihuitao/BearUp/UMSocial/UMSocialSDKPlugin",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/SocialLibraries/Sina",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/SocialLibraries/UniqueId",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/taihuitao/UMSocial/UMSocialSDKPlugin",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tebuy.taihuitao;
 				PRODUCT_NAME = "$(TARGET_NAME)";

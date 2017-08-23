@@ -18,6 +18,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    self.navigationBar.barTintColor = DRGBCOLOR;
+    /*
     self.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationBar.translucent = NO;
     //去掉左边的title
@@ -36,6 +37,7 @@
     self.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],NSForegroundColorAttributeName, nil];
     
     [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navi"] forBarMetrics:UIBarMetricsDefault];
+     */
 }
 
 - (void)didReceiveMemoryWarning {

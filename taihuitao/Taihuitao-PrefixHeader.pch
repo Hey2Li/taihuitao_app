@@ -24,6 +24,9 @@
 #import "UIView+Frame.h"
 #import "UIButton+Size.h"
 #import "UIImage+JQImage.h"
+#import "LTHttpManager.h"
+#import "ZFPlayer.h"
+
 
 //-----------------color----------------------
 #define RGBCOLOR(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
@@ -43,6 +46,21 @@
 #define USERID_KEY @"user_id"
 #define USERTOKEN_KEY @"user_token"
 #define GETUUID [[[UIDevice currentDevice] identifierForVendor] UUIDString]
+#define USER_MOBILE @"user_mobile"
+#define USER_PHOTO @"user_photo"
+#define USER_NICKNAME @"user_nickname"
+#define USER_SEX @"user_sex"
+#define USER_READNUM @"read_num"
+#define GETUUID [[[UIDevice currentDevice] identifierForVendor] UUIDString]
 
+//判断设备型号
+#define UI_IS_LANDSCAPE         ([UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeLeft || [UIDevice currentDevice].orientation == UIDeviceOrientationLandscapeRight)
+#define UI_IS_IPAD              ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+#define UI_IS_IPHONE            ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+#define UI_IS_IPHONE4           (UI_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height < 568.0)
+#define UI_IS_IPHONE5           (UI_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 568.0)
+#define UI_IS_IPHONE6           (UI_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 667.0)
+#define UI_IS_IPHONE6PLUS       (UI_IS_IPHONE && [[UIScreen mainScreen] bounds].size.height == 736.0 || [[UIScreen mainScreen] bounds].size.width == 736.0) // Both orientations
+#define UI_IS_IOS8_AND_HIGHER   ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0)
 
 #endif /* Taihuitao_PrefixHeader_pch */

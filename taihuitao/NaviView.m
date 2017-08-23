@@ -8,7 +8,7 @@
 
 #import "NaviView.h"
 
-@interface NaviView ()
+@interface NaviView ()<UISearchBarDelegate>
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UIButton *searchButton;
 @property (nonatomic, strong) UIButton *qrCodeButton;
@@ -80,6 +80,7 @@
         _searchBar.placeholder = @"淘你想淘";
         _searchBar.layer.cornerRadius = 15;
         _searchBar.layer.masksToBounds = YES;
+        _searchBar.delegate = self;
         
         [_searchBar setSearchFieldBackgroundImage:[UIImage imageWithColor:[UIColor clearColor] size:_searchBar.size] forState:UIControlStateNormal];
         [_searchBar setBackgroundImage:[UIImage imageWithColor:[[UIColor grayColor] colorWithAlphaComponent:0.4] size:_searchBar.size] ];
@@ -95,6 +96,7 @@
     if (!_searchButton) {
         _searchButton = [[UIButton alloc]initWithFrame:CGRectMake(20, 30, 30, 30)];
         [_searchButton setBackgroundImage:[UIImage imageNamed:@"home_search_icon"] forState:UIControlStateNormal];
+        [_searchButton addTarget:self action:@selector(searchClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _searchButton;
 }
@@ -103,7 +105,35 @@
     if (!_qrCodeButton) {
         _qrCodeButton = [[UIButton alloc]initWithFrame:CGRectMake(self.width - 45, 30, 30, 30)];
         [_qrCodeButton setBackgroundImage:[UIImage imageNamed:@"home_email_black"] forState:UIControlStateNormal];
+        [_qrCodeButton addTarget:self action:@selector(qrCodeClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _qrCodeButton;
+}
+#pragma mark - UISearchBarDelegate 协议
+
+// UISearchBar得到焦点并开始编辑时，执行该方法
+- (BOOL)searchBarShouldBeginEditing:(UISearchBar *)searchBar{
+    return YES;
+}
+
+// 取消按钮被按下时，执行的方法
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [self.searchBar resignFirstResponder];
+}
+
+// 键盘中，搜索按钮被按下，执行的方法
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    NSLog(@"---%@",searchBar.text);
+    [self.searchBar resignFirstResponder];// 放弃第一响应者
+}
+- (void)searchClick:(UIButton *)btn{
+    if (self.searchBtnClick) {
+        self.searchBtnClick(btn);
+    }
+}
+- (void)qrCodeClick:(UIButton *)btn{
+    if (self.qrCodeBtnClick) {
+        self.qrCodeBtnClick(btn);
+    }
 }
 @end

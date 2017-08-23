@@ -12,12 +12,14 @@
 #import "CategoryViewController.h"
 #import "PersonalViewController.h"
 #import "BaseNaviViewController.h"
+#import "BearupViewController.h"
 
 @interface BaseTabBarViewController ()
 @property (nonatomic, strong) BaseNaviViewController *homeTab;
 @property (nonatomic, strong) BaseNaviViewController *videoTab;
 @property (nonatomic, strong) BaseNaviViewController *foundTab;
 @property (nonatomic, strong) BaseNaviViewController *mineTab;
+@property (nonatomic, strong) BaseNaviViewController *bearupTab;
 @end
 
 @implementation BaseTabBarViewController
@@ -32,17 +34,18 @@
     _videoTab = [[BaseNaviViewController alloc]initWithRootViewController:[VideoViewController new]];
     _foundTab = [[BaseNaviViewController alloc]initWithRootViewController:[CategoryViewController new]];
     _mineTab = [[BaseNaviViewController alloc]initWithRootViewController:[PersonalViewController new]];
-    self.viewControllers = @[_homeTab, _videoTab, _foundTab, _mineTab];
+    _bearupTab  =[[BaseNaviViewController alloc]initWithRootViewController:[BearupViewController new]];
+    self.viewControllers = @[_homeTab, _videoTab, _bearupTab,_foundTab, _mineTab];
     self.selectedIndex = 0;
     
 //    NSArray *titleArray = @[@"首页", @"视频", @"发现", @"熊窝"];
 //    NSArray *normalImgArray = @[@"首页灰",@"视频灰",@"发现灰",@"熊窝灰"];
 //    NSArray *selectedImgArray = @[@"首页红",@"视频红",@"发现红",@"熊窝红"];
-    NSArray *titleArray = @[@"热门",@"发现", @"视频",  @"熊窝"];
-    NSArray *normalImgArray = @[@"首页灰",@"发现灰",@"视频灰",@"熊窝灰"];
-    NSArray *selectedImgArray = @[@"首页红",@"发现红",@"视频红",@"熊窝红"];
+    NSArray *titleArray = @[@"首页",@"视频", @"熊起", @"分类", @"个人"];
+    NSArray *normalImgArray = @[@"首页灰",@"发现灰",@"视频灰",@"熊窝灰",@""];
+    NSArray *selectedImgArray = @[@"首页红",@"发现红",@"视频红",@"熊窝红",@""];
     //设置分栏元素项
-    for (int i = 0; i < titleArray.count; i++) {
+    for (int i = 0; i < self.viewControllers.count; i++) {
         UIViewController *vc =  self.viewControllers[i];
         vc.tabBarItem = [[UITabBarItem alloc] initWithTitle:titleArray[i] image:[[UIImage imageNamed:normalImgArray[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:selectedImgArray[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         vc.tabBarItem.title = titleArray[i];
