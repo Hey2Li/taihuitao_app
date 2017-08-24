@@ -136,6 +136,11 @@
 		1CFBF97C1F4D85A400BEFF7F /* videoData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1CFBF9771F4D85A400BEFF7F /* videoData.json */; };
 		1CFBF97D1F4D85A400BEFF7F /* ZFVideoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9791F4D85A400BEFF7F /* ZFVideoModel.m */; };
 		1CFBF97E1F4D85A400BEFF7F /* ZFPVideoResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF97B1F4D85A400BEFF7F /* ZFPVideoResolution.m */; };
+		1CFBF9811F4E717A00BEFF7F /* ArticleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9801F4E717A00BEFF7F /* ArticleDetailViewController.m */; };
+		1CFBF9861F4EA93200BEFF7F /* GoodsDetailsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9841F4EA93200BEFF7F /* GoodsDetailsTableViewCell.m */; };
+		1CFBF9871F4EA93200BEFF7F /* GoodsDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CFBF9851F4EA93200BEFF7F /* GoodsDetailsTableViewCell.xib */; };
+		1CFBF98B1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9891F4EA95C00BEFF7F /* BuyGoodsTableViewCell.m */; };
+		1CFBF98C1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CFBF98A1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.xib */; };
 		B726D09BBB1D4131D3FF829E /* libPods-taihuitao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BA8CE20519E21513CE0EF1 /* libPods-taihuitao.a */; };
 /* End PBXBuildFile section */
 
@@ -343,6 +348,14 @@
 		1CFBF9791F4D85A400BEFF7F /* ZFVideoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFVideoModel.m; sourceTree = "<group>"; };
 		1CFBF97A1F4D85A400BEFF7F /* ZFVideoResolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFVideoResolution.h; sourceTree = "<group>"; };
 		1CFBF97B1F4D85A400BEFF7F /* ZFPVideoResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFPVideoResolution.m; sourceTree = "<group>"; };
+		1CFBF97F1F4E717A00BEFF7F /* ArticleDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleDetailViewController.h; sourceTree = "<group>"; };
+		1CFBF9801F4E717A00BEFF7F /* ArticleDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailViewController.m; sourceTree = "<group>"; };
+		1CFBF9831F4EA93200BEFF7F /* GoodsDetailsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailsTableViewCell.h; sourceTree = "<group>"; };
+		1CFBF9841F4EA93200BEFF7F /* GoodsDetailsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailsTableViewCell.m; sourceTree = "<group>"; };
+		1CFBF9851F4EA93200BEFF7F /* GoodsDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		1CFBF9881F4EA95C00BEFF7F /* BuyGoodsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyGoodsTableViewCell.h; sourceTree = "<group>"; };
+		1CFBF9891F4EA95C00BEFF7F /* BuyGoodsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyGoodsTableViewCell.m; sourceTree = "<group>"; };
+		1CFBF98A1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyGoodsTableViewCell.xib; sourceTree = "<group>"; };
 		45C73994DFE049FEEF53D863 /* Pods-taihuitao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taihuitao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-taihuitao/Pods-taihuitao.debug.xcconfig"; sourceTree = "<group>"; };
 		96BA8CE20519E21513CE0EF1 /* libPods-taihuitao.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-taihuitao.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC763474ECBF432EC4B9D0A1 /* Pods-taihuitao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taihuitao.release.xcconfig"; path = "Pods/Target Support Files/Pods-taihuitao/Pods-taihuitao.release.xcconfig"; sourceTree = "<group>"; };
@@ -528,6 +541,8 @@
 		1CF6569F1F45843A00DBD64D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1CFBF45C1F4AB7AD00BEFF7F /* View */,
+				1CFBF9821F4EA8C500BEFF7F /* ViewController */,
 				1CFBF8D81F4ACB4500BEFF7F /* Refresh */,
 				1CFBF8AC1F4AC9CF00BEFF7F /* Recmand */,
 				1CFBF89B1F4AC9C400BEFF7F /* Cycle */,
@@ -541,9 +556,6 @@
 				1CFBF4841F4AC88000BEFF7F /* JSDTableViewController.m */,
 				1CFBF4861F4AC8AF00BEFF7F /* JQBTHomeTableViewCell.h */,
 				1CFBF4871F4AC8AF00BEFF7F /* JQBTHomeTableViewCell.m */,
-				1CFBF45C1F4AB7AD00BEFF7F /* View */,
-				1CF656A31F45849200DBD64D /* HomeViewController.h */,
-				1CF656A41F45849200DBD64D /* HomeViewController.m */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -581,6 +593,12 @@
 			children = (
 				1CFBF4631F4AB90900BEFF7F /* NaviView.h */,
 				1CFBF4641F4AB90900BEFF7F /* NaviView.m */,
+				1CFBF9831F4EA93200BEFF7F /* GoodsDetailsTableViewCell.h */,
+				1CFBF9841F4EA93200BEFF7F /* GoodsDetailsTableViewCell.m */,
+				1CFBF9851F4EA93200BEFF7F /* GoodsDetailsTableViewCell.xib */,
+				1CFBF9881F4EA95C00BEFF7F /* BuyGoodsTableViewCell.h */,
+				1CFBF9891F4EA95C00BEFF7F /* BuyGoodsTableViewCell.m */,
+				1CFBF98A1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -848,6 +866,17 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		1CFBF9821F4EA8C500BEFF7F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1CF656A31F45849200DBD64D /* HomeViewController.h */,
+				1CF656A41F45849200DBD64D /* HomeViewController.m */,
+				1CFBF97F1F4E717A00BEFF7F /* ArticleDetailViewController.h */,
+				1CFBF9801F4E717A00BEFF7F /* ArticleDetailViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		7B3EA581E1304B28B9015BCE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1009,6 +1038,7 @@
 				1CFBF8F51F4ACB4500BEFF7F /* header08@2x.jpg in Resources */,
 				1CFBF8C51F4AC9CF00BEFF7F /* recomand_05.jpg in Resources */,
 				1CFBF8EE1F4ACB4500BEFF7F /* header01@2x.jpg in Resources */,
+				1CFBF9871F4EA93200BEFF7F /* GoodsDetailsTableViewCell.xib in Resources */,
 				1CF6551A1F4538F900DBD64D /* LaunchScreen.storyboard in Resources */,
 				1CFBF9011F4ACB4500BEFF7F /* refresh09.png in Resources */,
 				1CFBF8FD1F4ACB4500BEFF7F /* refresh05.png in Resources */,
@@ -1035,6 +1065,7 @@
 				1CFBF8981F4AC9BC00BEFF7F /* tab_我的_pressed.png in Resources */,
 				1CFBF8F61F4ACB4500BEFF7F /* header09@2x.jpg in Resources */,
 				1CFBF96F1F4D848B00BEFF7F /* ZFPlayer.bundle in Resources */,
+				1CFBF98C1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.xib in Resources */,
 				1CFBF8911F4AC9BC00BEFF7F /* home_search_icon.png in Resources */,
 				1CFBF8D31F4AC9CF00BEFF7F /* recomand_19.jpg in Resources */,
 				1CF6569D1F456D8000DBD64D /* WebContentViewController.xib in Resources */,
@@ -1131,12 +1162,14 @@
 				1CFBF9691F4D848B00BEFF7F /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				1CFBF96C1F4D848B00BEFF7F /* UIWindow+CurrentViewController.m in Sources */,
 				1CFBF9051F4ACB6900BEFF7F /* JQRefreshHeaader.m in Sources */,
+				1CFBF9861F4EA93200BEFF7F /* GoodsDetailsTableViewCell.m in Sources */,
 				1CFBF9671F4D848B00BEFF7F /* UIImageView+ZFCache.m in Sources */,
 				1CFBF96A1F4D848B00BEFF7F /* UIView+CustomControlView.m in Sources */,
 				1CFBF9711F4D848B00BEFF7F /* ZFPlayerModel.m in Sources */,
 				1CFBF9721F4D848B00BEFF7F /* ZFPlayerView.m in Sources */,
 				1CFBF91F1F4D838600BEFF7F /* RegisterViewController.m in Sources */,
 				1CFBF9151F4D836B00BEFF7F /* LTHttpManager.m in Sources */,
+				1CFBF98B1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.m in Sources */,
 				1CF656901F456D3D00DBD64D /* BaseTabBarViewController.m in Sources */,
 				1CFBF9701F4D848B00BEFF7F /* ZFPlayerControlView.m in Sources */,
 				1CFBF4851F4AC88000BEFF7F /* JSDTableViewController.m in Sources */,
@@ -1153,6 +1186,7 @@
 				1CFBF5DB1F4AC8C100BEFF7F /* JSDTHomeRecomandModel.m in Sources */,
 				1CFBF96E1F4D848B00BEFF7F /* ZFBrightnessView.m in Sources */,
 				1CF656931F456D6500DBD64D /* LTHTTPSessionManager.m in Sources */,
+				1CFBF9811F4E717A00BEFF7F /* ArticleDetailViewController.m in Sources */,
 				1CF655121F4538F900DBD64D /* ViewController.m in Sources */,
 				1CFBF90F1F4D833600BEFF7F /* VideoTableViewCell.m in Sources */,
 				1CFBF9201F4D838600BEFF7F /* FindPasswordViewController.m in Sources */,

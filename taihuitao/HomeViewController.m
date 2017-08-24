@@ -26,6 +26,8 @@
 @property (nonatomic, strong) UIScrollView *segmentScrollView;
 @property (nonatomic, strong) UIImageView *currentSelectedItemImageView;
 @property (nonatomic, strong) UIScrollView *bottomScrollView;
+@property (nonatomic, strong) UIButton *searchButton;
+@property (nonatomic, strong) UIButton *qrCodeButton;
 
 //存放button
 @property(nonatomic,strong)NSMutableArray *titleButtons;
@@ -38,6 +40,8 @@
 
 //记录上一个偏移量
 @property (nonatomic, assign) CGFloat lastTableViewOffsetY;
+
+@property (nonatomic, strong) UIImageView *barImageView;
 @end
 
 @implementation HomeViewController
@@ -54,9 +58,11 @@
         [self.view addSubview:self.bottomScrollView];
         self.naviView.tableViews = [NSMutableArray arrayWithArray:self.tableViews];
         
+        self.cycleScrollView.pageDotImage = [UIImage imageNamed:@"heart-grey-sm"];
+        self.cycleScrollView.currentPageDotImage = [UIImage imageNamed:@"heart-red"];
         [self.view addSubview:self.cycleScrollView];
         [self.view addSubview:self.segmentScrollView];
-        [self.view addSubview:self.naviView];
+//        [self.view addSubview:self.naviView];
         self.naviView.qrCodeBtnClick = ^(UIButton *btn) {
             NSLog(@"qrcodebtnclick");
         };
@@ -68,7 +74,17 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self initWithNavi];
+}
+- (void)initWithNavi{
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.title = @"太汇淘";
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    self.barImageView = self.navigationController.navigationBar.subviews.firstObject;
+    self.barImageView.backgroundColor = DRGBCOLOR;
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.searchButton];
+    self.navigationItem.rightBarButtonItem  =[[UIBarButtonItem alloc]initWithCustomView:self.qrCodeButton];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -85,42 +101,51 @@
 #pragma observe
 
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context
-{
-    
-    
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
     UITableView *tableView = (UITableView *)object;
-    
-    
     if (!(self.currentTableView == tableView)) {
         return;
     }
-    
     if (![keyPath isEqualToString:@"contentOffset"]) {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
         return;
     }
-    
-    
     CGFloat tableViewoffsetY = tableView.contentOffset.y;
-    
     self.lastTableViewOffsetY = tableViewoffsetY;
-    
     if ( tableViewoffsetY>=0 && tableViewoffsetY<=136) {
-        
         self.segmentScrollView.frame = CGRectMake(0, 200-tableViewoffsetY, SCREEN_WIDTH, 40);
         self.cycleScrollView.frame = CGRectMake(0, 0-tableViewoffsetY, SCREEN_WIDTH, 200);
-        
     }else if( tableViewoffsetY < 0){
-        
         self.segmentScrollView.frame = CGRectMake(0, 200, SCREEN_WIDTH, 40);
         self.cycleScrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, 200);
-        
     }else if (tableViewoffsetY > 136){
-        
         self.segmentScrollView.frame = CGRectMake(0, 64, SCREEN_WIDTH, 40);
         self.cycleScrollView.frame = CGRectMake(0, -136, SCREEN_WIDTH, 200);
     }
+    
+    UIColor * color = [UIColor whiteColor];
+    CGFloat alpha = MIN(1, tableViewoffsetY/136);
+    
+    self.barImageView.backgroundColor = [color colorWithAlphaComponent:alpha];
+    self.navigationController.navigationBar.tintColor = [color colorWithAlphaComponent:alpha];
+    if (tableViewoffsetY < 125){
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            [self.qrCodeButton setBackgroundImage:[UIImage imageNamed:@"home_email_black"] forState:UIControlStateNormal];
+            [self.searchButton setBackgroundImage:[UIImage imageNamed:@"home_search_icon"] forState:UIControlStateNormal];
+
+            self.qrCodeButton.alpha = 1-alpha;
+            self.searchButton.alpha = 1-alpha;
+        }];
+    } else if (tableViewoffsetY >= 125){
+        
+        [UIView animateWithDuration:0.25 animations:^{
+            self.qrCodeButton.alpha = 1;
+            [self.qrCodeButton setBackgroundImage:[UIImage imageNamed:@"home_email_red"] forState:UIControlStateNormal];
+            [self.searchButton setBackgroundImage:[UIImage imageNamed:@"home_search_icon"] forState:UIControlStateNormal];
+        }];
+    }
+
 }
 #pragma mark -UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -328,18 +353,16 @@
 
 
 - (SDCycleScrollView *)cycleScrollView {
-    
     if (!_cycleScrollView) {
-        
         NSMutableArray *imageMutableArray = [NSMutableArray array];
         for (int i = 1; i<9; i++) {
             NSString *imageName = [NSString stringWithFormat:@"cycle_%02d.jpg",i];
             [imageMutableArray addObject:imageName];
         }
-        
+        _cycleScrollView.pageDotImage = [UIImage imageNamed:@"heart-grey-sm"];
+        _cycleScrollView.currentPageDotImage = [UIImage imageNamed:@"heart-red"];
+        _cycleScrollView.showPageControl = NO;
         _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200) imageNamesGroup:imageMutableArray];
-        
-        
     }
     return _cycleScrollView;
 }
@@ -353,6 +376,23 @@
         
     }
     return _naviView;
+}
+- (UIButton *)searchButton{
+    if (!_searchButton) {
+        _searchButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+        [_searchButton setBackgroundImage:[UIImage imageNamed:@"home_search_icon"] forState:UIControlStateNormal];
+        [_searchButton addTarget:self action:@selector(searchClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _searchButton;
+}
+
+- (UIButton *)qrCodeButton{
+    if (!_qrCodeButton) {
+        _qrCodeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
+        [_qrCodeButton setBackgroundImage:[UIImage imageNamed:@"home_email_black"] forState:UIControlStateNormal];
+        [_qrCodeButton addTarget:self action:@selector(qrCodeClick:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _qrCodeButton;
 }
 
 

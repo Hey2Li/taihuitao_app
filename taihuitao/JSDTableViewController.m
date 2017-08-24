@@ -9,6 +9,7 @@
 #import "JSDTableViewController.h"
 #import "JQBTHomeTableViewCell.h"
 #import "JSDTHomeRecomandModel.h"
+#import "ArticleDetailViewController.h"
 
 @interface JSDTableViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -64,7 +65,13 @@
     return cell;
 }
 
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ArticleDetailViewController *vc = [ArticleDetailViewController new];
+    UINavigationController *vc1 =[[UINavigationController alloc]initWithRootViewController:vc];
+//    [self presentViewController:vc1 animated:YES completion:nil];
+    [self.navigationController pushViewController:vc1 animated:YES];
+    
+}
 - (void)loadData {
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"json"];
