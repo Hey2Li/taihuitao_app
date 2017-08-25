@@ -10,6 +10,7 @@
 #import "NaviView.h"
 #import "JSDTableViewController.h"
 #import "JQRefreshHeaader.h"
+#import "ArticleDetailViewController.h"
 
 #define CATEGORY @[@"断货王",@"妆心得",@"美食番",@"品牌购",@"汇生活"]
 #define NAVBARHEIGHT 64.0f
@@ -267,7 +268,11 @@
             
             JSDTableViewController *jsdTableViewController = [[JSDTableViewController alloc] init];
             jsdTableViewController.view.frame = CGRectMake(SCREEN_WIDTH * i, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44);
-            
+            WeakSelf
+            jsdTableViewController.tableViewDidSelected = ^(UITableView *tableview, NSIndexPath *indexPath) {
+                ArticleDetailViewController *vc = [ArticleDetailViewController new];
+                [weakSelf.navigationController pushViewController:vc animated:YES];
+            };
             jsdTableViewController.view.backgroundColor = colors[i];
             [self.bottomScrollView addSubview:jsdTableViewController.view];
             

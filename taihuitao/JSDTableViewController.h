@@ -15,5 +15,5 @@
 @interface JSDTableViewController : UIViewController
 
 @property (nonatomic, strong) UITableView *tableView;
-
+@property (nonatomic, copy) void (^tableViewDidSelected)(UITableView *tableview,NSIndexPath *indexPath);
 @end

@@ -66,11 +66,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ArticleDetailViewController *vc = [ArticleDetailViewController new];
-    UINavigationController *vc1 =[[UINavigationController alloc]initWithRootViewController:vc];
-//    [self presentViewController:vc1 animated:YES completion:nil];
-    [self.navigationController pushViewController:vc1 animated:YES];
-    
+    if (self.tableViewDidSelected) {
+        self.tableViewDidSelected(tableView, indexPath);
+    }
 }
 - (void)loadData {
     
