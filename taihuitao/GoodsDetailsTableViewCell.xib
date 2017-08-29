@@ -11,21 +11,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="260" id="KGk-i7-Jjw" customClass="GoodsDetailsTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="KGk-i7-Jjw" customClass="GoodsDetailsTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="259.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="299.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6p9-JZ-wOm">
-                        <rect key="frame" x="5" y="5" width="310" height="130"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="recomand_19.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="6p9-JZ-wOm">
+                        <rect key="frame" x="5" y="5" width="310" height="200"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="130" id="VXe-Io-NrT"/>
+                            <constraint firstAttribute="height" constant="200" id="VXe-Io-NrT"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxx-xx-xx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mja-qZ-ulh">
-                        <rect key="frame" x="5" y="145" width="100" height="21"/>
+                        <rect key="frame" x="5" y="215" width="100" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Bcw-da-MGp"/>
                             <constraint firstAttribute="width" constant="100" id="ja6-gi-P8J"/>
@@ -35,7 +35,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阅读:xxxx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4i-fQ-pWT">
-                        <rect key="frame" x="215" y="145" width="100" height="21"/>
+                        <rect key="frame" x="215" y="215" width="100" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Jng-rz-Sn5"/>
                             <constraint firstAttribute="width" constant="100" id="qpD-9S-scZ"/>
@@ -45,13 +45,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="文章图文混排介绍" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ob0-Bc-1YO">
-                        <rect key="frame" x="5" y="171" width="310" height="83.5"/>
+                        <rect key="frame" x="5" y="241" width="310" height="53.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是标题" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbU-GG-Lj0">
-                        <rect key="frame" x="5" y="114" width="310" height="21"/>
+                        <rect key="frame" x="5" y="184" width="310" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -74,7 +74,10 @@
                     <constraint firstItem="V4i-fQ-pWT" firstAttribute="top" secondItem="IbU-GG-Lj0" secondAttribute="bottom" constant="10" id="vVz-tq-Bau"/>
                 </constraints>
             </tableViewCellContentView>
-            <point key="canvasLocation" x="-64" y="78"/>
+            <point key="canvasLocation" x="-64" y="98"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="recomand_19.jpg" width="600" height="330"/>
+    </resources>
 </document>

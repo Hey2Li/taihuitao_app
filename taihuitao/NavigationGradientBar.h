@@ -8,14 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#pragma mark - 屏幕高度
-#define ScreenHeight [UIScreen mainScreen].bounds.size.height
-
-#pragma mark - 屏幕高度
-#define ScreenWidth [UIScreen mainScreen].bounds.size.width
-
-
-
 @class NavigationGradientBar;
 
 @protocol NavigationGradientBarDelegate <NSObject>

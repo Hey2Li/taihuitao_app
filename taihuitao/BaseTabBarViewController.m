@@ -17,7 +17,7 @@
 @interface BaseTabBarViewController ()
 @property (nonatomic, strong) BaseNaviViewController *homeTab;
 @property (nonatomic, strong) BaseNaviViewController *videoTab;
-@property (nonatomic, strong) BaseNaviViewController *foundTab;
+@property (nonatomic, strong) BaseNaviViewController *categoryTab;
 @property (nonatomic, strong) BaseNaviViewController *mineTab;
 @property (nonatomic, strong) BaseNaviViewController *bearupTab;
 @end
@@ -32,10 +32,10 @@
 - (void)createTabBar{
     _homeTab = [[BaseNaviViewController alloc]initWithRootViewController:[HomeViewController new]];
     _videoTab = [[BaseNaviViewController alloc]initWithRootViewController:[VideoViewController new]];
-    _foundTab = [[BaseNaviViewController alloc]initWithRootViewController:[CategoryViewController new]];
+    _categoryTab = [[BaseNaviViewController alloc]initWithRootViewController:[CategoryViewController new]];
     _mineTab = [[BaseNaviViewController alloc]initWithRootViewController:[PersonalViewController new]];
     _bearupTab  =[[BaseNaviViewController alloc]initWithRootViewController:[BearupViewController new]];
-    self.viewControllers = @[_homeTab, _videoTab, _bearupTab,_foundTab, _mineTab];
+    self.viewControllers = @[_homeTab, _videoTab, _bearupTab,_categoryTab, _mineTab];
     self.selectedIndex = 0;
     
 //    NSArray *titleArray = @[@"首页", @"视频", @"发现", @"熊窝"];

@@ -31,9 +31,6 @@
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         [self.view addSubview:self.myTableView];
         self.view.backgroundColor = [UIColor whiteColor];
-        
-        UIBarButtonItem *item = [[UIBarButtonItem alloc]initWithTitle:@"关闭" style:UIBarButtonItemStyleDone target:self action:@selector(back)];
-        self.navigationItem.leftBarButtonItem = item;
     }
     return self;
 }
@@ -47,6 +44,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.title = @"详情";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,9 +64,9 @@
         self.myTableView.rowHeight = UITableViewAutomaticDimension;
         return self.myTableView.rowHeight;
     }else if (indexPath.section == 1){
-        self.myTableView.estimatedRowHeight = 80;
-        self.myTableView.rowHeight = UITableViewAutomaticDimension;
-        return self.myTableView.rowHeight;
+//        self.myTableView.estimatedRowHeight = 120;
+//        self.myTableView.rowHeight = UITableViewAutomaticDimension;
+        return 120;
     }else{
         return 0;
     }

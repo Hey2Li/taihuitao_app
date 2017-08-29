@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C7626321F54F77C00DFA5B8 /* CACollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */; };
 		1CF6550C1F4538F900DBD64D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6550B1F4538F900DBD64D /* main.m */; };
 		1CF6550F1F4538F900DBD64D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6550E1F4538F900DBD64D /* AppDelegate.m */; };
 		1CF655121F4538F900DBD64D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF655111F4538F900DBD64D /* ViewController.m */; };
@@ -141,6 +142,7 @@
 		1CFBF9871F4EA93200BEFF7F /* GoodsDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CFBF9851F4EA93200BEFF7F /* GoodsDetailsTableViewCell.xib */; };
 		1CFBF98B1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF9891F4EA95C00BEFF7F /* BuyGoodsTableViewCell.m */; };
 		1CFBF98C1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CFBF98A1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.xib */; };
+		1CFBF98F1F500E4100BEFF7F /* NavigationGradientBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF98E1F500E4100BEFF7F /* NavigationGradientBar.m */; };
 		B726D09BBB1D4131D3FF829E /* libPods-taihuitao.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 96BA8CE20519E21513CE0EF1 /* libPods-taihuitao.a */; };
 /* End PBXBuildFile section */
 
@@ -162,6 +164,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C76262F1F54F77C00DFA5B8 /* CACollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACollectionReusableView.h; sourceTree = "<group>"; };
+		1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACollectionReusableView.m; sourceTree = "<group>"; };
 		1CF655071F4538F900DBD64D /* taihuitao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taihuitao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CF6550B1F4538F900DBD64D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CF6550D1F4538F900DBD64D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -356,6 +360,8 @@
 		1CFBF9881F4EA95C00BEFF7F /* BuyGoodsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyGoodsTableViewCell.h; sourceTree = "<group>"; };
 		1CFBF9891F4EA95C00BEFF7F /* BuyGoodsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyGoodsTableViewCell.m; sourceTree = "<group>"; };
 		1CFBF98A1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BuyGoodsTableViewCell.xib; sourceTree = "<group>"; };
+		1CFBF98D1F500E4100BEFF7F /* NavigationGradientBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationGradientBar.h; sourceTree = "<group>"; };
+		1CFBF98E1F500E4100BEFF7F /* NavigationGradientBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationGradientBar.m; sourceTree = "<group>"; };
 		45C73994DFE049FEEF53D863 /* Pods-taihuitao.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taihuitao.debug.xcconfig"; path = "Pods/Target Support Files/Pods-taihuitao/Pods-taihuitao.debug.xcconfig"; sourceTree = "<group>"; };
 		96BA8CE20519E21513CE0EF1 /* libPods-taihuitao.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-taihuitao.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC763474ECBF432EC4B9D0A1 /* Pods-taihuitao.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-taihuitao.release.xcconfig"; path = "Pods/Target Support Files/Pods-taihuitao/Pods-taihuitao.release.xcconfig"; sourceTree = "<group>"; };
@@ -397,6 +403,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C76262D1F54F74A00DFA5B8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1C76262F1F54F77C00DFA5B8 /* CACollectionReusableView.h */,
+				1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1C76262E1F54F74F00DFA5B8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		1CF654FE1F4538F800DBD64D = {
 			isa = PBXGroup;
 			children = (
@@ -573,6 +595,8 @@
 		1CF656A11F45845100DBD64D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1C76262E1F54F74F00DFA5B8 /* ViewController */,
+				1C76262D1F54F74A00DFA5B8 /* View */,
 				1CF656A91F4584B400DBD64D /* CategoryViewController.h */,
 				1CF656AA1F4584B400DBD64D /* CategoryViewController.m */,
 			);
@@ -591,6 +615,8 @@
 		1CFBF45C1F4AB7AD00BEFF7F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1CFBF98D1F500E4100BEFF7F /* NavigationGradientBar.h */,
+				1CFBF98E1F500E4100BEFF7F /* NavigationGradientBar.m */,
 				1CFBF4631F4AB90900BEFF7F /* NaviView.h */,
 				1CFBF4641F4AB90900BEFF7F /* NaviView.m */,
 				1CFBF9831F4EA93200BEFF7F /* GoodsDetailsTableViewCell.h */,
@@ -1161,6 +1187,7 @@
 				1CFBF91E1F4D838600BEFF7F /* LoginViewController.m in Sources */,
 				1CFBF9691F4D848B00BEFF7F /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				1CFBF96C1F4D848B00BEFF7F /* UIWindow+CurrentViewController.m in Sources */,
+				1C7626321F54F77C00DFA5B8 /* CACollectionReusableView.m in Sources */,
 				1CFBF9051F4ACB6900BEFF7F /* JQRefreshHeaader.m in Sources */,
 				1CFBF9861F4EA93200BEFF7F /* GoodsDetailsTableViewCell.m in Sources */,
 				1CFBF9671F4D848B00BEFF7F /* UIImageView+ZFCache.m in Sources */,
@@ -1172,6 +1199,7 @@
 				1CFBF98B1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.m in Sources */,
 				1CF656901F456D3D00DBD64D /* BaseTabBarViewController.m in Sources */,
 				1CFBF9701F4D848B00BEFF7F /* ZFPlayerControlView.m in Sources */,
+				1CFBF98F1F500E4100BEFF7F /* NavigationGradientBar.m in Sources */,
 				1CFBF4851F4AC88000BEFF7F /* JSDTableViewController.m in Sources */,
 				1CF656A81F45849F00DBD64D /* VideoViewController.m in Sources */,
 				1CFBF9211F4D838600BEFF7F /* LaunchScrollViewController.m in Sources */,

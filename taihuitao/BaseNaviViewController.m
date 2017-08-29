@@ -18,15 +18,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 //    self.navigationBar.barTintColor = DRGBCOLOR;
-    /*
+
     self.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationBar.translucent = NO;
+//    self.navigationBar.translucent = NO;
     //去掉左边的title
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     
-    self.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回白"];
-    self.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回白"];
+    self.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回"];
+    self.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回"];
     
     //自定义一个NavigationBar
     [self.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
@@ -37,7 +37,6 @@
     self.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIColor blackColor],NSForegroundColorAttributeName, nil];
     
     [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navi"] forBarMetrics:UIBarMetricsDefault];
-     */
 }
 
 - (void)didReceiveMemoryWarning {

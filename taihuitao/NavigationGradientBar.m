@@ -94,13 +94,13 @@
 }
 -(void)configureUI{
     if (_backImgName) {
-        self.backBtn = [[UIButton alloc]initWithFrame:CGRectMake(8, 24, 40, 40)];
+        self.backBtn = [[UIButton alloc]initWithFrame:CGRectMake(8, 24, 30, 30)];
         [self.backBtn setImage:[UIImage imageNamed:_backImgName] forState:UIControlStateNormal];
         [self.backBtn addTarget:self action:@selector(backToBeginView) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.backBtn];
     }
     if (_rightImagName) {
-        self.rightBtn = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth - 48, 24, 40, 40)];
+        self.rightBtn = [[UIButton alloc]initWithFrame:CGRectMake(ScreenWidth - 48, 24, 30, 30)];
         [self.rightBtn setImage:[UIImage imageNamed:_rightImagName] forState:UIControlStateNormal];
         [self.rightBtn addTarget:self action:@selector(rightToBeginView) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.rightBtn];
@@ -114,11 +114,11 @@
     [self addSubview:self.middleTitleL];
 }
 -(void)navigationGradientBarContentOffset:(CGFloat)contentOffset{
-    
+    NSLog(@"%f",contentOffset);
      CGFloat alpha = 1- (barHeight - contentOffset)/barHeight;
     
-    if (contentOffset <barHeight) {
-         [self.backBtn setImage:[UIImage imageNamed:_backImgName] forState:UIControlStateNormal];
+    if (contentOffset < barHeight) {
+        [self.backBtn setImage:[UIImage imageNamed:_backImgName] forState:UIControlStateNormal];
         [self.rightBtn setImage:[UIImage imageNamed:_rightImagName] forState:UIControlStateNormal];
         if (_beginTitleColor) {
             self.middleTitleL.textColor = _beginTitleColor;
