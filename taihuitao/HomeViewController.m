@@ -399,7 +399,36 @@
     }
     return _qrCodeButton;
 }
-
+#pragma mark NavigationGradientBarDelegate
+-(void)backNavigationGradientBar:(NavigationGradientBar *)bar{
+    NSLog(@"1111");
+}
+- (void)rightNavigationBar:(NavigationGradientBar *)bar{
+    NSArray *hotSeaches = @[@"原创",@"漫画", @"搞笑", @"热点", @"视频", @"美食", @"动物圈", @"娱乐圈"];
+    // 2. Create searchViewController
+    PYSearchViewController *searchViewController = [PYSearchViewController searchViewControllerWithHotSearches:hotSeaches searchBarPlaceholder:@"  " didSearchBlock:^(PYSearchViewController *searchViewController, UISearchBar *searchBar, NSString *searchText) {
+        // Call this Block when completion search automatically
+        // Such as: Push to a view controller
+        ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
+        [searchViewController.navigationController pushViewController:vc animated:YES];
+    }];
+    
+    // 3. present the searchViewController
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:searchViewController];
+    searchViewController.navigationController.navigationBar.backIndicatorImage =  [[UIImage imageNamed:@"返回白"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    searchViewController.navigationController.navigationBar.backIndicatorTransitionMaskImage = [[UIImage imageNamed:@"返回白"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    //去掉左边的title
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    //自定义一个NavigationBar
+    [searchViewController.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    //消除阴影
+    searchViewController.navigationController.navigationBar.shadowImage = [UIImage new];
+    //PingFangSC
+    searchViewController.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"PingFangSC-Light" size:18],NSFontAttributeName, nil];
+    [searchViewController.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navi"] forBarMetrics:UIBarMetricsDefault];
+    [self presentViewController:nav  animated:NO completion:nil];
+}
 
 /*
 #pragma mark - Navigation
