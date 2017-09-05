@@ -9,6 +9,7 @@
 #import "ArticleDetailViewController.h"
 #import "GoodsDetailsTableViewCell.h"
 #import "BuyGoodsTableViewCell.h"
+#import "HorizontalTableViewCell.h"
 
 @interface ArticleDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *myTableView;
@@ -24,6 +25,8 @@
         _myTableView.separatorStyle = NO;
         [_myTableView registerNib:[UINib nibWithNibName:@"GoodsDetailsTableViewCell" bundle:nil] forCellReuseIdentifier:@"gooddetailcell"];
         [_myTableView registerNib:[UINib nibWithNibName:@"BuyGoodsTableViewCell" bundle:nil] forCellReuseIdentifier:@"buygoodcell"];
+        [_myTableView registerClass:[HorizontalTableViewCell class] forCellReuseIdentifier:NSStringFromClass([HorizontalTableViewCell class])];
+        _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _myTableView;
 }
@@ -53,10 +56,54 @@
 }
 #pragma mark tableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 2;
+    return 3;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    if (section == 0 || section == 2) {
+        return 1;
+    }else{
+        return 3;
+    }
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (section == 2) {
+        return 50;
+    }else{
+        return 0;
+    }
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    UIView *view = [UIView new];
+    if (section == 2) {
+        UILabel *nameLabel = [UILabel new];
+        nameLabel.text = @"猜你喜欢";
+        nameLabel.textColor = [UIColor blackColor];
+        nameLabel.textAlignment = NSTextAlignmentCenter;
+        [view addSubview:nameLabel];
+        [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.center.equalTo(view);
+            make.width.equalTo(@100);
+        }];
+        UILabel *leftLine = [UILabel new];
+        leftLine.backgroundColor = [UIColor grayColor];
+        [view addSubview:leftLine];
+        [leftLine mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(view.mas_left).offset(10);
+            make.right.equalTo(nameLabel.mas_left).offset(-10);
+            make.height.equalTo(@1);
+            make.centerY.equalTo(nameLabel.mas_centerY);
+        }];
+        UILabel *rightLine = [UILabel new];
+        rightLine.backgroundColor = [UIColor grayColor];
+        [view addSubview:rightLine];
+        [rightLine mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(nameLabel.mas_right).offset(10);
+            make.right.equalTo(view.mas_right).offset(-10);
+            make.height.equalTo(@1);
+            make.centerY.equalTo(nameLabel.mas_centerY);
+        }];
+    }
+    return view;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
@@ -67,6 +114,8 @@
 //        self.myTableView.estimatedRowHeight = 120;
 //        self.myTableView.rowHeight = UITableViewAutomaticDimension;
         return 120;
+    }else if (indexPath.section == 2){
+        return 100;
     }else{
         return 0;
     }
@@ -77,6 +126,9 @@
         return cell;
     }else if (indexPath.section == 1){
         BuyGoodsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"buygoodcell"];
+        return cell;
+    }else if (indexPath.section == 2){
+        HorizontalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HorizontalTableViewCell class])];
         return cell;
     }else{
         return 0;

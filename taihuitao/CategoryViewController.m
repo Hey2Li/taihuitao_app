@@ -8,6 +8,7 @@
 
 #import "CategoryViewController.h"
 #import "CACollectionReusableView.h"
+#import "BrandDetailViewController.h"
 
 @interface CategoryViewController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) UICollectionView *myCollectionView;
@@ -76,7 +77,8 @@ static NSString * const reuseIdentifierHeader = @"HeaderCell";
     return headerView;
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"categoryCollectionCellClick");
+    BrandDetailViewController *vc =[[BrandDetailViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

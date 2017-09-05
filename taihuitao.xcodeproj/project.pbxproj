@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1C7626321F54F77C00DFA5B8 /* CACollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */; };
+		1C7626361F57A6A000DFA5B8 /* HorizontalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626351F57A6A000DFA5B8 /* HorizontalTableViewCell.m */; };
+		1C7626391F57A76000DFA5B8 /* RecommendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626381F57A76000DFA5B8 /* RecommendCollectionViewCell.m */; };
+		1C76263C1F5D00E500DFA5B8 /* BrandDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C76263B1F5D00E500DFA5B8 /* BrandDetailViewController.m */; };
+		1C76263F1F5E9FA800DFA5B8 /* HomePageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C76263E1F5E9FA800DFA5B8 /* HomePageTableViewCell.m */; };
+		1C7626431F5E9FF400DFA5B8 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626421F5E9FF400DFA5B8 /* HomeModel.m */; };
 		1CF6550C1F4538F900DBD64D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6550B1F4538F900DBD64D /* main.m */; };
 		1CF6550F1F4538F900DBD64D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6550E1F4538F900DBD64D /* AppDelegate.m */; };
 		1CF655121F4538F900DBD64D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF655111F4538F900DBD64D /* ViewController.m */; };
@@ -166,6 +171,16 @@
 /* Begin PBXFileReference section */
 		1C76262F1F54F77C00DFA5B8 /* CACollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACollectionReusableView.h; sourceTree = "<group>"; };
 		1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACollectionReusableView.m; sourceTree = "<group>"; };
+		1C7626341F57A6A000DFA5B8 /* HorizontalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalTableViewCell.h; sourceTree = "<group>"; };
+		1C7626351F57A6A000DFA5B8 /* HorizontalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalTableViewCell.m; sourceTree = "<group>"; };
+		1C7626371F57A76000DFA5B8 /* RecommendCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendCollectionViewCell.h; sourceTree = "<group>"; };
+		1C7626381F57A76000DFA5B8 /* RecommendCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendCollectionViewCell.m; sourceTree = "<group>"; };
+		1C76263A1F5D00E500DFA5B8 /* BrandDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandDetailViewController.h; sourceTree = "<group>"; };
+		1C76263B1F5D00E500DFA5B8 /* BrandDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandDetailViewController.m; sourceTree = "<group>"; };
+		1C76263D1F5E9FA800DFA5B8 /* HomePageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageTableViewCell.h; sourceTree = "<group>"; };
+		1C76263E1F5E9FA800DFA5B8 /* HomePageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTableViewCell.m; sourceTree = "<group>"; };
+		1C7626411F5E9FF400DFA5B8 /* HomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
+		1C7626421F5E9FF400DFA5B8 /* HomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
 		1CF655071F4538F900DBD64D /* taihuitao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taihuitao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CF6550B1F4538F900DBD64D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CF6550D1F4538F900DBD64D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -406,6 +421,8 @@
 		1C76262D1F54F74A00DFA5B8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1C76263D1F5E9FA800DFA5B8 /* HomePageTableViewCell.h */,
+				1C76263E1F5E9FA800DFA5B8 /* HomePageTableViewCell.m */,
 				1C76262F1F54F77C00DFA5B8 /* CACollectionReusableView.h */,
 				1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */,
 			);
@@ -415,8 +432,21 @@
 		1C76262E1F54F74F00DFA5B8 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1CF656A91F4584B400DBD64D /* CategoryViewController.h */,
+				1CF656AA1F4584B400DBD64D /* CategoryViewController.m */,
+				1C76263A1F5D00E500DFA5B8 /* BrandDetailViewController.h */,
+				1C76263B1F5D00E500DFA5B8 /* BrandDetailViewController.m */,
 			);
 			name = ViewController;
+			sourceTree = "<group>";
+		};
+		1C7626401F5E9FEA00DFA5B8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C7626411F5E9FF400DFA5B8 /* HomeModel.h */,
+				1C7626421F5E9FF400DFA5B8 /* HomeModel.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		1CF654FE1F4538F800DBD64D = {
@@ -595,10 +625,9 @@
 		1CF656A11F45845100DBD64D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				1C7626401F5E9FEA00DFA5B8 /* Model */,
 				1C76262E1F54F74F00DFA5B8 /* ViewController */,
 				1C76262D1F54F74A00DFA5B8 /* View */,
-				1CF656A91F4584B400DBD64D /* CategoryViewController.h */,
-				1CF656AA1F4584B400DBD64D /* CategoryViewController.m */,
 			);
 			name = Category;
 			sourceTree = "<group>";
@@ -625,6 +654,10 @@
 				1CFBF9881F4EA95C00BEFF7F /* BuyGoodsTableViewCell.h */,
 				1CFBF9891F4EA95C00BEFF7F /* BuyGoodsTableViewCell.m */,
 				1CFBF98A1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.xib */,
+				1C7626341F57A6A000DFA5B8 /* HorizontalTableViewCell.h */,
+				1C7626351F57A6A000DFA5B8 /* HorizontalTableViewCell.m */,
+				1C7626371F57A76000DFA5B8 /* RecommendCollectionViewCell.h */,
+				1C7626381F57A76000DFA5B8 /* RecommendCollectionViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1195,9 +1228,11 @@
 				1CFBF9711F4D848B00BEFF7F /* ZFPlayerModel.m in Sources */,
 				1CFBF9721F4D848B00BEFF7F /* ZFPlayerView.m in Sources */,
 				1CFBF91F1F4D838600BEFF7F /* RegisterViewController.m in Sources */,
+				1C76263F1F5E9FA800DFA5B8 /* HomePageTableViewCell.m in Sources */,
 				1CFBF9151F4D836B00BEFF7F /* LTHttpManager.m in Sources */,
 				1CFBF98B1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.m in Sources */,
 				1CF656901F456D3D00DBD64D /* BaseTabBarViewController.m in Sources */,
+				1C76263C1F5D00E500DFA5B8 /* BrandDetailViewController.m in Sources */,
 				1CFBF9701F4D848B00BEFF7F /* ZFPlayerControlView.m in Sources */,
 				1CFBF98F1F500E4100BEFF7F /* NavigationGradientBar.m in Sources */,
 				1CFBF4851F4AC88000BEFF7F /* JSDTableViewController.m in Sources */,
@@ -1206,6 +1241,7 @@
 				1CF6569B1F456D8000DBD64D /* Tool.m in Sources */,
 				1CFBF9641F4D848B00BEFF7F /* ASValuePopUpView.m in Sources */,
 				1CF656AB1F4584B400DBD64D /* CategoryViewController.m in Sources */,
+				1C7626431F5E9FF400DFA5B8 /* HomeModel.m in Sources */,
 				1CFBF4881F4AC8AF00BEFF7F /* JQBTHomeTableViewCell.m in Sources */,
 				1CF656A51F45849200DBD64D /* HomeViewController.m in Sources */,
 				1CF6569E1F456D8000DBD64D /* UIView+Frame.m in Sources */,
@@ -1215,6 +1251,7 @@
 				1CFBF96E1F4D848B00BEFF7F /* ZFBrightnessView.m in Sources */,
 				1CF656931F456D6500DBD64D /* LTHTTPSessionManager.m in Sources */,
 				1CFBF9811F4E717A00BEFF7F /* ArticleDetailViewController.m in Sources */,
+				1C7626391F57A76000DFA5B8 /* RecommendCollectionViewCell.m in Sources */,
 				1CF655121F4538F900DBD64D /* ViewController.m in Sources */,
 				1CFBF90F1F4D833600BEFF7F /* VideoTableViewCell.m in Sources */,
 				1CFBF9201F4D838600BEFF7F /* FindPasswordViewController.m in Sources */,
@@ -1223,6 +1260,7 @@
 				1CFBF96D1F4D848B00BEFF7F /* MMMaterialDesignSpinner.m in Sources */,
 				1CF6550F1F4538F900DBD64D /* AppDelegate.m in Sources */,
 				1CF6550C1F4538F900DBD64D /* main.m in Sources */,
+				1C7626361F57A6A000DFA5B8 /* HorizontalTableViewCell.m in Sources */,
 				1CFBF4611F4AB85400BEFF7F /* UIButton+Size.m in Sources */,
 				1CFBF9091F4D561400BEFF7F /* BearupViewController.m in Sources */,
 				1CFBF4651F4AB90900BEFF7F /* NaviView.m in Sources */,

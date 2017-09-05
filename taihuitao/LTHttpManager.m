@@ -559,10 +559,10 @@
         [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
         [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/explore/attention",BaseURL] parameters:paramters complete:complete];
     }else{
-         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"BearUp" bundle:nil];
-        LoginViewController *lvc = [storyBoard instantiateViewControllerWithIdentifier:@"loginViewController"];
-        UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:lvc];
-        [[[Tool alloc]topViewController] presentViewController:navi animated:YES completion:nil];
+//         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"BearUp" bundle:nil];
+//        LoginViewController *lvc = [storyBoard instantiateViewControllerWithIdentifier:@"loginViewController"];
+//        UINavigationController *navi = [[UINavigationController alloc]initWithRootViewController:lvc];
+//        [[[Tool alloc]topViewController] presentViewController:navi animated:YES completion:nil];
     }
 }
 

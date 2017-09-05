@@ -114,7 +114,6 @@
     [self addSubview:self.middleTitleL];
 }
 -(void)navigationGradientBarContentOffset:(CGFloat)contentOffset{
-    NSLog(@"%f",contentOffset);
      CGFloat alpha = 1- (barHeight - contentOffset)/barHeight;
     
     if (contentOffset < barHeight) {
@@ -136,6 +135,7 @@
         }
         if (_afterTitleColor) {
             self.middleTitleL.textColor = _afterTitleColor;
+            self.middleTitleL.alpha = 1;
         }
         [[UIApplication sharedApplication] setStatusBarStyle:_afterStatusBarDefault ?UIStatusBarStyleDefault :UIStatusBarStyleLightContent];
     }

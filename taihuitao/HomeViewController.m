@@ -11,6 +11,8 @@
 #import "JSDTableViewController.h"
 #import "JQRefreshHeaader.h"
 #import "ArticleDetailViewController.h"
+#import "NavigationGradientBar.h"
+#import <PYSearch.h>
 
 #define CATEGORY @[@"断货王",@"妆心得",@"美食番",@"品牌购",@"汇生活"]
 #define NAVBARHEIGHT 64.0f
@@ -19,7 +21,7 @@
 #define FONTMIN 14.0
 #define PADDING 15.0
 
-@interface HomeViewController ()<UIScrollViewDelegate>
+@interface HomeViewController ()<UIScrollViewDelegate,NavigationGradientBarDelegate>
 @property (nonatomic, strong) UITableView *currentTableView;
 @property (nonatomic, strong) NaviView *naviView;
 @property (nonatomic, strong) SDCycleScrollView *cycleScrollView;
@@ -43,6 +45,7 @@
 @property (nonatomic, assign) CGFloat lastTableViewOffsetY;
 
 @property (nonatomic, strong) UIImageView *barImageView;
+@property (nonatomic,strong) NavigationGradientBar * navigationBar;
 @end
 
 @implementation HomeViewController
@@ -59,37 +62,46 @@
         [self.view addSubview:self.bottomScrollView];
         self.naviView.tableViews = [NSMutableArray arrayWithArray:self.tableViews];
         
-        self.cycleScrollView.pageDotImage = [UIImage imageNamed:@"heart-grey-sm"];
-        self.cycleScrollView.currentPageDotImage = [UIImage imageNamed:@"heart-red"];
+        self.cycleScrollView.pageDotImage = [UIImage imageNamed:@"home_banner_nomal_dot_4x4_"];
+        self.cycleScrollView.currentPageDotImage = [UIImage imageNamed:@"home_banner_red_dot_13x4_"];
         [self.view addSubview:self.cycleScrollView];
         [self.view addSubview:self.segmentScrollView];
-//        [self.view addSubview:self.naviView];
-        self.naviView.qrCodeBtnClick = ^(UIButton *btn) {
-            NSLog(@"qrcodebtnclick");
-        };
-        self.naviView.searchBtnClick = ^(UIButton *btn) {
-            NSLog(@"searchbtnclick");
-        };
+        [self.view addSubview:self.navigationBar];
     }
     return self;
 }
+- (NavigationGradientBar *)navigationBar{
+    if (!_navigationBar) {
+        _navigationBar = [[NavigationGradientBar alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 64) backImgName:@"home_email_black" gradientImgName:@"home_email_red" rightImgName:@"home_search_icon" rightGImgName:@"home_search_icon" middleTitle:@"太会淘" delegate:self];
+        _navigationBar.beginTitleColor = [UIColor redColor];
+        _navigationBar.afterTitleColor = [UIColor redColor];
+        
+        _navigationBar.beginStatusBarDefault = NO;
+        _navigationBar.afterStatusBarDefault = YES;
+        _navigationBar.beginHiddenMiddleTitle = YES;
+    }
+    return _navigationBar;
+}
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self initWithNavi];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+
+
+//    [self initWithNavi];
 }
 - (void)initWithNavi{
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    self.title = @"太汇淘";
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    self.barImageView = self.navigationController.navigationBar.subviews.firstObject;
-    self.barImageView.backgroundColor = DRGBCOLOR;
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.searchButton];
-    self.navigationItem.rightBarButtonItem  =[[UIBarButtonItem alloc]initWithCustomView:self.qrCodeButton];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+//    self.barImageView = self.navigationController.navigationBar.subviews.firstObject;
+//    self.barImageView.backgroundColor = [UIColor whiteColor];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithCustomView:self.searchButton];
+//    self.navigationItem.rightBarButtonItem  =[[UIBarButtonItem alloc]initWithCustomView:self.qrCodeButton];
+//    self.navigationController.navigationBar.alpha = 1;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor whiteColor];
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -112,6 +124,7 @@
         return;
     }
     CGFloat tableViewoffsetY = tableView.contentOffset.y;
+    [self.navigationBar navigationGradientBarContentOffset:tableViewoffsetY];
     self.lastTableViewOffsetY = tableViewoffsetY;
     if ( tableViewoffsetY>=0 && tableViewoffsetY<=136) {
         self.segmentScrollView.frame = CGRectMake(0, 200-tableViewoffsetY, SCREEN_WIDTH, 40);
@@ -124,41 +137,41 @@
         self.cycleScrollView.frame = CGRectMake(0, -136, SCREEN_WIDTH, 200);
     }
     
-    UIColor * color = [UIColor whiteColor];
-    CGFloat alpha = MIN(1, tableViewoffsetY/136);
-    
-    self.barImageView.backgroundColor = [color colorWithAlphaComponent:alpha];
-    self.navigationController.navigationBar.tintColor = [color colorWithAlphaComponent:alpha];
-    if (tableViewoffsetY < 125){
-        
-        [UIView animateWithDuration:0.25 animations:^{
-            [self.qrCodeButton setBackgroundImage:[UIImage imageNamed:@"home_email_black"] forState:UIControlStateNormal];
-            [self.searchButton setBackgroundImage:[UIImage imageNamed:@"home_search_icon"] forState:UIControlStateNormal];
-
-            self.qrCodeButton.alpha = 1-alpha;
-            self.searchButton.alpha = 1-alpha;
-        }];
-    } else if (tableViewoffsetY >= 125){
-        
-        [UIView animateWithDuration:0.25 animations:^{
-            self.qrCodeButton.alpha = 1;
-            [self.qrCodeButton setBackgroundImage:[UIImage imageNamed:@"home_email_red"] forState:UIControlStateNormal];
-            [self.searchButton setBackgroundImage:[UIImage imageNamed:@"home_search_icon"] forState:UIControlStateNormal];
-        }];
-    }
+//    UIColor * color = [UIColor whiteColor];
+//    CGFloat alpha = MIN(1, tableViewoffsetY/136);
+//    
+////    self.barImageView.backgroundColor = [color colorWithAlphaComponent:alpha];
+////    self.navigationController.navigationBar.tintColor = [color colorWithAlphaComponent:alpha];
+//    self.navigationController.navigationBar.alpha = alpha;
+//    if (tableViewoffsetY < 125){
+//        
+//        [UIView animateWithDuration:0.25 animations:^{
+//            [self.qrCodeButton setBackgroundImage:[UIImage imageNamed:@"home_email_black"] forState:UIControlStateNormal];
+//            [self.searchButton setBackgroundImage:[UIImage imageNamed:@"home_search_icon"] forState:UIControlStateNormal];
+//
+//            self.qrCodeButton.alpha = 1-alpha;
+//            self.searchButton.alpha = 1-alpha;
+//        }];
+//    } else if (tableViewoffsetY >= 125){
+//        
+//        [UIView animateWithDuration:0.25 animations:^{
+//            self.qrCodeButton.alpha = 1;
+//            [self.qrCodeButton setBackgroundImage:[UIImage imageNamed:@"home_email_red"] forState:UIControlStateNormal];
+//            [self.searchButton setBackgroundImage:[UIImage imageNamed:@"home_search_icon"] forState:UIControlStateNormal];
+//        }];
+//    }
 
 }
 #pragma mark -UIScrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
     if (scrollView !=self.bottomScrollView) {
         return ;
     }
     int index =  scrollView.contentOffset.x/scrollView.frame.size.width;
     
+    
     UIButton *currentButton = self.titleButtons[index];
-    //     for (UIButton *button in self.titleButtons) {
-    //         button.selected = NO;
-    //     }
     _previousButton.selected = NO;
     currentButton.selected = YES;
     _previousButton = currentButton;
@@ -262,7 +275,6 @@
         _bottomScrollView.delegate = self;
         _bottomScrollView.pagingEnabled = YES;
         
-        NSArray *colors = @[[UIColor redColor],[UIColor blueColor],[UIColor grayColor],[UIColor greenColor],[UIColor purpleColor],[UIColor orangeColor],[UIColor whiteColor],[UIColor redColor],[UIColor blueColor],[UIColor grayColor],[UIColor greenColor]];
         
         for (int i = 0; i<CATEGORY.count; i++) {
             
@@ -273,7 +285,7 @@
                 ArticleDetailViewController *vc = [ArticleDetailViewController new];
                 [weakSelf.navigationController pushViewController:vc animated:YES];
             };
-            jsdTableViewController.view.backgroundColor = colors[i];
+            jsdTableViewController.view.backgroundColor = [UIColor whiteColor];
             [self.bottomScrollView addSubview:jsdTableViewController.view];
             
             [self.controlleres addObject:jsdTableViewController];
@@ -386,7 +398,7 @@
     if (!_searchButton) {
         _searchButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
         [_searchButton setBackgroundImage:[UIImage imageNamed:@"home_search_icon"] forState:UIControlStateNormal];
-        [_searchButton addTarget:self action:@selector(searchClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [_searchButton addTarget:self action:@selector(searchClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _searchButton;
 }
@@ -395,7 +407,7 @@
     if (!_qrCodeButton) {
         _qrCodeButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
         [_qrCodeButton setBackgroundImage:[UIImage imageNamed:@"home_email_black"] forState:UIControlStateNormal];
-        [_qrCodeButton addTarget:self action:@selector(qrCodeClick:) forControlEvents:UIControlEventTouchUpInside];
+//        [_qrCodeButton addTarget:self action:@selector(qrCodeClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _qrCodeButton;
 }
