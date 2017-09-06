@@ -13,6 +13,8 @@
 #import "ZFVideoResolution.h"
 #import <UShareUI/UShareUI.h>
 #import "VideoModel.h"
+#import "ArticleDetailViewController.h"
+#import "BURefreshGifHeader.h"
 
 @interface VideoViewController ()<UITableViewDelegate, UITableViewDataSource,ZFPlayerControlViewDelagate, ZFPlayerDelegate>
 @property (nonatomic, strong) UISegmentedControl *segControl;
@@ -56,7 +58,7 @@ static NSString *videoCell = @"playerCell";
 
 - (UITableView *)videoTableView{
     if (!_videoTableView) {
-        _videoTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44) style:UITableViewStylePlain];
+        _videoTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
         _videoTableView.delegate = self;
         _videoTableView.dataSource = self;
         [_videoTableView registerClass:[VideoTableViewCell class] forCellReuseIdentifier:videoCell];
@@ -64,16 +66,16 @@ static NSString *videoCell = @"playerCell";
     }
     return _videoTableView;
 }
-- (UITableView *)liveTableView{
-    if (!_liveTableView) {
-        _liveTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44) style:UITableViewStylePlain];
-        _liveTableView.delegate = self;
-        _liveTableView.dataSource = self;
-        [_liveTableView registerClass:[VideoTableViewCell class] forCellReuseIdentifier:videoCell];
-        _liveTableView.separatorStyle = NO;
-    }
-    return _liveTableView;
-}
+//- (UITableView *)liveTableView{
+//    if (!_liveTableView) {
+//        _liveTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44) style:UITableViewStylePlain];
+//        _liveTableView.delegate = self;
+//        _liveTableView.dataSource = self;
+//        [_liveTableView registerClass:[VideoTableViewCell class] forCellReuseIdentifier:videoCell];
+//        _liveTableView.separatorStyle = NO;
+//    }
+//    return _liveTableView;
+//}
 - (UISegmentedControl *)segControl{
     if (!_segControl) {
         _segControl = [[UISegmentedControl alloc]initWithItems:@[@"视频",@"直播"]];
@@ -95,6 +97,9 @@ static NSString *videoCell = @"playerCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor whiteColor]];
+    [self footerLoadData];
+    [self headerLoadData];
+    _pageNum = 1;
 }
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -105,16 +110,105 @@ static NSString *videoCell = @"playerCell";
     }
     return self;
 }
+//下拉刷新
+- (void)headerLoadData{
+    self.videoTableView.mj_header = [BURefreshGifHeader headerWithRefreshingBlock:^{
+        WeakSelf
+        if (/* DISABLES CODE */ (1)) {
+            [LTHttpManager videoListWithLimit:@10 Cid:@0 Complete:^(LTHttpResult result, NSString *message, id data) {
+                if (LTHttpResultSuccess == result) {
+                    self.dataSource = @[].mutableCopy;
+                    NSArray *videoList = [data[@"responseData"][@"videos"] objectForKey:@"data"];
+                    for (NSDictionary *dataDic in videoList) {
+                        VideoModel *model = [VideoModel mj_objectWithKeyValues:dataDic];
+                        //                  ZFVideoModel *model = [[ZFVideoModel alloc] init];
+                        //                  [model setValuesForKeysWithDictionary:dataDic];
+                        [weakSelf.dataSource addObject:model];
+                    }
+                    [weakSelf.videoTableView reloadData];
+                    [weakSelf.videoTableView.mj_header endRefreshing];
+                }else{
+                    //              [weakSelf.view makeToast:message];
+                    [weakSelf.videoTableView.mj_header endRefreshing];
+                }
+            }];
+        }else{
+            [LTHttpManager videoListWithLimit:@10 Cid:@0 Complete:^(LTHttpResult result, NSString *message, id data) {
+                if (LTHttpResultSuccess == result) {
+                    self.dataSource = @[].mutableCopy;
+                    NSArray *videoList = [data[@"responseData"][@"videos"] objectForKey:@"data"];
+                    for (NSDictionary *dataDic in videoList) {
+                        VideoModel *model = [VideoModel mj_objectWithKeyValues:dataDic];
+                        //                  ZFVideoModel *model = [[ZFVideoModel alloc] init];
+                        //                  [model setValuesForKeysWithDictionary:dataDic];
+                        [weakSelf.dataSource addObject:model];
+                    }
+                    [weakSelf.videoTableView reloadData];
+                    [weakSelf.videoTableView.mj_header endRefreshing];
+                }else{
+                    //              [weakSelf.view makeToast:message];
+                    [weakSelf.videoTableView.mj_header endRefreshing];
+                }
+            }];
+        }
+    }];
+    [self.videoTableView.mj_header beginRefreshing];
+}
+- (void)footerLoadData{
+    self.videoTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        WeakSelf
+        _pageNum++;
+        if (/* DISABLES CODE */ (1)) {
+            [LTHttpManager getMoreVideoWithLimit:@10 Page:@(_pageNum) Cid:@0 Complete:^(LTHttpResult result, NSString *message, id data) {
+                if (LTHttpResultSuccess == result) {
+                    NSArray *videoList = [data[@"responseData"] objectForKey:@"data"];
+                    for (NSDictionary *dataDic in videoList) {
+                        VideoModel *model = [VideoModel mj_objectWithKeyValues:dataDic];
+                        [weakSelf.dataSource addObject:model];
+                    }
+                    [self.videoTableView reloadData];
+                    [self.videoTableView.mj_footer endRefreshing];
+                }else{
+                    [self.videoTableView.mj_footer endRefreshing];
+                    _pageNum--;
+                }
+            }];
+        }else{
+            [LTHttpManager getMoreVideoWithLimit:@10 Page:@(_pageNum) Cid:@0 Complete:^(LTHttpResult result, NSString *message, id data) {
+                if (LTHttpResultSuccess == result) {
+                    NSArray *videoList = [data[@"responseData"]objectForKey:@"data"];
+                    for (NSDictionary *dataDic in videoList) {
+                        VideoModel *model = [VideoModel mj_objectWithKeyValues:dataDic];
+                        [weakSelf.dataSource addObject:model];
+                    }
+                    [self.videoTableView reloadData];
+                    [self.videoTableView.mj_footer endRefreshing];
+                }else{
+                    [self.videoTableView.mj_footer endRefreshing];
+                    _pageNum--;
+                }
+            }];
+        }
+    }];
+}
 
 - (void)segControlClick:(UISegmentedControl *)seg{
     
 }
 #pragma mark tableViewDelegate
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.dataSource.count;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 270;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 10;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     //取到对应cell的model
@@ -135,7 +229,64 @@ static NSString *videoCell = @"playerCell";
         [weakSelf.playerView playerControlView:self.controlView playerModel:playerModel];
         [weakSelf.playerView autoPlayTheVideo];
     };
+    cell.shareBlock = ^(UIButton *btn){
+        _indexPath = indexPath.section;
+        [UMSocialShareUIConfig shareInstance].sharePageGroupViewConfig.sharePageGroupViewPostionType = UMSocialSharePageGroupViewPositionType_Bottom;
+        [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageItemStyleType = UMSocialPlatformItemViewBackgroudType_None;
+        [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+            // 根据获取的platformType确定所选平台进行下一步操作
+            NSLog(@"%ld---%@",(long)platformType, userInfo);
+            [self shareVedioToPlatformType:platformType];
+        }];
+        
+    };
     return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+//视频分享
+- (void)shareVedioToPlatformType:(UMSocialPlatformType)platformType
+{
+    //创建分享消息对象
+    UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
+    VideoModel *model = self.dataSource[_indexPath];
+    UMShareVideoObject *shareObject;
+    if (platformType == 0) {
+        shareObject = [UMShareVideoObject shareObjectWithTitle:model.title descr:model.introduct thumImage:[UIImage imageNamed:@"微博点击"]];
+    }else{
+        shareObject =[UMShareVideoObject shareObjectWithTitle:model.title descr:model.introduct thumImage:model.photo];
+    }
+    
+    //设置视频网页播放地址
+    if (model.share_url.length > 5) {
+        shareObject.videoUrl = model.share_url;
+    }
+    //分享消息对象设置分享内容对象
+    messageObject.shareObject = shareObject;
+    
+    
+    //调用分享接口
+    [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
+        if (error) {
+            UMSocialLogInfo(@"************Share fail with error %@*********",error);
+            SVProgressShowStuteText(@"分享失败", YES);
+        }else{
+            if ([data isKindOfClass:[UMSocialShareResponse class]]) {
+                UMSocialShareResponse *resp = data;
+                //分享结果消息
+                UMSocialLogInfo(@"response message is %@",resp.message);
+                //第三方原始返回的数据
+                UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
+                SVProgressShowStuteText(@"分享成功", YES);
+                
+            }else{
+                UMSocialLogInfo(@"response data is %@",data);
+                
+            }
+        }
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

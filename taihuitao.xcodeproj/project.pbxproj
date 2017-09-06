@@ -13,6 +13,7 @@
 		1C76263C1F5D00E500DFA5B8 /* BrandDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C76263B1F5D00E500DFA5B8 /* BrandDetailViewController.m */; };
 		1C76263F1F5E9FA800DFA5B8 /* HomePageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C76263E1F5E9FA800DFA5B8 /* HomePageTableViewCell.m */; };
 		1C7626431F5E9FF400DFA5B8 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626421F5E9FF400DFA5B8 /* HomeModel.m */; };
+		1C7626461F5F990C00DFA5B8 /* BURefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626451F5F990C00DFA5B8 /* BURefreshGifHeader.m */; };
 		1CF6550C1F4538F900DBD64D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6550B1F4538F900DBD64D /* main.m */; };
 		1CF6550F1F4538F900DBD64D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6550E1F4538F900DBD64D /* AppDelegate.m */; };
 		1CF655121F4538F900DBD64D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF655111F4538F900DBD64D /* ViewController.m */; };
@@ -181,6 +182,8 @@
 		1C76263E1F5E9FA800DFA5B8 /* HomePageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTableViewCell.m; sourceTree = "<group>"; };
 		1C7626411F5E9FF400DFA5B8 /* HomeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
 		1C7626421F5E9FF400DFA5B8 /* HomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
+		1C7626441F5F990C00DFA5B8 /* BURefreshGifHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BURefreshGifHeader.h; sourceTree = "<group>"; };
+		1C7626451F5F990C00DFA5B8 /* BURefreshGifHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BURefreshGifHeader.m; sourceTree = "<group>"; };
 		1CF655071F4538F900DBD64D /* taihuitao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taihuitao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CF6550B1F4538F900DBD64D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CF6550D1F4538F900DBD64D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -644,6 +647,8 @@
 		1CFBF45C1F4AB7AD00BEFF7F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1C7626441F5F990C00DFA5B8 /* BURefreshGifHeader.h */,
+				1C7626451F5F990C00DFA5B8 /* BURefreshGifHeader.m */,
 				1CFBF98D1F500E4100BEFF7F /* NavigationGradientBar.h */,
 				1CFBF98E1F500E4100BEFF7F /* NavigationGradientBar.m */,
 				1CFBF4631F4AB90900BEFF7F /* NaviView.h */,
@@ -1255,6 +1260,7 @@
 				1CF655121F4538F900DBD64D /* ViewController.m in Sources */,
 				1CFBF90F1F4D833600BEFF7F /* VideoTableViewCell.m in Sources */,
 				1CFBF9201F4D838600BEFF7F /* FindPasswordViewController.m in Sources */,
+				1C7626461F5F990C00DFA5B8 /* BURefreshGifHeader.m in Sources */,
 				1CF6569C1F456D8000DBD64D /* WebContentViewController.m in Sources */,
 				1CFBF8D71F4ACA1E00BEFF7F /* UIImage+JQImage.m in Sources */,
 				1CFBF96D1F4D848B00BEFF7F /* MMMaterialDesignSpinner.m in Sources */,

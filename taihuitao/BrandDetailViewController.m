@@ -120,7 +120,7 @@
     [self loadData];
 }
 - (void)loadData{
-    [LTHttpManager categoryDetailWithLimit:@10 ID:@1 Complete:^(LTHttpResult result, NSString *message, id data) {
+    [LTHttpManager categoryDetailWithLimit:@10 ID:@2 Complete:^(LTHttpResult result, NSString *message, id data) {
         if (LTHttpResultSuccess == result) {
             //分类详情
             self.dataDic = [NSMutableDictionary dictionaryWithDictionary:data[@"responseData"][@"info"]];
