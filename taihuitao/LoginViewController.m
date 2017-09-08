@@ -313,7 +313,7 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+//    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (USER_ID) {
 //             [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[userDefaults objectForKey:USER_PHOTO] ]] placeholderImage:[UIImage imageNamed:@"用户默认头像"]];
     }
