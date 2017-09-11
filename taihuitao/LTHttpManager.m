@@ -82,43 +82,50 @@
 
 
 /**
- 请求地址:api/index
- 请求方式:POST
- 功能描述：首页头部栏目
+ 首页数据
+ 请求地址:api/index/index
  
  @param limit 查询数量 要返回几个栏目
- @param cid 分类ID
- @param page 数据分页
+ @param page 数据分页 初始值为1
  @param nlimit 推荐内容查询数量 初始显示数量
  @param complete block
  */
-+ (void)homeTitleWithLimit:(NSNumber *)limit Cid:(NSNumber *)cid Page:(NSString *)page Nlimit:(NSString *)nlimit Complete:(completeBlock)complete{
++  (void)THomeDataWithLimit:(NSNumber *)limit Page:(NSNumber *)page Nlimit:(NSNumber *)nlimit Complete:(completeBlock)complete{
     LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
-    NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys: limit,@"limit", cid,@"cid",page,@"page", nlimit,@"nlimit",
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionaryWithObjectsAndKeys: limit,@"limit",page,@"page", nlimit,@"nlimit",
                                       nil];
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/index",BaseURL] parameters:paramters complete:complete];
+    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/index/index",BaseURL] parameters:paramters complete:complete];
 }
 
 
+
 /**
- 请求地址:api/news/index
+ 文章、视频列表（查询接口也是这个）
+ 新地址：api/atticle/index
+ 
  请求方式:POST
  功能描述：获得文章列表
  
  
- @param limit 要返回几个栏目
- @param cid 分类ID
+ @param limit 查询数量
+ @param cid 文章类别
+ @param type 数据类型
+ @param title 关键字
  @param complete block
  */
-+ (void)newsListWithLimit:(NSNumber *)limit Cid:(NSNumber *)cid Complete:(completeBlock)complete{
++ (void)newsListWithLimit:(NSNumber *)limit Cid:(NSNumber *)cid Type:(NSNumber *)type Title:(NSString *)title Complete:(completeBlock)complete{
     LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
     NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys:limit,@"limit",
                                       cid,@"cid",
+                                      type,@"type",
+                                      title,@"title",
                                       nil];
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/news/index",BaseURL] parameters:paramters complete:complete];
+    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/atticle/index",BaseURL] parameters:paramters complete:complete];
+
 }
+
 
 /**
  下滑获取下一页数据
@@ -158,7 +165,7 @@
 }
 
 /**
- 请求地址:api/news/show
+ 请求地址:api/atticle/show
  请求方式:POST
  功能描述：获得文章内容、评论
  
@@ -167,7 +174,7 @@
  @param value 查询字段
  @param complete block
  */
-+ (void)newsDetailWithId:(NSNumber *)ID Value:(NSString *)value Complete:(completeBlock)complete{
++ (void)TnewsDetailWithId:(NSNumber *)ID Value:(NSString *)value Complete:(completeBlock)complete{
     LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
     if (![USER_ID isEqual:[NSNull null]]) {
         NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys:ID,@"id",
@@ -177,28 +184,28 @@
                                           USER_TOKEN,@"user_token",
                                           nil];
         [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-        [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/news/show",BaseURL] parameters:paramters complete:complete];
-
+        [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/atticle/show",BaseURL] parameters:paramters complete:complete];
+        
     }else{
         NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys:ID,@"id",
                                           value,@"value",
                                           nil];
         [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-        [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/news/show",BaseURL] parameters:paramters complete:complete];
-
+        [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/atticle/show",BaseURL] parameters:paramters complete:complete];
+        
     }
 }
 
 
 /**
- 请求地址:api/news/savecomment
+ 请求地址:api/article/savecomment
  请求方式:POST
  
  @param ID 文章id
  @param content 评论内容
  @param complete block
  */
-+ (void)commentNewsWithId:(NSNumber *)ID Content:(NSString *)content Complete:(completeBlock)complete{
++ (void)TcommentNewsWithId:(NSNumber *)ID Content:(NSString *)content Complete:(completeBlock)complete{
     if (USER_ID) {
         LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
         NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys:ID,@"id",
@@ -208,7 +215,7 @@
                                           GETUUID,@"user_uuid",
                                           nil];
         [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-        [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/news/savecomment",BaseURL] parameters:paramters complete:complete];
+        [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/article/savecomment",BaseURL] parameters:paramters complete:complete];
     }else{
         UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"BearUp" bundle:nil];
         LoginViewController *lvc = [storyBoard instantiateViewControllerWithIdentifier:@"loginViewController"];
@@ -216,6 +223,7 @@
         [[[Tool alloc]topViewController] presentViewController:navi animated:YES completion:nil];
     }
 }
+
 
 
 /**
@@ -568,7 +576,7 @@
 
 /**
  详情页评论分页
- 请求地址:api/news/getMore
+ 请求地址:api/atticle/getmore
  功能描述：获得文章更多评论
  
  
@@ -576,17 +584,16 @@
  @param page 分页 初始值为2
  @param complete complete
  */
-+ (void)getMoreNewsCommentWithID:(NSNumber *)ID Page:(NSNumber *)page Complete:(completeBlock)complete{
++ (void)TgetMoreNewsCommentWithID:(NSNumber *)ID Page:(NSNumber *)page Complete:(completeBlock)complete{
     LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
     NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys: ID,@"id",page,@"page",nil];
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/news/getMore",BaseURL] parameters:paramters complete:complete];
-
+    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/atticle/getmore",BaseURL] parameters:paramters complete:complete];
 }
 
 
 /**
- 获得更多文章
+ 获得更多文章、视频
  请求地址:api/news/getnews
  功能描述：获得更多文章
  
@@ -594,14 +601,18 @@
  @param limit 查询数量
  @param page 分页
  @param cid 文章类别
+ @param type 数据类型
  @param complete block
  */
-+ (void)getMoreNewsWithLimit:(NSNumber *)limit Page:(NSNumber *)page Cid:(NSNumber *)cid Complete:(completeBlock)complete{
++ (void)TgetMoreNewsWithLimit:(NSNumber *)limit Page:(NSNumber *)page Cid:(NSNumber *)cid Type:(NSNumber *)type Complete:(completeBlock)complete{
     LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
-    NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys: limit,@"limit",page,@"page",cid,@"cid",nil];
+    NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys: limit,@"limit",
+                                      page,@"page",
+                                      cid,@"cid",
+                                      type,@"type",
+                                      nil];
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
     [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/news/getnews",BaseURL] parameters:paramters complete:complete];
-
 }
 
 
@@ -655,19 +666,26 @@
 
 }
 /**
- 收藏文章请求地址：api/news/collecnews
- 
+ 收藏文章请求地址：api/article/collecnews
  @param ID 文章ID
  @param user_uuid UUID
  @param user_id 用户ID
  @param user_token token
+ @param complete block
+ 
  */
-+ (void)collectionNewsWithNewID:(NSNumber *)ID UUID:(NSString *)user_uuid User_id:(NSNumber *)user_id Token:(NSString *)user_token Complete:(completeBlock)complete{
++ (void)TcollectionNewsWithNewID:(NSNumber *)ID UUID:(NSString *)user_uuid User_id:(NSNumber *)user_id Token:(NSString *)user_token Complete:(completeBlock)complete{
     LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
-    NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys: ID,@"id",user_uuid,@"user_uuid",user_id,@"user_id",user_token,@"user_token",nil];
+    NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys: ID,@"id",
+                                      user_uuid,@"user_uuid",
+                                      user_id,@"user_id",
+                                      user_token,@"user_token",
+                                      nil];
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/news/collecnews",BaseURL] parameters:paramters complete:complete];
+    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/article/collecnews",BaseURL] parameters:paramters complete:complete];
+
 }
+
 
 
 /**
@@ -704,19 +722,24 @@
 }
 
 /**
- 分享文章返回 api/news/share
+ 分享文章返回 api/article/share
  
  @param Id 文章ID
  @param user_uuid UUID
  @param user_id 用户ID
  @param user_token token
  */
-+ (void)shareNewsWithId:(NSNumber *)Id UUID:(NSString *)user_uuid User_id:(NSNumber *)user_id Token:(NSString *)user_token Complete:(completeBlock)complete{
++ (void)TshareNewsWithId:(NSNumber *)Id UUID:(NSString *)user_uuid User_id:(NSNumber *)user_id Token:(NSString *)user_token Complete:(completeBlock)complete{
     LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
-    NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys: user_uuid,@"user_uuid",Id,@"id",user_id,@"user_id",user_token,@"user_token",nil];
+    NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys: user_uuid,@"user_uuid",
+                                      Id,@"id",
+                                      user_id,@"user_id",
+                                      user_token,@"user_token",
+                                      nil];
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/news/share",BaseURL] parameters:paramters complete:complete];
+    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/article/share",BaseURL] parameters:paramters complete:complete];
 }
+
 
 /**
  分享文章返回 api/video/share
@@ -886,6 +909,7 @@
 
 /**
  点赞文章
+ 请求地址:api/article/agreenews
  
  @param ID 文章ID
  @param user_uuid UUID
@@ -893,16 +917,17 @@
  @param user_token token
  @param complete block
  */
-+ (void)agreeNewsWithId:(NSNumber *)ID User_uuid:(NSString *)user_uuid User_id:(NSString *)user_id User_token:(NSString *)user_token Complete:(completeBlock)complete{
++ (void)TagreeNewsWithId:(NSNumber *)ID User_uuid:(NSString *)user_uuid User_id:(NSString *)user_id User_token:(NSString *)user_token Complete:(completeBlock)complete{
     if (USER_ID) {
         LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
         NSMutableDictionary *paramters = [NSMutableDictionary dictionaryWithObjectsAndKeys:ID,@"id", user_token,@"user_token",user_id,@"user_id",user_uuid,@"user_uuid",nil];
         [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-        [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/new/agreenews",BaseURL] parameters:paramters complete:complete];
+        [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/article/agreenews",BaseURL] parameters:paramters complete:complete];
     }else{
         SVProgressShowStuteText(@"需要登录才能点赞哦~", NO);
     }
 }
+
 
 
 /**
@@ -946,7 +971,7 @@
 }
 
 /**
- 点赞文章评论api/news/agreeconment
+ 点赞文章评论api/article/agreeconment
  
  @param ID 评论ID
  @param user_uuid UUID
@@ -954,14 +979,57 @@
  @param user_token token
  @param complete block
  */
-+ (void)agreeNewCommentWithId:(NSNumber *)ID User_uuid:(NSString *)user_uuid User_id:(NSString *)user_id User_token:(NSString *)user_token Complete:(completeBlock)complete{
++ (void)TagreeNewCommentWithId:(NSNumber *)ID User_uuid:(NSString *)user_uuid User_id:(NSString *)user_id User_token:(NSString *)user_token Complete:(completeBlock)complete{
     if (USER_ID) {
         LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
         NSMutableDictionary *paramters = [NSMutableDictionary dictionaryWithObjectsAndKeys:ID,@"id", user_token,@"user_token",user_id,@"user_id",user_uuid,@"user_uuid",nil];
         [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-        [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/news/agreeconment",BaseURL] parameters:paramters complete:complete];
+        [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/article/agreeconment",BaseURL] parameters:paramters complete:complete];
     }else{
         SVProgressShowStuteText(@"需要登录才能点赞哦~", NO);
     }
+}
+/**
+ 获得商品连接 （新添接口）
+ 请求地址:api/article/getplatform
+ 
+ 
+ @param ID 文章id
+ @param complete block
+ */
++ (void)getPlatformWithID:(NSNumber *)ID Complete:(completeBlock)complete{
+    LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionaryWithObjectsAndKeys:ID,@"id",nil];
+    [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
+    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/article/getplatform",BaseURL] parameters:paramters complete:complete];
+}
+
+/**
+ 品牌列表
+ 请求地址:api/brand/index
+ 功能描述：获得列表
+ 
+ @param complete block
+ */
++ (void)brandIndexWithComplete:(completeBlock)complete{
+    LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionary];
+    [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
+    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/brand/index",BaseURL] parameters:paramters complete:complete];
+}
+
+
+/**
+ 品牌详情
+ 请求地址:api/brand/show
+ 
+ @param ID 品牌id
+ @param complete block
+ */
++ (void)brandShowWithID:(NSNumber *)ID Complete:(completeBlock)complete{
+    LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionaryWithObjectsAndKeys:ID,@"id",nil];
+    [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
+    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/brand/show",BaseURL] parameters:paramters complete:complete];
 }
 @end
