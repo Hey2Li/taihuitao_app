@@ -238,7 +238,6 @@ static NSString *videoCell = @"playerCell";
             NSLog(@"%ld---%@",(long)platformType, userInfo);
             [self shareVedioToPlatformType:platformType];
         }];
-        
     };
     return cell;
 }

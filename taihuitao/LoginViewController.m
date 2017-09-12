@@ -340,7 +340,6 @@
                   [self presentViewController:[BaseTabBarViewController new] animated:YES completion:nil];
               }else{
                   SVProgressShowStuteText(@"登录失败", YES);
-                 // [self.view makeToast:message];
               }
           }];
         }else{
