@@ -30,15 +30,17 @@
 }
 
 /**
- 发送验证码
- 请求地址:api/register/sendmsg
+ 请求发送验证码
  
- @param mobile 手机号码
+ @param number 手机号/邮箱
+ @param ntype 发送类型 1手机2邮箱
+ @param type 1注册 2找回密码
  @param complete block
  */
-+ (void)registerSendCodeWithMobile:(NSString *)mobile Type:(NSNumber *)type Complete:(completeBlock)complete{
++ (void)sendCodeWithNumber:(NSString *)number Ntype:(NSNumber *)ntype Type:(NSNumber *)type Complete:(completeBlock)complete{
     LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
-    NSMutableDictionary *paramters = [NSMutableDictionary dictionaryWithObjectsAndKeys:mobile,@"mobile",
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionaryWithObjectsAndKeys:number,@"number",
+                                      ntype,@"ntype",
                                       type,@"type",
                                       nil];
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
@@ -79,7 +81,31 @@
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
     [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/register/checkcode",BaseURL] parameters:paramters complete:complete];
 }
+/**
+ 提交新密码
+ 
+ @param number 手机号/邮箱
+ @param code 验证码
+ @param password 新密码
+ @param type 1手机2邮箱
+ @param user_token token
+ @param user_id ID
+ @param user_uuid UUID
+ @param complete block
+ */
++ (void)submitNewPasswordWithNumber:(NSString *)number Code:(NSString *)code Password:(NSString *)password Type:(NSNumber *)type User_token:(NSString *)user_token User_id:(NSNumber *)user_id User_uuid:(NSString *)user_uuid Complete:(completeBlock)complete{
+    LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
+    NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys: number,@"number",
+                                      code,@"code",
+                                      password,@"password",
+                                      user_token,@"user_token",
+                                      user_id,@"user_id",
+                                      user_uuid,@"user_uuid",
+                                      nil];
+    [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
+    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/register/checkcode",BaseURL] parameters:paramters complete:complete];
 
+}
 
 /**
  首页数据
