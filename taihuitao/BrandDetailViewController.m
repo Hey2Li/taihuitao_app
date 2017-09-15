@@ -165,7 +165,7 @@
         make.left.equalTo(self.view.mas_left);
         make.right.equalTo(self.view.mas_right);
         make.bottom.equalTo(self.view.mas_bottom);
-        make.top.equalTo(self.view.mas_top).offset(-20);
+        make.top.equalTo(self.view.mas_top).offset(-44);
     }];
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -200,7 +200,7 @@
     [headerBtn setImage:[UIImage imageNamed:@"recomand_05"] forState:UIControlStateNormal];
     [headerBtn.layer setCornerRadius:45];
     [headerBtn.layer setMasksToBounds:YES];
-    [blurView addSubview:headerBtn];
+    [blurView.contentView addSubview:headerBtn];
     [headerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(blurView);
         make.centerY.equalTo(blurView).offset(-40);
@@ -214,7 +214,7 @@
     detailLabel.font = [UIFont systemFontOfSize:16];
     detailLabel.numberOfLines = 2;
     detailLabel.textAlignment = NSTextAlignmentCenter;
-    [blurView addSubview:detailLabel];
+    [blurView.contentView addSubview:detailLabel];
     [detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(headerBtn.mas_bottom).offset(10);
         make.centerX.equalTo(blurView.mas_centerX);
@@ -232,7 +232,7 @@
     [focusBtn setTitle:@"已关注" forState:UIControlStateSelected];
     [focusBtn setTitleColor:UIColorFromRGB(0xaeaeae) forState:UIControlStateSelected];
     [focusBtn addTarget:self action:@selector(focusCategory:) forControlEvents:UIControlEventTouchUpInside];
-    [blurView addSubview:focusBtn];
+    [blurView.contentView addSubview:focusBtn];
     [focusBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(blurView.mas_centerX);
         make.height.equalTo(@30);
@@ -245,7 +245,7 @@
     focusNum.font = [UIFont systemFontOfSize:14];
     focusNum.textAlignment = NSTextAlignmentCenter;
     focusNum.text = @"已关注人数：2345";
-    [blurView addSubview:focusNum];
+    [blurView.contentView addSubview:focusNum];
     [focusNum mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(blurView.mas_centerX);
         make.bottom.equalTo(blurView.mas_bottom).offset(-10);
