@@ -277,7 +277,7 @@
         make.left.equalTo(self.view.mas_left).offset(5);
         make.height.equalTo(@50);
         make.width.equalTo(@30);
-        make.top.equalTo(self.view).offset(10);
+        make.top.equalTo(self.view).offset(30);
     }];
 
     
@@ -312,7 +312,20 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回"];
+    self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回"];
+    //去掉左边的title
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-1000, 0) forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    //自定义一个NavigationBar
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    //消除阴影
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    //PingFangSC
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"PingFangSC-Light" size:18],NSFontAttributeName, nil];
+    
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
 //    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if (USER_ID) {
 //             [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[userDefaults objectForKey:USER_PHOTO] ]] placeholderImage:[UIImage imageNamed:@"用户默认头像"]];
@@ -382,7 +395,9 @@
     [self getAuthWithUserInfoFromQQ];
 }
 - (void)visitorsToLogin:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    BaseTabBarViewController *vc = [BaseTabBarViewController new];
+    [self presentViewController:vc animated:YES completion:nil];
+//    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)findPassword:(UIButton *)sender{
     UIStoryboard *sb = [UIStoryboard storyboardWithName:@"BearUp" bundle:nil];

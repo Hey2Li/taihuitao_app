@@ -34,7 +34,7 @@
     self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"返回"];
     self.navigationController.navigationBar.backIndicatorTransitionMaskImage = [UIImage imageNamed:@"返回"];
     //去掉左边的title
-    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-1000, 0) forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
     //自定义一个NavigationBar
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
@@ -87,14 +87,14 @@
 }
 - (IBAction)posetCodeBtn:(id)sender {
     if ([Tool judgePhoneNumber:self.phoneTF.text]) {
-        [LTHttpManager registerSendCodeWithMobile:self.phoneTF.text Type:@1 Complete:^(LTHttpResult result, NSString *message, id data) {
+        [LTHttpManager sendCodeWithNumber:self.phoneTF.text Ntype:@1 Type:@1 Complete:^(LTHttpResult result, NSString *message, id data) {
             if (result == LTHttpResultSuccess) {
                 [self openCountdown];
+                SVProgressShowStuteText([NSString stringWithFormat:@"%@",data[@"responseData"][@"msg"]],NO);
             }else{
-               // [self.view makeToast:message];
+                // [self.view makeToast:message];
             }
         }];
-        
     }else{
         SVProgressShowStuteText(@"请输入正确的手机号码", NO);
     }

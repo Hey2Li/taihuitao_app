@@ -18,7 +18,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    BaseTabBarViewController *vc = [BaseTabBarViewController new];
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"BearUp" bundle:nil];
+    UIViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:@"loginNavi"];
+//    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:vc];
+    //    BaseTabBarViewController *vc = [BaseTabBarViewController new];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
     return YES;
