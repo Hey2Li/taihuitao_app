@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "BaseTabBarViewController.h"
+#import <KeyboardManager.h>
+
 
 @interface AppDelegate ()
 
@@ -24,6 +26,12 @@
     //    BaseTabBarViewController *vc = [BaseTabBarViewController new];
     self.window.rootViewController = vc;
     [self.window makeKeyAndVisible];
+    
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    manager.enableAutoToolbar = NO;
     return YES;
 }
 
