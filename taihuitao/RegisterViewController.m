@@ -90,7 +90,7 @@
         [LTHttpManager sendCodeWithNumber:self.phoneTF.text Ntype:@1 Type:@1 Complete:^(LTHttpResult result, NSString *message, id data) {
             if (result == LTHttpResultSuccess) {
                 [self openCountdown];
-                SVProgressShowStuteText([NSString stringWithFormat:@"%@",data[@"responseData"][@"msg"]],NO);
+                SVProgressShowStuteText(@"发送成功",YES);
             }else{
                 // [self.view makeToast:message];
             }
@@ -103,7 +103,7 @@
     if ([Tool judgePhoneNumber:self.phoneTF.text]) {
 //        if ([self.codeTF.text isEqualToString:@"1111"]) {
             if ([Tool checkPassword:self.setPasswordTF.text]) {
-                [LTHttpManager registerWithMobile:self.phoneTF.text andPassword:self.setPasswordTF.text andUUID:GETUUID Complete:^(LTHttpResult result, NSString *message, id data) {
+                [LTHttpManager  registerWithNumber:self.phoneTF.text Code:self.codeTF.text Password:self.setPasswordTF.text Type:@1 User_uuid:GETUUID Complete:^(LTHttpResult result, NSString *message, id data) {
                     if (result == LTHttpResultSuccess) {
                         [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"user_id"] forKey:USERID_KEY];
                         [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"user_token"]forKey:USERTOKEN_KEY];
@@ -111,7 +111,7 @@
                         UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"注册成功，请登录" message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                         [alertView show];
                     }else{
-                       // [self.view makeToast:message];
+                        // [self.view makeToast:message];
                     }
                 }];
             }else{
