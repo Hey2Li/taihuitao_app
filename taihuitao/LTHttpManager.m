@@ -23,12 +23,27 @@
  */
 
 + (void)registerWithMobile:(NSString *)mobile andPassword:(NSString *)password andUUID:(NSString *)user_uuid Complete:(completeBlock)complete{
+
+}
+/**
+ 保存注册用户api/register/index
+ 
+ @param number 手机号
+ @param code 验证码
+ @param password 密码
+ @param type 1手机2邮箱
+ @param user_uuid 设备号
+ */
++ (void)registerWithNumber:(NSString *)number Code:(NSString *)code Password:(NSString *)password Type:(NSNumber *)type User_uuid:(NSString *)user_uuid Complete:(completeBlock)complete{
     LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
-    NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys:mobile,@"mobile",password,@"password",user_uuid,@"user_uuid", nil];
+    NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys:number,@"number",
+                                      code,@"code",
+                                      type,@"type",
+                                      password,@"password",
+                                      user_uuid,@"user_uuid", nil];
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
     [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/register/index",BaseURL] parameters:paramters complete:complete];
 }
-
 /**
  请求发送验证码
  
@@ -128,7 +143,7 @@
 
 /**
  文章、视频列表（查询接口也是这个）
- 新地址：api/atticle/index
+ 新地址：api/article/index
  
  请求方式:POST
  功能描述：获得文章列表
@@ -148,7 +163,7 @@
                                       title,@"title",
                                       nil];
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/atticle/index",BaseURL] parameters:paramters complete:complete];
+    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/article/index",BaseURL] parameters:paramters complete:complete];
 
 }
 
@@ -602,7 +617,7 @@
 
 /**
  详情页评论分页
- 请求地址:api/atticle/getmore
+ 请求地址:api/article/getmore
  功能描述：获得文章更多评论
  
  
@@ -614,13 +629,13 @@
     LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
     NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys: ID,@"id",page,@"page",nil];
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/atticle/getmore",BaseURL] parameters:paramters complete:complete];
+    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/article/getmore",BaseURL] parameters:paramters complete:complete];
 }
 
 
 /**
  获得更多文章、视频
- 请求地址:api/news/getnews
+ 请求地址:api/article/getnews
  功能描述：获得更多文章
  
  
@@ -638,7 +653,7 @@
                                       type,@"type",
                                       nil];
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/news/getnews",BaseURL] parameters:paramters complete:complete];
+    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/article/getnews",BaseURL] parameters:paramters complete:complete];
 }
 
 

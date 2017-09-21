@@ -12,15 +12,17 @@
 #define BaseURL @"http://bearup.51tht.cn/"
 @interface LTHttpManager : NSObject
 
-/**
- 用户注册//http://bearup.51tht.cn/api/register/index
 
- @param mobile 手机号码
+/**
+ 保存注册用户api/register/index
+
+ @param number 手机号
+ @param code 验证码
  @param password 密码
- @param user_uuid uuid
- @param complete block回调
+ @param type 1手机2邮箱
+ @param user_uuid 设备号
  */
-+ (void)registerWithMobile:(NSString *)mobile andPassword:(NSString *)password andUUID:(NSString *)user_uuid Complete:(completeBlock)complete;
++ (void)registerWithNumber:(NSString *)number Code:(NSString *)code Password:(NSString *)password Type:(NSNumber *)type User_uuid:(NSString *)user_uuid Complete:(completeBlock)complete;
 
 /**
  请求发送验证码
@@ -83,7 +85,7 @@
 
 /**
  文章、视频列表（查询接口也是这个）
- 新地址：api/atticle/index
+ 新地址：api/article/index
  
  请求方式:POST
  功能描述：获得文章列表
@@ -337,7 +339,7 @@
 
 /**
  详情页评论分页
- 请求地址:api/atticle/getmore
+ 请求地址:api/article/getmore
  功能描述：获得文章更多评论
 
 
@@ -350,7 +352,7 @@
 
 /**
  获得更多文章、视频
- 请求地址:api/news/getnews
+ 请求地址:api/article/getnews
  功能描述：获得更多文章
 
 
@@ -387,7 +389,7 @@
  @param cid 视频类别
  @param complete block
  */
-+ (void)getMoreVideoWithLimit:(NSNumber *)limit Page:(NSNumber *)page Cid:(NSNumber *)cid Complete:(completeBlock)complete;
+//+ (void)getMoreVideoWithLimit:(NSNumber *)limit Page:(NSNumber *)page Cid:(NSNumber *)cid Complete:(completeBlock)complete;
 
 /**
  收藏文章请求地址：api/article/collecnews
