@@ -14,6 +14,8 @@
 		1C76263F1F5E9FA800DFA5B8 /* HomePageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C76263E1F5E9FA800DFA5B8 /* HomePageTableViewCell.m */; };
 		1C7626431F5E9FF400DFA5B8 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626421F5E9FF400DFA5B8 /* HomeModel.m */; };
 		1C7626461F5F990C00DFA5B8 /* BURefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626451F5F990C00DFA5B8 /* BURefreshGifHeader.m */; };
+		1C9195EB1F734BA700A7038E /* PersonalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9195E91F734BA700A7038E /* PersonalTableViewController.m */; };
+		1C9195EC1F734BA700A7038E /* PersonalTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C9195EA1F734BA700A7038E /* PersonalTableViewController.xib */; };
 		1C93F6771F6F6872007D2E45 /* BearUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C93F6741F6F624D007D2E45 /* BearUp.storyboard */; };
 		1CF6550C1F4538F900DBD64D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6550B1F4538F900DBD64D /* main.m */; };
 		1CF6550F1F4538F900DBD64D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6550E1F4538F900DBD64D /* AppDelegate.m */; };
@@ -33,7 +35,6 @@
 		1CF656A51F45849200DBD64D /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF656A41F45849200DBD64D /* HomeViewController.m */; };
 		1CF656A81F45849F00DBD64D /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF656A71F45849F00DBD64D /* VideoViewController.m */; };
 		1CF656AB1F4584B400DBD64D /* CategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF656AA1F4584B400DBD64D /* CategoryViewController.m */; };
-		1CF656AE1F4584C400DBD64D /* PersonalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF656AD1F4584C400DBD64D /* PersonalViewController.m */; };
 		1CFBF4611F4AB85400BEFF7F /* UIButton+Size.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF45E1F4AB85400BEFF7F /* UIButton+Size.m */; };
 		1CFBF4621F4AB85400BEFF7F /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF4601F4AB85400BEFF7F /* UIView+Extension.m */; };
 		1CFBF4651F4AB90900BEFF7F /* NaviView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CFBF4641F4AB90900BEFF7F /* NaviView.m */; };
@@ -185,6 +186,9 @@
 		1C7626421F5E9FF400DFA5B8 /* HomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
 		1C7626441F5F990C00DFA5B8 /* BURefreshGifHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BURefreshGifHeader.h; sourceTree = "<group>"; };
 		1C7626451F5F990C00DFA5B8 /* BURefreshGifHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BURefreshGifHeader.m; sourceTree = "<group>"; };
+		1C9195E81F734BA700A7038E /* PersonalTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalTableViewController.h; sourceTree = "<group>"; };
+		1C9195E91F734BA700A7038E /* PersonalTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalTableViewController.m; sourceTree = "<group>"; };
+		1C9195EA1F734BA700A7038E /* PersonalTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalTableViewController.xib; sourceTree = "<group>"; };
 		1C93F6741F6F624D007D2E45 /* BearUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BearUp.storyboard; sourceTree = "<group>"; };
 		1CF655071F4538F900DBD64D /* taihuitao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taihuitao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CF6550B1F4538F900DBD64D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -221,8 +225,6 @@
 		1CF656A71F45849F00DBD64D /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
 		1CF656A91F4584B400DBD64D /* CategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryViewController.h; sourceTree = "<group>"; };
 		1CF656AA1F4584B400DBD64D /* CategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryViewController.m; sourceTree = "<group>"; };
-		1CF656AC1F4584C400DBD64D /* PersonalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalViewController.h; sourceTree = "<group>"; };
-		1CF656AD1F4584C400DBD64D /* PersonalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalViewController.m; sourceTree = "<group>"; };
 		1CF656B01F4587F900DBD64D /* Taihuitao-PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Taihuitao-PrefixHeader.pch"; sourceTree = "<group>"; };
 		1CFBF45D1F4AB85400BEFF7F /* UIButton+Size.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Size.h"; sourceTree = "<group>"; };
 		1CFBF45E1F4AB85400BEFF7F /* UIButton+Size.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Size.m"; sourceTree = "<group>"; };
@@ -641,8 +643,9 @@
 		1CF656A21F45846F00DBD64D /* Personal */ = {
 			isa = PBXGroup;
 			children = (
-				1CF656AC1F4584C400DBD64D /* PersonalViewController.h */,
-				1CF656AD1F4584C400DBD64D /* PersonalViewController.m */,
+				1C9195E81F734BA700A7038E /* PersonalTableViewController.h */,
+				1C9195E91F734BA700A7038E /* PersonalTableViewController.m */,
+				1C9195EA1F734BA700A7038E /* PersonalTableViewController.xib */,
 			);
 			name = Personal;
 			sourceTree = "<group>";
@@ -1105,6 +1108,7 @@
 				1CFBF8C91F4AC9CF00BEFF7F /* recomand_09.jpg in Resources */,
 				1CFBF8F51F4ACB4500BEFF7F /* header08@2x.jpg in Resources */,
 				1CFBF8C51F4AC9CF00BEFF7F /* recomand_05.jpg in Resources */,
+				1C9195EC1F734BA700A7038E /* PersonalTableViewController.xib in Resources */,
 				1CFBF8EE1F4ACB4500BEFF7F /* header01@2x.jpg in Resources */,
 				1CFBF9871F4EA93200BEFF7F /* GoodsDetailsTableViewCell.xib in Resources */,
 				1CF6551A1F4538F900DBD64D /* LaunchScreen.storyboard in Resources */,
@@ -1272,9 +1276,9 @@
 				1CF6550C1F4538F900DBD64D /* main.m in Sources */,
 				1C7626361F57A6A000DFA5B8 /* HorizontalTableViewCell.m in Sources */,
 				1CFBF4611F4AB85400BEFF7F /* UIButton+Size.m in Sources */,
+				1C9195EB1F734BA700A7038E /* PersonalTableViewController.m in Sources */,
 				1CFBF9091F4D561400BEFF7F /* BearupViewController.m in Sources */,
 				1CFBF4651F4AB90900BEFF7F /* NaviView.m in Sources */,
-				1CF656AE1F4584C400DBD64D /* PersonalViewController.m in Sources */,
 				1CFBF9121F4D834C00BEFF7F /* VideoModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
