@@ -46,10 +46,18 @@
 
 @property (nonatomic, strong) UIImageView *barImageView;
 @property (nonatomic,strong) NavigationGradientBar * navigationBar;
+
+@property (nonatomic, strong) NSMutableArray *titleArray;
 @end
 
 @implementation HomeViewController
 
+- (NSMutableArray *)titleArray{
+    if (!_titleArray) {
+        _titleArray = [NSMutableArray array];
+    }
+    return _titleArray;
+}
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -100,10 +108,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
+    [self loadData];
 }
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     [self.view setFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44)];
+}
+- (void)loadData{
+    WeakSelf
+    [LTHttpManager THomeDataWithLimit:@4 Page:@1 Nlimit:@10 Complete:^(LTHttpResult result, NSString *message, id data) {
+        if (result == LTHttpResultSuccess) {
+            NSArray *array = data[@"responseData"][@"column"];
+            [weakSelf.titleArray removeAllObjects];
+            for (NSDictionary *dic in array) {
+                [weakSelf.titleArray addObject:dic];
+            }
+        }else{
+            
+        }
+    }];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
