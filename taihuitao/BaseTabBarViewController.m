@@ -10,9 +10,9 @@
 #import "HomeViewController.h"
 #import "VideoViewController.h"
 #import "CategoryViewController.h"
-#import "PersonalViewController.h"
 #import "BaseNaviViewController.h"
 #import "BearupViewController.h"
+#import "PersonalTableViewController.h"
 
 @interface BaseTabBarViewController ()
 @property (nonatomic, strong) BaseNaviViewController *homeTab;
@@ -33,7 +33,7 @@
     _homeTab = [[BaseNaviViewController alloc]initWithRootViewController:[HomeViewController new]];
     _videoTab = [[BaseNaviViewController alloc]initWithRootViewController:[VideoViewController new]];
     _categoryTab = [[BaseNaviViewController alloc]initWithRootViewController:[CategoryViewController new]];
-    _mineTab = [[BaseNaviViewController alloc]initWithRootViewController:[PersonalViewController new]];
+    _mineTab = [[BaseNaviViewController alloc]initWithRootViewController:[PersonalTableViewController new]];
     _bearupTab  =[[BaseNaviViewController alloc]initWithRootViewController:[BearupViewController new]];
     self.viewControllers = @[_homeTab, _videoTab, _bearupTab,_categoryTab, _mineTab];
     self.selectedIndex = 0;
@@ -42,8 +42,8 @@
 //    NSArray *normalImgArray = @[@"首页灰",@"视频灰",@"发现灰",@"熊窝灰"];
 //    NSArray *selectedImgArray = @[@"首页红",@"视频红",@"发现红",@"熊窝红"];
     NSArray *titleArray = @[@"首页",@"视频", @"熊起", @"分类", @"个人"];
-    NSArray *normalImgArray = @[@"首页灰",@"发现灰",@"视频灰",@"熊窝灰",@""];
-    NSArray *selectedImgArray = @[@"首页红",@"发现红",@"视频红",@"熊窝红",@""];
+    NSArray *normalImgArray = @[@"组-3",@"形状-7",@"形状-8",@"形状-9",@"形状-10"];
+    NSArray *selectedImgArray = @[@"组-3",@"发现红",@"视频红",@"熊窝红",@""];
     //设置分栏元素项
     for (int i = 0; i < self.viewControllers.count; i++) {
         UIViewController *vc =  self.viewControllers[i];
