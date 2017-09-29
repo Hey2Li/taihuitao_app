@@ -9,6 +9,7 @@
 #import "PersonalTableViewController.h"
 
 @interface PersonalTableViewController ()
+@property (weak, nonatomic) IBOutlet UIView *tableViewHeaderView;
 
 @end
 
@@ -16,14 +17,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
+    self.tableView.backgroundColor = RGBCOLOR(248, 248, 248);
+    self.tableView.separatorStyle = NO;
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.view.backgroundColor = [UIColor whiteColor];
+//    self.tableView.frame = CGRectMake(-64, 0, ScreenWidth, ScreenHeight);
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:YES animated:animated];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -32,24 +36,56 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
-    return 0;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
-    return 0;
+    if (section == 0) {
+        return 3;
+    }else if (section == 1){
+        return 1;
+    }else{
+        return 1;
+    }
 }
-
-/*
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 50;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 15;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+   return CGFLOAT_MIN;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([UITableViewCell class]) forIndexPath:indexPath];
+    cell.selectionStyle = NO;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.textLabel.font = [UIFont systemFontOfSize:14];
+            cell.textLabel.textColor = RGBCOLOR(93, 93, 93);
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            cell.textLabel.text = @"我的收藏";
+            cell.imageView.image = [UIImage imageNamed:@"我的收藏_17x17_"];
+        }else if (indexPath.row == 1){
+            cell.textLabel.text = @"我的订单";
+            cell.imageView.image = [UIImage imageNamed:@"我的订单_17x17_"];
+            self.tableView.separatorStyle = YES;
+        }else{
+            cell.textLabel.text = @"我的原创";
+            cell.imageView.image = [UIImage imageNamed:@"我的原创_17x17_"];
+            self.tableView.separatorStyle = YES;
+        }
+    }else if (indexPath.section == 1){
+        cell.textLabel.text = @"礼品兑换";
+        cell.imageView.image = [UIImage imageNamed:@"礼品兑换_17x17_"];
+    }else{
+        cell.textLabel.text = @"设置";
+        cell.imageView.image = [UIImage imageNamed:@"设置_17x17_"];
+    }
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
