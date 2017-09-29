@@ -58,7 +58,7 @@ static NSString *videoCell = @"playerCell";
 
 - (UITableView *)videoTableView{
     if (!_videoTableView) {
-        _videoTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
+        _videoTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44) style:UITableViewStylePlain];
         _videoTableView.delegate = self;
         _videoTableView.dataSource = self;
         [_videoTableView registerClass:[VideoTableViewCell class] forCellReuseIdentifier:videoCell];
@@ -115,10 +115,10 @@ static NSString *videoCell = @"playerCell";
     self.videoTableView.mj_header = [BURefreshGifHeader headerWithRefreshingBlock:^{
         WeakSelf
         if (/* DISABLES CODE */ (1)) {
-            [LTHttpManager videoListWithLimit:@10 Cid:@0 Complete:^(LTHttpResult result, NSString *message, id data) {
+            [LTHttpManager newsListWithLimit:@10 Cid:@0 Type:@1 Title:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
                 if (LTHttpResultSuccess == result) {
                     self.dataSource = @[].mutableCopy;
-                    NSArray *videoList = [data[@"responseData"][@"videos"] objectForKey:@"data"];
+                    NSArray *videoList = [data[@"responseData"][@"news"] objectForKey:@"data"];
                     for (NSDictionary *dataDic in videoList) {
                         VideoModel *model = [VideoModel mj_objectWithKeyValues:dataDic];
                         //                  ZFVideoModel *model = [[ZFVideoModel alloc] init];
@@ -128,15 +128,14 @@ static NSString *videoCell = @"playerCell";
                     [weakSelf.videoTableView reloadData];
                     [weakSelf.videoTableView.mj_header endRefreshing];
                 }else{
-                    //              [weakSelf.view makeToast:message];
                     [weakSelf.videoTableView.mj_header endRefreshing];
                 }
             }];
         }else{
-            [LTHttpManager videoListWithLimit:@10 Cid:@0 Complete:^(LTHttpResult result, NSString *message, id data) {
+            [LTHttpManager newsListWithLimit:@10 Cid:@0 Type:@1 Title:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
                 if (LTHttpResultSuccess == result) {
                     self.dataSource = @[].mutableCopy;
-                    NSArray *videoList = [data[@"responseData"][@"videos"] objectForKey:@"data"];
+                    NSArray *videoList = [data[@"responseData"][@"news"] objectForKey:@"data"];
                     for (NSDictionary *dataDic in videoList) {
                         VideoModel *model = [VideoModel mj_objectWithKeyValues:dataDic];
                         //                  ZFVideoModel *model = [[ZFVideoModel alloc] init];
@@ -146,7 +145,6 @@ static NSString *videoCell = @"playerCell";
                     [weakSelf.videoTableView reloadData];
                     [weakSelf.videoTableView.mj_header endRefreshing];
                 }else{
-                    //              [weakSelf.view makeToast:message];
                     [weakSelf.videoTableView.mj_header endRefreshing];
                 }
             }];
@@ -159,7 +157,7 @@ static NSString *videoCell = @"playerCell";
         WeakSelf
         _pageNum++;
         if (/* DISABLES CODE */ (1)) {
-            [LTHttpManager getMoreVideoWithLimit:@10 Page:@(_pageNum) Cid:@0 Complete:^(LTHttpResult result, NSString *message, id data) {
+            [LTHttpManager TgetMoreNewsCommentWithID:@10 Page:@(_pageNum) Complete:^(LTHttpResult result, NSString *message, id data) {
                 if (LTHttpResultSuccess == result) {
                     NSArray *videoList = [data[@"responseData"] objectForKey:@"data"];
                     for (NSDictionary *dataDic in videoList) {
@@ -174,7 +172,7 @@ static NSString *videoCell = @"playerCell";
                 }
             }];
         }else{
-            [LTHttpManager getMoreVideoWithLimit:@10 Page:@(_pageNum) Cid:@0 Complete:^(LTHttpResult result, NSString *message, id data) {
+            [LTHttpManager TgetMoreNewsCommentWithID:@10 Page:@(_pageNum) Complete:^(LTHttpResult result, NSString *message, id data) {
                 if (LTHttpResultSuccess == result) {
                     NSArray *videoList = [data[@"responseData"]objectForKey:@"data"];
                     for (NSDictionary *dataDic in videoList) {
@@ -195,6 +193,14 @@ static NSString *videoCell = @"playerCell";
 - (void)segControlClick:(UISegmentedControl *)seg{
     
 }
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    CGFloat sectionHeaderHeight = 40;
+//    if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
+//        scrollView.contentInset = UIEdgeInsetsMake(-scrollView.contentOffset.y, 0, 0, 0);
+//    } else if (scrollView.contentOffset.y>=sectionHeaderHeight) {
+//        scrollView.contentInset = UIEdgeInsetsMake(-sectionHeaderHeight, 0, 0, 0);
+//    }
+//}
 #pragma mark tableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return self.dataSource.count;
@@ -230,7 +236,7 @@ static NSString *videoCell = @"playerCell";
         [weakSelf.playerView autoPlayTheVideo];
     };
     cell.shareBlock = ^(UIButton *btn){
-        _indexPath = indexPath.section;
+        _indexPath = (int)indexPath.section;
         [UMSocialShareUIConfig shareInstance].sharePageGroupViewConfig.sharePageGroupViewPostionType = UMSocialSharePageGroupViewPositionType_Bottom;
         [UMSocialShareUIConfig shareInstance].sharePageScrollViewConfig.shareScrollViewPageItemStyleType = UMSocialPlatformItemViewBackgroudType_None;
         [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
@@ -245,6 +251,7 @@ static NSString *videoCell = @"playerCell";
     ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
+#pragma mark VideoShare 
 //视频分享
 - (void)shareVedioToPlatformType:(UMSocialPlatformType)platformType
 {
