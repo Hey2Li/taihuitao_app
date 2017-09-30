@@ -123,7 +123,7 @@
 + (void)recommendGetMoreWithPage:(NSNumber *)page Limit:(NSNumber *)limit Complete:(completeBlock)complete;
 
 /**
- 请求地址:api/atticle/show
+ 请求地址:api/article/show文章、视频详情
  请求方式:POST
  功能描述：获得文章内容、评论
 
@@ -413,7 +413,7 @@
  @param complete block
 
  */
-+ (void)collectionVideoWithNewID:(NSNumber *)ID UUID:(NSString *)user_uuid User_id:(NSNumber *)user_id Token:(NSString *)user_token Complete:(completeBlock)complete;
+//+ (void)collectionVideoWithNewID:(NSNumber *)ID UUID:(NSString *)user_uuid User_id:(NSNumber *)user_id Token:(NSString *)user_token Complete:(completeBlock)complete;
 
 
 
@@ -449,7 +449,7 @@
  @param user_id 用户ID
  @param user_token token
  */
-+ (void)shareVideoWithId:(NSNumber *)Id UUID:(NSString *)user_uuid User_id:(NSNumber *)user_id Token:(NSString *)user_token Complete:(completeBlock)complete;
+//+ (void)shareVideoWithId:(NSNumber *)Id UUID:(NSString *)user_uuid User_id:(NSNumber *)user_id Token:(NSString *)user_token Complete:(completeBlock)complete;
 
 
 /**
@@ -489,7 +489,7 @@
  @param user_uuid 设备号
  @param complete block
  */
-+ (void)myCollectionsWithLimit:(NSNumber *)limit User_token:(NSString *)user_token User_id:(NSNumber *)user_id User_uuid:(NSString *)user_uuid Complete:(completeBlock)complete;
+//+ (void)myCollectionsWithLimit:(NSNumber *)limit User_token:(NSString *)user_token User_id:(NSNumber *)user_id User_uuid:(NSString *)user_uuid Complete:(completeBlock)complete;
 
 
 /**
@@ -503,7 +503,7 @@
  @param user_uuid 设备号
  @param complete block
  */
-+ (void)myCollectionsMoreWithLimit:(NSNumber *)limit Page:(NSNumber *)page User_token:(NSString *)user_token User_id:(NSNumber *)user_id User_uuid:(NSString *)user_uuid Complete:(completeBlock)complete;
+//+ (void)myCollectionsMoreWithLimit:(NSNumber *)limit Page:(NSNumber *)page User_token:(NSString *)user_token User_id:(NSNumber *)user_id User_uuid:(NSString *)user_uuid Complete:(completeBlock)complete;
 
 
 
@@ -596,7 +596,7 @@
  @param user_token token
  @param complete block
  */
-+ (void)agreeVideoCommentWithId:(NSNumber *)ID User_uuid:(NSString *)user_uuid User_id:(NSString *)user_id User_token:(NSString *)user_token Complete:(completeBlock)complete;
+//+ (void)agreeVideoCommentWithId:(NSNumber *)ID User_uuid:(NSString *)user_uuid User_id:(NSString *)user_id User_token:(NSString *)user_token Complete:(completeBlock)complete;
 
 /**
  点赞文章评论api/article/agreeconment
@@ -636,9 +636,10 @@
  请求地址:api/brand/show
 
  @param ID 品牌id
+ @param limit 查询文章个数
  @param complete block
  */
-+ (void)brandShowWithID:(NSNumber *)ID Complete:(completeBlock)complete;
++ (void)brandShowWithID:(NSNumber *)ID Limit:(NSNumber *)limit Complete:(completeBlock)complete;
 
 
 @end

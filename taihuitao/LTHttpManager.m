@@ -206,7 +206,7 @@
 }
 
 /**
- 请求地址:api/atticle/show
+ 请求地址:api/article/show
  请求方式:POST
  功能描述：获得文章内容、评论
  
@@ -225,7 +225,7 @@
                                           USER_TOKEN,@"user_token",
                                           nil];
         [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
-        [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/atticle/show",BaseURL] parameters:paramters complete:complete];
+        [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/article/show",BaseURL] parameters:paramters complete:complete];
         
     }else{
         NSMutableDictionary *paramters  =[NSMutableDictionary dictionaryWithObjectsAndKeys:ID,@"id",
@@ -1065,11 +1065,13 @@
  请求地址:api/brand/show
  
  @param ID 品牌id
+ @param limit 查询文章个数
  @param complete block
  */
-+ (void)brandShowWithID:(NSNumber *)ID Complete:(completeBlock)complete{
++ (void)brandShowWithID:(NSNumber *)ID Limit:(NSNumber *)limit Complete:(completeBlock)complete{
     LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
-    NSMutableDictionary *paramters = [NSMutableDictionary dictionaryWithObjectsAndKeys:ID,@"id",nil];
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionaryWithObjectsAndKeys:ID,@"id",
+                                      limit,@"limit",nil];
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
     [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/brand/show",BaseURL] parameters:paramters complete:complete];
 }

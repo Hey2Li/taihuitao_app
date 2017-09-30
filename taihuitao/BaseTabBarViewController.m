@@ -42,8 +42,8 @@
 //    NSArray *normalImgArray = @[@"首页灰",@"视频灰",@"发现灰",@"熊窝灰"];
 //    NSArray *selectedImgArray = @[@"首页红",@"视频红",@"发现红",@"熊窝红"];
     NSArray *titleArray = @[@"首页",@"视频", @"熊起", @"分类", @"个人"];
-    NSArray *normalImgArray = @[@"组-3",@"形状-7",@"形状-8",@"形状-9",@"形状-10"];
-    NSArray *selectedImgArray = @[@"组-3",@"发现红",@"视频红",@"熊窝红",@""];
+    NSArray *normalImgArray = @[@"首页",@"形状-7",@"形状-8",@"组-4",@"形状-10"];
+    NSArray *selectedImgArray = @[@"组-3",@"视频",@"熊起",@"分类",@"个人"];
     //设置分栏元素项
     for (int i = 0; i < self.viewControllers.count; i++) {
         UIViewController *vc =  self.viewControllers[i];
