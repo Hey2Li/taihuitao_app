@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ArticleDetailViewController : UIViewController
-
+@property (nonatomic, strong) NSNumber *articleId;
 @end

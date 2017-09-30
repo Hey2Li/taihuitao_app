@@ -17,6 +17,7 @@
 		1C9195EB1F734BA700A7038E /* PersonalTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C9195E91F734BA700A7038E /* PersonalTableViewController.m */; };
 		1C9195EC1F734BA700A7038E /* PersonalTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C9195EA1F734BA700A7038E /* PersonalTableViewController.xib */; };
 		1C93F6771F6F6872007D2E45 /* BearUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C93F6741F6F624D007D2E45 /* BearUp.storyboard */; };
+		1CCA19CF1F7E46C6000A8B81 /* ArticleDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA19CE1F7E46C6000A8B81 /* ArticleDetailModel.m */; };
 		1CF6550C1F4538F900DBD64D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6550B1F4538F900DBD64D /* main.m */; };
 		1CF6550F1F4538F900DBD64D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6550E1F4538F900DBD64D /* AppDelegate.m */; };
 		1CF655121F4538F900DBD64D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF655111F4538F900DBD64D /* ViewController.m */; };
@@ -190,6 +191,8 @@
 		1C9195E91F734BA700A7038E /* PersonalTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalTableViewController.m; sourceTree = "<group>"; };
 		1C9195EA1F734BA700A7038E /* PersonalTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalTableViewController.xib; sourceTree = "<group>"; };
 		1C93F6741F6F624D007D2E45 /* BearUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BearUp.storyboard; sourceTree = "<group>"; };
+		1CCA19CD1F7E46C6000A8B81 /* ArticleDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleDetailModel.h; sourceTree = "<group>"; };
+		1CCA19CE1F7E46C6000A8B81 /* ArticleDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailModel.m; sourceTree = "<group>"; };
 		1CF655071F4538F900DBD64D /* taihuitao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taihuitao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CF6550B1F4538F900DBD64D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CF6550D1F4538F900DBD64D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -456,6 +459,15 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		1CCA19CC1F7E466A000A8B81 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1CCA19CD1F7E46C6000A8B81 /* ArticleDetailModel.h */,
+				1CCA19CE1F7E46C6000A8B81 /* ArticleDetailModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1CF654FE1F4538F800DBD64D = {
 			isa = PBXGroup;
 			children = (
@@ -601,6 +613,7 @@
 		1CF6569F1F45843A00DBD64D /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1CCA19CC1F7E466A000A8B81 /* Model */,
 				1CFBF45C1F4AB7AD00BEFF7F /* View */,
 				1CFBF9821F4EA8C500BEFF7F /* ViewController */,
 				1CFBF8D81F4ACB4500BEFF7F /* Refresh */,
@@ -1267,6 +1280,7 @@
 				1C7626391F57A76000DFA5B8 /* RecommendCollectionViewCell.m in Sources */,
 				1CF655121F4538F900DBD64D /* ViewController.m in Sources */,
 				1CFBF90F1F4D833600BEFF7F /* VideoTableViewCell.m in Sources */,
+				1CCA19CF1F7E46C6000A8B81 /* ArticleDetailModel.m in Sources */,
 				1CFBF9201F4D838600BEFF7F /* FindPasswordViewController.m in Sources */,
 				1C7626461F5F990C00DFA5B8 /* BURefreshGifHeader.m in Sources */,
 				1CF6569C1F456D8000DBD64D /* WebContentViewController.m in Sources */,

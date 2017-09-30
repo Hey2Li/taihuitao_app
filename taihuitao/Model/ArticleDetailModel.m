@@ -9,5 +9,7 @@
 #import "ArticleDetailModel.h"
 
 @implementation ArticleDetailModel
-
++ (NSDictionary *)mj_replacedKeyFromPropertyName{
+    return @{@"ID":@"id"};
+}
 @end

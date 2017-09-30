@@ -10,13 +10,22 @@
 #import "GoodsDetailsTableViewCell.h"
 #import "BuyGoodsTableViewCell.h"
 #import "HorizontalTableViewCell.h"
+#import "ArticleDetailModel.h"
 
 @interface ArticleDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *myTableView;
+@property (nonatomic, strong) NSMutableArray *goodsMutableArray;
+@property (nonatomic, strong) NSDictionary *infoDataDic;
 @end
 
 @implementation ArticleDetailViewController
 
+- (NSMutableArray *)goodsMutableArray{
+    if (!_goodsMutableArray) {
+        _goodsMutableArray = [NSMutableArray array];
+    }
+    return _goodsMutableArray;
+}
 - (UITableView *)myTableView{
     if (!_myTableView) {
         _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64) style:UITableViewStylePlain];
@@ -48,8 +57,37 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"详情";
+//    [self loadData];
 }
-
+- (void)setArticleId:(NSNumber *)articleId{
+    _articleId = articleId;
+    [LTHttpManager TnewsDetailWithId:articleId Value:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
+        if (result == LTHttpResultSuccess) {
+            self.infoDataDic = data[@"responseData"][@"info"];
+            NSArray *dataArray = data[@"responseData"][@"commodity"];
+            [self.goodsMutableArray removeAllObjects];
+            for (NSDictionary *dic in dataArray) {
+                ArticleDetailModel *model = [ArticleDetailModel mj_objectWithKeyValues:dic];
+                [self.goodsMutableArray addObject:model];
+            }
+            [self.myTableView reloadData];
+        }
+    }];
+}
+- (void)loadData{
+    [LTHttpManager TnewsDetailWithId:self.articleId Value:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
+        if (result == LTHttpResultSuccess) {
+            self.infoDataDic = data[@"responseData"][@"info"];
+            NSArray *dataArray = data[@"responseData"][@"commodity"];
+            [self.goodsMutableArray removeAllObjects];
+            for (NSDictionary *dic in dataArray) {
+                ArticleDetailModel *model = [ArticleDetailModel mj_objectWithKeyValues:dic];
+                [self.goodsMutableArray addObject:model];
+            }
+            [self.myTableView reloadData];
+        }
+    }];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -62,7 +100,7 @@
     if (section == 0 || section == 2) {
         return 1;
     }else{
-        return 3;
+        return self.goodsMutableArray.count;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -123,9 +161,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         GoodsDetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"gooddetailcell"];
+        cell.dataDic = self.infoDataDic;
         return cell;
     }else if (indexPath.section == 1){
         BuyGoodsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"buygoodcell"];
+        cell.model = self.goodsMutableArray[indexPath.row];
         return cell;
     }else if (indexPath.section == 2){
         HorizontalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HorizontalTableViewCell class])];
