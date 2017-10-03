@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		1C7626321F54F77C00DFA5B8 /* CACollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */; };
 		1C7626361F57A6A000DFA5B8 /* HorizontalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626351F57A6A000DFA5B8 /* HorizontalTableViewCell.m */; };
-		1C7626391F57A76000DFA5B8 /* RecommendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626381F57A76000DFA5B8 /* RecommendCollectionViewCell.m */; };
 		1C76263C1F5D00E500DFA5B8 /* BrandDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C76263B1F5D00E500DFA5B8 /* BrandDetailViewController.m */; };
 		1C76263F1F5E9FA800DFA5B8 /* HomePageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C76263E1F5E9FA800DFA5B8 /* HomePageTableViewCell.m */; };
 		1C7626431F5E9FF400DFA5B8 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626421F5E9FF400DFA5B8 /* HomeModel.m */; };
@@ -18,6 +17,9 @@
 		1C9195EC1F734BA700A7038E /* PersonalTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C9195EA1F734BA700A7038E /* PersonalTableViewController.xib */; };
 		1C93F6771F6F6872007D2E45 /* BearUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C93F6741F6F624D007D2E45 /* BearUp.storyboard */; };
 		1CCA19CF1F7E46C6000A8B81 /* ArticleDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA19CE1F7E46C6000A8B81 /* ArticleDetailModel.m */; };
+		1CCA19D31F83906C000A8B81 /* RecommendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA19D11F83906C000A8B81 /* RecommendCollectionViewCell.m */; };
+		1CCA19D41F83906C000A8B81 /* RecommendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CCA19D21F83906C000A8B81 /* RecommendCollectionViewCell.xib */; };
+		1CCA19D71F839187000A8B81 /* RecommedCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA19D61F839187000A8B81 /* RecommedCellModel.m */; };
 		1CF6550C1F4538F900DBD64D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6550B1F4538F900DBD64D /* main.m */; };
 		1CF6550F1F4538F900DBD64D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF6550E1F4538F900DBD64D /* AppDelegate.m */; };
 		1CF655121F4538F900DBD64D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CF655111F4538F900DBD64D /* ViewController.m */; };
@@ -177,8 +179,6 @@
 		1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACollectionReusableView.m; sourceTree = "<group>"; };
 		1C7626341F57A6A000DFA5B8 /* HorizontalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalTableViewCell.h; sourceTree = "<group>"; };
 		1C7626351F57A6A000DFA5B8 /* HorizontalTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HorizontalTableViewCell.m; sourceTree = "<group>"; };
-		1C7626371F57A76000DFA5B8 /* RecommendCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendCollectionViewCell.h; sourceTree = "<group>"; };
-		1C7626381F57A76000DFA5B8 /* RecommendCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendCollectionViewCell.m; sourceTree = "<group>"; };
 		1C76263A1F5D00E500DFA5B8 /* BrandDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrandDetailViewController.h; sourceTree = "<group>"; };
 		1C76263B1F5D00E500DFA5B8 /* BrandDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrandDetailViewController.m; sourceTree = "<group>"; };
 		1C76263D1F5E9FA800DFA5B8 /* HomePageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageTableViewCell.h; sourceTree = "<group>"; };
@@ -193,6 +193,11 @@
 		1C93F6741F6F624D007D2E45 /* BearUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BearUp.storyboard; sourceTree = "<group>"; };
 		1CCA19CD1F7E46C6000A8B81 /* ArticleDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ArticleDetailModel.h; sourceTree = "<group>"; };
 		1CCA19CE1F7E46C6000A8B81 /* ArticleDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ArticleDetailModel.m; sourceTree = "<group>"; };
+		1CCA19D01F83906C000A8B81 /* RecommendCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommendCollectionViewCell.h; sourceTree = "<group>"; };
+		1CCA19D11F83906C000A8B81 /* RecommendCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommendCollectionViewCell.m; sourceTree = "<group>"; };
+		1CCA19D21F83906C000A8B81 /* RecommendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendCollectionViewCell.xib; sourceTree = "<group>"; };
+		1CCA19D51F839187000A8B81 /* RecommedCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecommedCellModel.h; sourceTree = "<group>"; };
+		1CCA19D61F839187000A8B81 /* RecommedCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecommedCellModel.m; sourceTree = "<group>"; };
 		1CF655071F4538F900DBD64D /* taihuitao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = taihuitao.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CF6550B1F4538F900DBD64D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CF6550D1F4538F900DBD64D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -464,6 +469,8 @@
 			children = (
 				1CCA19CD1F7E46C6000A8B81 /* ArticleDetailModel.h */,
 				1CCA19CE1F7E46C6000A8B81 /* ArticleDetailModel.m */,
+				1CCA19D51F839187000A8B81 /* RecommedCellModel.h */,
+				1CCA19D61F839187000A8B81 /* RecommedCellModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -680,8 +687,9 @@
 				1CFBF98A1F4EA95C00BEFF7F /* BuyGoodsTableViewCell.xib */,
 				1C7626341F57A6A000DFA5B8 /* HorizontalTableViewCell.h */,
 				1C7626351F57A6A000DFA5B8 /* HorizontalTableViewCell.m */,
-				1C7626371F57A76000DFA5B8 /* RecommendCollectionViewCell.h */,
-				1C7626381F57A76000DFA5B8 /* RecommendCollectionViewCell.m */,
+				1CCA19D01F83906C000A8B81 /* RecommendCollectionViewCell.h */,
+				1CCA19D11F83906C000A8B81 /* RecommendCollectionViewCell.m */,
+				1CCA19D21F83906C000A8B81 /* RecommendCollectionViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1124,6 +1132,7 @@
 				1C9195EC1F734BA700A7038E /* PersonalTableViewController.xib in Resources */,
 				1CFBF8EE1F4ACB4500BEFF7F /* header01@2x.jpg in Resources */,
 				1CFBF9871F4EA93200BEFF7F /* GoodsDetailsTableViewCell.xib in Resources */,
+				1CCA19D41F83906C000A8B81 /* RecommendCollectionViewCell.xib in Resources */,
 				1CF6551A1F4538F900DBD64D /* LaunchScreen.storyboard in Resources */,
 				1CFBF9011F4ACB4500BEFF7F /* refresh09.png in Resources */,
 				1CFBF8FD1F4ACB4500BEFF7F /* refresh05.png in Resources */,
@@ -1240,6 +1249,7 @@
 				1CFBF4621F4AB85400BEFF7F /* UIView+Extension.m in Sources */,
 				1CFBF97D1F4D85A400BEFF7F /* ZFVideoModel.m in Sources */,
 				1CFBF9651F4D848B00BEFF7F /* ASValueTrackingSlider.m in Sources */,
+				1CCA19D71F839187000A8B81 /* RecommedCellModel.m in Sources */,
 				1CFBF9681F4D848B00BEFF7F /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				1CFBF97E1F4D85A400BEFF7F /* ZFPVideoResolution.m in Sources */,
 				1CF6568F1F456D3D00DBD64D /* BaseNaviViewController.m in Sources */,
@@ -1272,12 +1282,12 @@
 				1CF656A51F45849200DBD64D /* HomeViewController.m in Sources */,
 				1CF6569E1F456D8000DBD64D /* UIView+Frame.m in Sources */,
 				1CFBF9661F4D848B00BEFF7F /* UIAlertController+ZFPlayerRotation.m in Sources */,
+				1CCA19D31F83906C000A8B81 /* RecommendCollectionViewCell.m in Sources */,
 				1CFBF96B1F4D848B00BEFF7F /* UIViewController+ZFPlayerRotation.m in Sources */,
 				1CFBF5DB1F4AC8C100BEFF7F /* JSDTHomeRecomandModel.m in Sources */,
 				1CFBF96E1F4D848B00BEFF7F /* ZFBrightnessView.m in Sources */,
 				1CF656931F456D6500DBD64D /* LTHTTPSessionManager.m in Sources */,
 				1CFBF9811F4E717A00BEFF7F /* ArticleDetailViewController.m in Sources */,
-				1C7626391F57A76000DFA5B8 /* RecommendCollectionViewCell.m in Sources */,
 				1CF655121F4538F900DBD64D /* ViewController.m in Sources */,
 				1CFBF90F1F4D833600BEFF7F /* VideoTableViewCell.m in Sources */,
 				1CCA19CF1F7E46C6000A8B81 /* ArticleDetailModel.m in Sources */,

@@ -2,7 +2,7 @@
 //  RecommendCollectionViewCell.m
 //  taihuitao
 //
-//  Created by Tebuy on 2017/8/31.
+//  Created by Tebuy on 2017/10/3.
 //  Copyright © 2017年 Tebuy. All rights reserved.
 //
 
@@ -10,10 +10,13 @@
 
 @implementation RecommendCollectionViewCell
 
-- (instancetype)initWithFrame:(CGRect)frame{
-    if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor redColor];
-    }
-    return self;
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+- (void)setModel:(RecommedCellModel *)model{
+    _model = model;
+    [self.recommendImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.photo]] placeholderImage:[UIImage new]];
+    self.recommendTitleLabel.text = [NSString stringWithFormat:@"%@",model.title];
 }
 @end

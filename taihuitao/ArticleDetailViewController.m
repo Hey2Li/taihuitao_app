@@ -11,15 +11,23 @@
 #import "BuyGoodsTableViewCell.h"
 #import "HorizontalTableViewCell.h"
 #import "ArticleDetailModel.h"
+#import "RecommedCellModel.h"
 
 @interface ArticleDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSMutableArray *goodsMutableArray;
 @property (nonatomic, strong) NSDictionary *infoDataDic;
+@property (nonatomic, strong) NSMutableArray *recommendMutableArrray;
 @end
 
 @implementation ArticleDetailViewController
 
+- (NSMutableArray *)recommendMutableArrray{
+    if (!_recommendMutableArrray) {
+        _recommendMutableArrray = [NSMutableArray array];
+    }
+    return _recommendMutableArrray;
+}
 - (NSMutableArray *)goodsMutableArray{
     if (!_goodsMutableArray) {
         _goodsMutableArray = [NSMutableArray array];
@@ -70,6 +78,12 @@
                 ArticleDetailModel *model = [ArticleDetailModel mj_objectWithKeyValues:dic];
                 [self.goodsMutableArray addObject:model];
             }
+            NSArray *recomdArray = data[@"responseData"][@"recomd"];
+            [self.recommendMutableArrray removeAllObjects];
+            for (NSDictionary *dic in recomdArray) {
+                RecommedCellModel *model = [RecommedCellModel mj_objectWithKeyValues:dic];
+                [self.recommendMutableArrray addObject:model];
+            }
             [self.myTableView reloadData];
         }
     }];
@@ -84,6 +98,7 @@
                 ArticleDetailModel *model = [ArticleDetailModel mj_objectWithKeyValues:dic];
                 [self.goodsMutableArray addObject:model];
             }
+            
             [self.myTableView reloadData];
         }
     }];
@@ -169,6 +184,7 @@
         return cell;
     }else if (indexPath.section == 2){
         HorizontalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HorizontalTableViewCell class])];
+        cell.modelArray = self.recommendMutableArrray;
         return cell;
     }else{
         return 0;

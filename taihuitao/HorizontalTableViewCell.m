@@ -28,14 +28,15 @@
         [self addSubview:collectionView];
         self.collectionView = collectionView;
         collectionView.backgroundColor = [UIColor whiteColor];
-        [collectionView registerClass:[RecommendCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([RecommendCollectionViewCell class])];
+        [collectionView registerNib:[UINib nibWithNibName:@"RecommendCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:NSStringFromClass([RecommendCollectionViewCell class])];
+//        [collectionView registerClass:[RecommendCollectionViewCell class] forCellWithReuseIdentifier:NSStringFromClass([RecommendCollectionViewCell class])];
         collectionView.showsHorizontalScrollIndicator = NO;
     }
     return self;
 }
 #pragma mark UICollectionViewDelegate
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return  4;
+    return  self.modelArray.count;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     return CGSizeMake(150 , 100);
@@ -45,9 +46,13 @@
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     RecommendCollectionViewCell *cell  =[collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([RecommendCollectionViewCell class]) forIndexPath:indexPath];
+    cell.model = self.modelArray[indexPath.section];
     return cell;
 }
-
+- (void)setModelArray:(NSArray *)modelArray{
+    _modelArray = modelArray;
+    [self.collectionView reloadData];
+}
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 //    self.HorCollectionCellClick(indexPath);
 }

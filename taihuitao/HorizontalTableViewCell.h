@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HorizontalTableViewCell : UITableViewCell
-
+@property (nonatomic, strong) NSArray *modelArray;
 @end
