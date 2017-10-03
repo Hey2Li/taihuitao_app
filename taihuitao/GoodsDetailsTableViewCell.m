@@ -21,5 +21,12 @@
 
     // Configure the view for the selected state
 }
-
+- (void)setDataDic:(NSDictionary *)dataDic{
+    _dataDic = dataDic;
+    self.dateLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"time"]];
+    self.introduceLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"introduct"]];
+    [self.goodsBkImageView sd_setImageWithURL:[NSURL URLWithString:dataDic[@"photo"]] placeholderImage:[UIImage new]];
+    self.titleLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"title"]];
+    self.readNumLabel.text = [NSString stringWithFormat:@"阅读:%@",dataDic[@"hits"]];
+}
 @end

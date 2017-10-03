@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface GoodsDetailsTableViewCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UIImageView *goodsBkImageView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *introduceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *readNumLabel;
+@property (nonatomic, strong) NSDictionary *dataDic;
 @end

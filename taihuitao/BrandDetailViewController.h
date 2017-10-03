@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface BrandDetailViewController : UIViewController
-
+@property (nonatomic, strong) NSNumber *brandId;
 @end
