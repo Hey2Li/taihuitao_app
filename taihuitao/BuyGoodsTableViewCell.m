@@ -21,5 +21,11 @@
 
     // Configure the view for the selected state
 }
-
+-(void)setModel:(ArticleDetailModel *)model{
+    _model = model;
+    [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:model.photo] placeholderImage:[UIImage new]];
+    self.goodsNameLabel.text = [NSString stringWithFormat:@"%@",model.name];
+    self.goodsDetailLabel.text = [NSString stringWithFormat:@"%@",model.introduct];
+    self.buyGoodsBtn.tag = [model.ID integerValue];
+}
 @end
