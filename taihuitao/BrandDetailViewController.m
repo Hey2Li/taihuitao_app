@@ -9,6 +9,7 @@
 #import "BrandDetailViewController.h"
 #import "VideoTableViewCell.h"
 #import "HomePageTableViewCell.h"
+#import "ArticleDetailViewController.h"
 
 @interface BrandDetailViewController ()<UIGestureRecognizerDelegate,UITableViewDelegate, UITableViewDataSource,UIGestureRecognizerDelegate,ZFPlayerDelegate, ZFPlayerControlViewDelagate>
 @property (nonatomic, strong) UITableView *myTableView;
@@ -120,8 +121,8 @@
     [self loadData];
 }
 - (void)loadData{
-    [LTHttpManager categoryDetailWithLimit:@10 ID:@2 Complete:^(LTHttpResult result, NSString *message, id data) {
-        if (LTHttpResultSuccess == result) {
+    [LTHttpManager brandShowWithID:self.brandId Limit:@10 Complete:^(LTHttpResult result, NSString *message, id data) {
+        if (result == LTHttpResultSuccess) {
             //分类详情
             self.dataDic = [NSMutableDictionary dictionaryWithDictionary:data[@"responseData"][@"info"]];
             [self navigtionBar];
@@ -145,15 +146,9 @@
             self.welcomeDataArray = [NSMutableArray arrayWithArray:data[@"responseData"][@"comment"]];
             //最近更新
             self.updateDataArray = [NSMutableArray arrayWithArray:data[@"responseData"][@"new"]];
-            //            [self.welcomeDataArray removeAllObjects];
-            //            for (NSDictionary *dataDic in data[@"responseData"][@"new"]) {
-            //                ZFVideoModel *model = [[ZFVideoModel alloc] init];
-            //                [model setValuesForKeysWithDictionary:dataDic];
-            //                [self.updateDataArray addObject:model];
-            //            }
             [self.myTableView reloadData];
         }else{
-            // [self.view makeToast:message];
+            
         }
     }];
 }
@@ -409,6 +404,9 @@
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
+    vc.articleId = @([[NSString stringWithFormat:@"%@",self.updateDataArray[indexPath.section][@"id"]] integerValue]);
+    [self.navigationController pushViewController:vc animated:YES];
  }
 
 - (void)didReceiveMemoryWarning {
