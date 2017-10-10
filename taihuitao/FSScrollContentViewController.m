@@ -7,21 +7,22 @@
 //
 
 #import "FSScrollContentViewController.h"
-#import <SVPullToRefresh.h>
-
-/**
- * 随机数据
- */
-#define RandomData [NSString stringWithFormat:@"随机数据---%d", arc4random_uniform(1000000)]
+#import "HomeTableViewCell.h"
+#import "HomeNewsModel.h"
+#import "ArticleDetailViewController.h"
 
 @interface FSScrollContentViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, assign) BOOL fingerIsTouch;
-/** 用来显示的假数据 */
-@property (strong, nonatomic) NSMutableArray *data;
+@property (nonatomic ,strong) NSMutableArray *dataMutableArray;
 @end
 
 @implementation FSScrollContentViewController
-
+- (NSMutableArray *)dataMutableArray{
+    if (!_dataMutableArray) {
+        _dataMutableArray = [NSMutableArray array];
+    }
+    return _dataMutableArray;
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -34,82 +35,61 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [FSScrollContentViewController randomColor];
     [self setupSubViews];
+    [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:NSStringFromClass([HomeTableViewCell class])];
+    [self loadData];
 }
-
-- (void)setupSubViews
-{
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)) style:UITableViewStylePlain];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-//    _tableView.bounces = NO;
-    [self.view addSubview:_tableView];
-    __weak typeof(self) weakSelf = self;
-    [self.tableView addInfiniteScrollingWithActionHandler:^{
-        [weakSelf insertRowAtBottom];
+- (void)loadData{
+    [LTHttpManager newsListWithLimit:@10 Cid:nil Type:@1 Title:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
+        if (result == LTHttpResultSuccess) {
+            NSArray *dataArray = data[@"responseData"][@"news"][@"data"];
+            [self.dataMutableArray removeAllObjects];
+            for (NSDictionary *dic in dataArray) {
+                HomeNewsModel *model = [HomeNewsModel mj_objectWithKeyValues:dic];
+                [self.dataMutableArray addObject:model];
+            }
+            [self.tableView reloadData];
+        }
     }];
 }
-
-- (void)insertRowAtTop
+- (void)setupSubViews
 {
-    for (int i = 0; i<5; i++) {
-        [self.data insertObject:RandomData atIndex:0];
-    }
-    __weak UITableView *tableView = self.tableView;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [tableView reloadData];
-    });
-}
-
-- (void)insertRowAtBottom
-{
-    for (int i = 0; i<5; i++) {
-        [self.data addObject:RandomData];
-    }
-    __weak UITableView *tableView = self.tableView;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [tableView reloadData];
-        [tableView.infiniteScrollingView stopAnimating];
-    });
-}
-
-#pragma mark Setter
-- (void)setIsRefresh:(BOOL)isRefresh
-{
-    _isRefresh = isRefresh;
-    [self insertRowAtTop];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), SCREEN_HEIGHT - 64 - 44 - 55) style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.separatorStyle = NO;
+//    _tableView.bounces = NO;
+    [self.view addSubview:_tableView];
 }
 
 #pragma mark UITableView
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.data.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.dataMutableArray.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 50;
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 265;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-    }
-    cell.textLabel.text = [NSString stringWithFormat:@"%@--%@",self.title,self.data[indexPath.row]];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    HomeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HomeTableViewCell class])];
+    cell.model = self.dataMutableArray[indexPath.row];
     return cell;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ArticleDetailViewController *vc = [ArticleDetailViewController new];
+    HomeNewsModel *model = self.dataMutableArray[indexPath.row];
+    vc.articleId = model.ID;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 #pragma mark UIScrollView
 //判断屏幕触碰状态
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    DebugLog(@"接触屏幕");
+    NSLog(@"接触屏幕");
     self.fingerIsTouch = YES;
 }
 
@@ -142,17 +122,6 @@
     NSInteger g = arc4random() % 255;
     NSInteger b = arc4random() % 255;
     return [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1];
-}
-
-- (NSMutableArray *)data
-{
-    if (!_data) {
-        self.data = [NSMutableArray array];
-        for (int i = 0; i<5; i++) {
-            [self.data addObject:RandomData];
-        }
-    }
-    return _data;
 }
 
 @end
