@@ -21,7 +21,7 @@
         self.cycleScrollView.pageDotImage = [UIImage imageNamed:@"home_banner_nomal_dot_4x4_"];
         self.cycleScrollView.currentPageDotImage = [UIImage imageNamed:@"home_banner_red_dot_13x4_"];
 //        self.cycleScrollView.pageControlDotSize = CGSizeMake(13, 4);
-        CGFloat layerHeight = 40;
+        CGFloat layerHeight = 20;
 //        CGFloat pageScollViewW = self.bounds.size.width;
 //        CGFloat pageScollViewH = self.bounds.size.height;
         

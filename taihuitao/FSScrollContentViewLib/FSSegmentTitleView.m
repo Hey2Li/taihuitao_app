@@ -64,14 +64,14 @@
         for (int idx = 0; idx < self.titlesArr.count; idx++) {
             UIButton *btn = self.itemBtnArr[idx];
             titleFont = btn.isSelected?_titleSelectFont:_titleFont;
-            CGFloat itemBtnWidth = [FSSegmentTitleView getWidthWithString:self.titlesArr[idx] font:titleFont] + self.itemMargin;
+            CGFloat itemBtnWidth = [FSSegmentTitleView getWidthWithString:self.titlesArr[idx][@"name"] font:titleFont] + self.itemMargin;
             totalBtnWidth += itemBtnWidth;
         }
     }
     else
     {
-        for (NSString *title in self.titlesArr) {
-            CGFloat itemBtnWidth = [FSSegmentTitleView getWidthWithString:title font:titleFont] + self.itemMargin;
+        for (NSDictionary *dic in self.titlesArr) {
+            CGFloat itemBtnWidth = [FSSegmentTitleView getWidthWithString:dic[@"name"] font:titleFont] + self.itemMargin;
             totalBtnWidth += itemBtnWidth;
         }
     }
@@ -87,7 +87,7 @@
         for (int idx = 0; idx < self.titlesArr.count; idx++) {
             UIButton *btn = self.itemBtnArr[idx];
             titleFont = btn.isSelected?_titleSelectFont:_titleFont;
-            CGFloat itemBtnWidth = [FSSegmentTitleView getWidthWithString:self.titlesArr[idx] font:titleFont] + self.itemMargin;
+            CGFloat itemBtnWidth = [FSSegmentTitleView getWidthWithString:self.titlesArr[idx][@"name"] font:titleFont] + self.itemMargin;
             CGFloat itemBtnHeight = CGRectGetHeight(self.bounds);
             btn.frame = CGRectMake(currentX, 0, itemBtnWidth, itemBtnHeight);
             currentX += itemBtnWidth;
@@ -102,7 +102,7 @@
     UIFont *titleFont = _titleFont;
     UIButton *selectBtn = self.itemBtnArr[self.selectIndex];
     titleFont = selectBtn.isSelected?_titleSelectFont:_titleFont;
-    CGFloat indicatorWidth = [FSSegmentTitleView getWidthWithString:self.titlesArr[self.selectIndex] font:titleFont];
+    CGFloat indicatorWidth = [FSSegmentTitleView getWidthWithString:self.titlesArr[self.selectIndex][@"name"] font:titleFont];
     [UIView animateWithDuration:(animated?0.05:0) animations:^{
         switch (_indicatorType) {
             case FSIndicatorTypeDefault:
@@ -171,10 +171,10 @@
     _titlesArr = titlesArr;
     [self.itemBtnArr makeObjectsPerformSelector:@selector(removeFromSuperview)];
     self.itemBtnArr = nil;
-    for (NSString *title in titlesArr) {
+    for (NSDictionary *dic in titlesArr) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.tag = self.itemBtnArr.count + 666;
-        [btn setTitle:title forState:UIControlStateNormal];
+        [btn setTitle:dic[@"name"] forState:UIControlStateNormal];
         [btn setTitleColor:_titleNormalColor forState:UIControlStateNormal];
         [btn setTitleColor:_titleSelectColor forState:UIControlStateSelected];
         btn.titleLabel.font = _titleFont;
