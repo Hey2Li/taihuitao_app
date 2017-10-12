@@ -10,4 +10,5 @@
 
 @interface HorizontalTableViewCell : UITableViewCell
 @property (nonatomic, strong) NSArray *modelArray;
+@property (nonatomic, copy) void (^HorCollectionCellClick)(NSIndexPath *);
 @end

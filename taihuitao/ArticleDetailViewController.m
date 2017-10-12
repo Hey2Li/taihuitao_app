@@ -12,6 +12,9 @@
 #import "HorizontalTableViewCell.h"
 #import "ArticleDetailModel.h"
 #import "RecommedCellModel.h"
+#import "WebContentViewController.h"
+
+
 
 @interface ArticleDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) UITableView *myTableView;
@@ -36,7 +39,7 @@
 }
 - (UITableView *)myTableView{
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64) style:UITableViewStylePlain];
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44) style:UITableViewStylePlain];
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
         _myTableView.separatorStyle = NO;
@@ -98,7 +101,6 @@
                 ArticleDetailModel *model = [ArticleDetailModel mj_objectWithKeyValues:dic];
                 [self.goodsMutableArray addObject:model];
             }
-            
             [self.myTableView reloadData];
         }
     }];
@@ -181,9 +183,24 @@
     }else if (indexPath.section == 1){
         BuyGoodsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"buygoodcell"];
         cell.model = self.goodsMutableArray[indexPath.row];
+        ArticleDetailModel *model = self.goodsMutableArray[indexPath.row];
+        cell.buyGoodsBlock = ^(UIButton *btn) {
+            [LTHttpManager getPlatformWithID:model.ID Complete:^(LTHttpResult result, NSString *message, id data) {
+                WebContentViewController *vc = [[WebContentViewController alloc]init];
+                vc.UrlString = data[@"responseData"][0][@"url"];
+                [self.navigationController pushViewController:vc animated:YES];
+            }];
+        };
         return cell;
     }else if (indexPath.section == 2){
         HorizontalTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([HorizontalTableViewCell class])];
+        WeakSelf
+        cell.HorCollectionCellClick = ^(NSIndexPath *indexPath) {
+            RecommedCellModel *model = weakSelf.recommendMutableArrray[indexPath.row];
+            ArticleDetailViewController *vc = [ArticleDetailViewController new];
+            vc.articleId = model.ID;
+            [self.navigationController pushViewController:vc animated:YES];
+        };
         cell.modelArray = self.recommendMutableArrray;
         return cell;
     }else{

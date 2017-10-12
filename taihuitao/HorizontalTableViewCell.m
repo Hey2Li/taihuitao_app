@@ -8,6 +8,7 @@
 
 #import "HorizontalTableViewCell.h"
 #import "RecommendCollectionViewCell.h"
+#import "ArticleDetailViewController.h"
 
 @interface HorizontalTableViewCell ()<UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
@@ -46,7 +47,7 @@
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     RecommendCollectionViewCell *cell  =[collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([RecommendCollectionViewCell class]) forIndexPath:indexPath];
-    cell.model = self.modelArray[indexPath.section];
+    cell.model = self.modelArray[indexPath.row];
     return cell;
 }
 
@@ -55,7 +56,9 @@
     [self.collectionView reloadData];
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    self.HorCollectionCellClick(indexPath);
+    if (self.HorCollectionCellClick) {
+        self.HorCollectionCellClick(indexPath);
+    }
     DebugLog(@"点击了");
 }
 

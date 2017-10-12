@@ -61,7 +61,7 @@
     
     UIButton *hotBtn = [UIButton new];
     [bottomView addSubview:hotBtn];
-    [hotBtn setImage:[UIImage imageNamed:@"红火"] forState:UIControlStateNormal];
+    [hotBtn setImage:[UIImage imageNamed:@"home_article_view_icon_14x11_@2x"] forState:UIControlStateNormal];
     [hotBtn setTitle:@"12111" forState:UIControlStateNormal];
     [hotBtn setTitleColor:UIColorFromRGB(0xaeaeae) forState:UIControlStateNormal];
     hotBtn.titleLabel.font = [UIFont systemFontOfSize:13];
@@ -87,6 +87,7 @@
         make.width.equalTo(@70);
         make.centerY.equalTo(hotBtn.mas_centerY);
     }];
+    praiseBtn.hidden = YES;
     
     UIButton *commendBtn = [UIButton new];
     [commendBtn setImage:[UIImage imageNamed:@"评论灰"] forState:UIControlStateNormal];
@@ -101,7 +102,7 @@
         make.width.equalTo(@70);
         make.centerY.equalTo(hotBtn.mas_centerY);
     }];
-    
+    commendBtn.hidden = YES;
     UIButton *shareBtn = [UIButton new];
     [shareBtn setTitle:@"分享" forState:UIControlStateNormal];
     [shareBtn setImage:[UIImage imageNamed:@"分享灰"] forState:UIControlStateNormal];

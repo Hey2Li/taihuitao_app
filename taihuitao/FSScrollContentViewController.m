@@ -34,7 +34,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.view.backgroundColor = [FSScrollContentViewController randomColor];
     [self setupSubViews];
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:NSStringFromClass([HomeTableViewCell class])];
     _pageNum = 1;
@@ -59,23 +58,25 @@
             }
         }];
     }];
-    [self.tableView.mj_header beginRefreshing];
 }
 - (void)headerLoadData{
-    [LTHttpManager newsListWithLimit:@10 Cid:@0 Type:@1 Title:self.str?self.str:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
-        if (result == LTHttpResultSuccess) {
-            NSArray *dataArray = data[@"responseData"][@"news"][@"data"];
-            [self.dataMutableArray removeAllObjects];
-            for (NSDictionary *dic in dataArray) {
-                HomeNewsModel *model = [HomeNewsModel mj_objectWithKeyValues:dic];
-                [self.dataMutableArray addObject:model];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [LTHttpManager newsListWithLimit:@10 Cid:self.cid?self.cid:@0 Type:@1 Title:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
+            if (result == LTHttpResultSuccess) {
+                NSArray *dataArray = data[@"responseData"][@"news"][@"data"];
+                [self.dataMutableArray removeAllObjects];
+                for (NSDictionary *dic in dataArray) {
+                    HomeNewsModel *model = [HomeNewsModel mj_objectWithKeyValues:dic];
+                    [self.dataMutableArray addObject:model];
+                }
+                [self.tableView reloadData];
+                [self.tableView.mj_header endRefreshing];
+            }else{
+                [self.tableView.mj_header endRefreshing];
             }
-            [self.tableView reloadData];
-            [self.tableView.mj_header endRefreshing];
-        }else{
-            [self.tableView.mj_header endRefreshing];
-        }
+        }];
     }];
+    [self.tableView.mj_header beginRefreshing];
 }
 - (void)setupSubViews
 {
@@ -139,15 +140,6 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"leaveTop" object:nil];//到顶通知父视图改变状态
     }
     self.tableView.showsVerticalScrollIndicator = _vcCanScroll?YES:NO;
-}
-
-#pragma mark LazyLoad
-
-+ (UIColor*) randomColor{
-    NSInteger r = arc4random() % 255;
-    NSInteger g = arc4random() % 255;
-    NSInteger b = arc4random() % 255;
-    return [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:1];
 }
 
 @end

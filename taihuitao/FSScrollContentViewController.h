@@ -12,5 +12,5 @@
 @property (nonatomic, assign) BOOL vcCanScroll;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) BOOL isRefresh;
-@property (nonatomic, strong) NSString *str;
+@property (nonatomic, strong) NSNumber *cid;
 @end
