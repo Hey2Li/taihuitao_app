@@ -23,10 +23,14 @@
 
 @property (nonatomic, strong) NSArray *titleArray;
 @property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) NSMutableArray *liveDataSource;
 @property (nonatomic, strong) ZFPlayerView        *playerView;
 @property (nonatomic, strong) ZFPlayerControlView *controlView;
 @property (nonatomic, assign) int pageNum;
+@property (nonatomic, assign) int livePageNum;
 @property (nonatomic, assign) int indexPath;
+@property (nonatomic, assign) int liveIndexPath;
+
 @end
 static NSString *videoCell = @"playerCell";
 
@@ -63,19 +67,21 @@ static NSString *videoCell = @"playerCell";
         _videoTableView.dataSource = self;
         [_videoTableView registerClass:[VideoTableViewCell class] forCellReuseIdentifier:videoCell];
         _videoTableView.separatorStyle = NO;
+        _videoTableView.hidden = NO;
     }
     return _videoTableView;
 }
-//- (UITableView *)liveTableView{
-//    if (!_liveTableView) {
-//        _liveTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44) style:UITableViewStylePlain];
-//        _liveTableView.delegate = self;
-//        _liveTableView.dataSource = self;
-//        [_liveTableView registerClass:[VideoTableViewCell class] forCellReuseIdentifier:videoCell];
-//        _liveTableView.separatorStyle = NO;
-//    }
-//    return _liveTableView;
-//}
+- (UITableView *)liveTableView{
+    if (!_liveTableView) {
+        _liveTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44) style:UITableViewStylePlain];
+        _liveTableView.delegate = self;
+        _liveTableView.dataSource = self;
+        [_liveTableView registerClass:[VideoTableViewCell class] forCellReuseIdentifier:videoCell];
+        _liveTableView.separatorStyle = NO;
+        _liveTableView.hidden = YES;
+    }
+    return _liveTableView;
+}
 - (UISegmentedControl *)segControl{
     if (!_segControl) {
         _segControl = [[UISegmentedControl alloc]initWithItems:@[@"视频",@"直播"]];
@@ -85,6 +91,17 @@ static NSString *videoCell = @"playerCell";
         [_segControl addTarget:self action:@selector(segControlClick:) forControlEvents:UIControlEventValueChanged];
     }
     return _segControl;
+}
+- (void)segControlClick:(UISegmentedControl *)control{
+    if (control.selectedSegmentIndex == 0) {
+        self.liveTableView.hidden = YES;
+        self.videoTableView.hidden = NO;
+        [self.videoTableView reloadData];
+    }else{
+        self.liveTableView.hidden = NO;
+        self.videoTableView.hidden = YES;
+        [self.liveTableView reloadData];
+    }
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
@@ -100,6 +117,7 @@ static NSString *videoCell = @"playerCell";
     [self footerLoadData];
     [self headerLoadData];
     _pageNum = 1;
+    _livePageNum = 1;
 }
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -112,10 +130,10 @@ static NSString *videoCell = @"playerCell";
 }
 //下拉刷新
 - (void)headerLoadData{
-    self.videoTableView.mj_header = [BURefreshGifHeader headerWithRefreshingBlock:^{
+    self.videoTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         WeakSelf
         if (/* DISABLES CODE */ (1)) {
-            [LTHttpManager newsListWithLimit:@10 Cid:@0 Type:@1 Title:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
+            [LTHttpManager newsListWithLimit:@10 Cid:@0 Type:@2 Title:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
                 if (LTHttpResultSuccess == result) {
                     self.dataSource = @[].mutableCopy;
                     NSArray *videoList = [data[@"responseData"][@"news"] objectForKey:@"data"];
@@ -132,7 +150,7 @@ static NSString *videoCell = @"playerCell";
                 }
             }];
         }else{
-            [LTHttpManager newsListWithLimit:@10 Cid:@0 Type:@1 Title:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
+            [LTHttpManager newsListWithLimit:@10 Cid:@0 Type:@2 Title:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
                 if (LTHttpResultSuccess == result) {
                     self.dataSource = @[].mutableCopy;
                     NSArray *videoList = [data[@"responseData"][@"news"] objectForKey:@"data"];
@@ -151,13 +169,31 @@ static NSString *videoCell = @"playerCell";
         }
     }];
     [self.videoTableView.mj_header beginRefreshing];
+    self.liveTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        WeakSelf
+        [LTHttpManager newsListWithLimit:@10 Cid:@0 Type:@5 Title:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
+            if (LTHttpResultSuccess == result) {
+                self.liveDataSource = @[].mutableCopy;
+                NSArray *videoList = [data[@"responseData"][@"news"] objectForKey:@"data"];
+                for (NSDictionary *dataDic in videoList) {
+                    VideoModel *model = [VideoModel mj_objectWithKeyValues:dataDic];
+                    [weakSelf.liveDataSource addObject:model];
+                }
+                [weakSelf.liveTableView reloadData];
+                [weakSelf.liveTableView.mj_header endRefreshing];
+            }else{
+                [weakSelf.liveTableView.mj_header endRefreshing];
+            }
+        }];
+    }];
+    [self.liveTableView.mj_header beginRefreshing];
 }
 - (void)footerLoadData{
     self.videoTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         WeakSelf
         _pageNum++;
         if (/* DISABLES CODE */ (1)) {
-            [LTHttpManager TgetMoreNewsCommentWithID:@10 Page:@(_pageNum) Complete:^(LTHttpResult result, NSString *message, id data) {
+              [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_pageNum) Cid:@0 Type:@2 Complete:^(LTHttpResult result, NSString *message, id data){
                 if (LTHttpResultSuccess == result) {
                     NSArray *videoList = [data[@"responseData"] objectForKey:@"data"];
                     for (NSDictionary *dataDic in videoList) {
@@ -172,7 +208,7 @@ static NSString *videoCell = @"playerCell";
                 }
             }];
         }else{
-            [LTHttpManager TgetMoreNewsCommentWithID:@10 Page:@(_pageNum) Complete:^(LTHttpResult result, NSString *message, id data) {
+            [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_pageNum) Cid:@0 Type:@2 Complete:^(LTHttpResult result, NSString *message, id data){
                 if (LTHttpResultSuccess == result) {
                     NSArray *videoList = [data[@"responseData"]objectForKey:@"data"];
                     for (NSDictionary *dataDic in videoList) {
@@ -188,11 +224,26 @@ static NSString *videoCell = @"playerCell";
             }];
         }
     }];
+    self.liveTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        WeakSelf
+        _livePageNum++;
+        [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_livePageNum) Cid:@0 Type:@5 Complete:^(LTHttpResult result, NSString *message, id data) {
+            if (LTHttpResultSuccess == result) {
+                NSArray *videoList = [data[@"responseData"] objectForKey:@"data"];
+                for (NSDictionary *dataDic in videoList) {
+                    VideoModel *model = [VideoModel mj_objectWithKeyValues:dataDic];
+                    [weakSelf.liveDataSource addObject:model];
+                }
+                [self.liveTableView reloadData];
+                [self.liveTableView.mj_footer endRefreshing];
+            }else{
+                [self.liveTableView.mj_footer endRefreshing];
+                _livePageNum--;
+            }
+        }];
+    }];
 }
 
-- (void)segControlClick:(UISegmentedControl *)seg{
-    
-}
 //- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 //    CGFloat sectionHeaderHeight = 40;
 //    if (scrollView.contentOffset.y<=sectionHeaderHeight&&scrollView.contentOffset.y>=0) {
@@ -203,7 +254,11 @@ static NSString *videoCell = @"playerCell";
 //}
 #pragma mark tableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.dataSource.count;
+    if (tableView == self.videoTableView) {
+        return self.dataSource.count;
+    }else{
+        return self.liveDataSource.count;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -219,7 +274,12 @@ static NSString *videoCell = @"playerCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     //取到对应cell的model
     VideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:videoCell forIndexPath:indexPath];
-    __block VideoModel *model = self.dataSource[indexPath.section];
+    __block VideoModel *model;
+    if (tableView == self.liveTableView) {
+        model = self.liveDataSource[indexPath.section];
+    }else if (tableView == self.videoTableView){
+        model = self.dataSource[indexPath.section];
+    }
     //赋值model
     cell.model = model;
     __block NSIndexPath *weakIndexPath = indexPath;
@@ -248,8 +308,18 @@ static NSString *videoCell = @"playerCell";
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (tableView == self.videoTableView) {
+        VideoModel *model = self.dataSource[indexPath.section];
+        ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
+        vc.articleId = model.ID;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        VideoModel *model = self.liveDataSource[indexPath.section];
+        ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
+        vc.articleId = model.ID;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+ 
 }
 #pragma mark VideoShare 
 //视频分享

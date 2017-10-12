@@ -49,12 +49,14 @@
     cell.model = self.modelArray[indexPath.section];
     return cell;
 }
+
 - (void)setModelArray:(NSArray *)modelArray{
     _modelArray = modelArray;
     [self.collectionView reloadData];
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 //    self.HorCollectionCellClick(indexPath);
+    DebugLog(@"点击了");
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

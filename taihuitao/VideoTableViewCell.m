@@ -27,9 +27,9 @@
     picView.image = [UIImage imageNamed:@"未加载好图片长"];
     [self.contentView addSubview:picView];
     [picView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.mas_left);
-        make.right.equalTo(self.contentView.mas_right);
-        make.top.equalTo(self.contentView.mas_top);
+        make.left.equalTo(self.contentView.mas_left).offset(15);
+        make.right.equalTo(self.contentView.mas_right).offset(-15);
+        make.top.equalTo(self.contentView.mas_top).offset(15);
         make.bottom.equalTo(self.contentView.mas_bottom).offset(-70);
     }];
     self.picView = picView;
@@ -49,7 +49,7 @@
     
     UILabel *videoTitleLabel = [UILabel new];
     [bottomView addSubview:videoTitleLabel];
-    videoTitleLabel.font = [UIFont systemFontOfSize:18];
+    videoTitleLabel.font = [UIFont systemFontOfSize:14];
     videoTitleLabel.textColor = UIColorFromRGB(0x6b6b6b);
     videoTitleLabel.text = @"工作这么辛苦，老板有奖金发吗，我已经做了这么多的";
     [videoTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {

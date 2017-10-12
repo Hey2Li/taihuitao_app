@@ -151,7 +151,7 @@
  
  @param limit 查询数量
  @param cid 文章类别
- @param type 数据类型
+ @param type 数据类型1文章2视频5直播
  @param title 关键字
  @param complete block
  */

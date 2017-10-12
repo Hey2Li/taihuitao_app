@@ -58,6 +58,7 @@ static NSString *collectionCellIdentifier = @"collectionCellIdentifier";
         collectionView.bounces = NO;
         collectionView.delegate = self;
         collectionView.dataSource = self;
+        collectionView.backgroundColor = [UIColor whiteColor];
         [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:collectionCellIdentifier];
         [self addSubview:collectionView];
         self.collectionView = collectionView;
@@ -89,6 +90,7 @@ static NSString *collectionCellIdentifier = @"collectionCellIdentifier";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collectionCellIdentifier forIndexPath:indexPath];
+    cell.backgroundColor = [UIColor whiteColor];
     if (IOS_VERSION < 8.0) {
         [cell.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
         UIViewController *childVC = self.childsVCs[indexPath.item];

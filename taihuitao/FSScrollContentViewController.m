@@ -14,6 +14,7 @@
 @interface FSScrollContentViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, assign) BOOL fingerIsTouch;
 @property (nonatomic ,strong) NSMutableArray *dataMutableArray;
+@property (nonatomic, assign) int pageNum;
 @end
 
 @implementation FSScrollContentViewController
@@ -36,10 +37,32 @@
     self.view.backgroundColor = [FSScrollContentViewController randomColor];
     [self setupSubViews];
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:NSStringFromClass([HomeTableViewCell class])];
-    [self loadData];
+    _pageNum = 1;
+    [self footerLoadData];
+    [self headerLoadData];
 }
-- (void)loadData{
-    [LTHttpManager newsListWithLimit:@10 Cid:nil Type:@1 Title:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
+- (void)footerLoadData{
+    _pageNum++;
+    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+        [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_pageNum) Cid:@0 Type:@1 Complete:^(LTHttpResult result, NSString *message, id data) {
+            if (result == LTHttpResultSuccess) {
+                NSArray *dataArray = data[@"responseData"][@"data"];
+                for (NSDictionary *dic in dataArray) {
+                    HomeNewsModel *model = [HomeNewsModel mj_objectWithKeyValues:dic];
+                    [self.dataMutableArray addObject:model];
+                }
+                [self.tableView reloadData];
+                [self.tableView.mj_footer endRefreshing];
+            }else{
+                _pageNum--;
+                [self.tableView.mj_footer endRefreshing];
+            }
+        }];
+    }];
+    [self.tableView.mj_header beginRefreshing];
+}
+- (void)headerLoadData{
+    [LTHttpManager newsListWithLimit:@10 Cid:@0 Type:@1 Title:self.str?self.str:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
         if (result == LTHttpResultSuccess) {
             NSArray *dataArray = data[@"responseData"][@"news"][@"data"];
             [self.dataMutableArray removeAllObjects];
@@ -48,6 +71,9 @@
                 [self.dataMutableArray addObject:model];
             }
             [self.tableView reloadData];
+            [self.tableView.mj_header endRefreshing];
+        }else{
+            [self.tableView.mj_header endRefreshing];
         }
     }];
 }
