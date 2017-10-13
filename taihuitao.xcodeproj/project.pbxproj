@@ -33,6 +33,8 @@
 		1C42FF6E1F8E176C00F7658C /* DataInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C42FF681F8E15EC00F7658C /* DataInfo.m */; };
 		1C49EECF1F8EF8A800499740 /* newDetail.css in Resources */ = {isa = PBXBuildFile; fileRef = 1C42FF6B1F8E15EC00F7658C /* newDetail.css */; };
 		1C49EED01F8EF8A800499740 /* newDetail.js in Resources */ = {isa = PBXBuildFile; fileRef = 1C42FF6C1F8E15EC00F7658C /* newDetail.js */; };
+		1C49EED31F9057AD00499740 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C49EED21F9057AD00499740 /* SearchTableViewController.m */; };
+		1C49EEDC1F908A0F00499740 /* SGQRCodeScanningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C49EEDA1F908A0F00499740 /* SGQRCodeScanningVC.m */; };
 		1C7626321F54F77C00DFA5B8 /* CACollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */; };
 		1C7626361F57A6A000DFA5B8 /* HorizontalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626351F57A6A000DFA5B8 /* HorizontalTableViewCell.m */; };
 		1C76263C1F5D00E500DFA5B8 /* BrandDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C76263B1F5D00E500DFA5B8 /* BrandDetailViewController.m */; };
@@ -197,6 +199,10 @@
 		1C42FF6A1F8E15EC00F7658C /* ImageInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageInfo.m; sourceTree = "<group>"; };
 		1C42FF6B1F8E15EC00F7658C /* newDetail.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = newDetail.css; sourceTree = "<group>"; };
 		1C42FF6C1F8E15EC00F7658C /* newDetail.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = newDetail.js; sourceTree = "<group>"; };
+		1C49EED11F9057AD00499740 /* SearchTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchTableViewController.h; sourceTree = "<group>"; };
+		1C49EED21F9057AD00499740 /* SearchTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
+		1C49EED81F908A0F00499740 /* SGQRCodeScanningVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeScanningVC.h; sourceTree = "<group>"; };
+		1C49EEDA1F908A0F00499740 /* SGQRCodeScanningVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeScanningVC.m; sourceTree = "<group>"; };
 		1C76262F1F54F77C00DFA5B8 /* CACollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACollectionReusableView.h; sourceTree = "<group>"; };
 		1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACollectionReusableView.m; sourceTree = "<group>"; };
 		1C7626341F57A6A000DFA5B8 /* HorizontalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalTableViewCell.h; sourceTree = "<group>"; };
@@ -985,6 +991,10 @@
 				1CF656A41F45849200DBD64D /* HomeViewController.m */,
 				1CFBF97F1F4E717A00BEFF7F /* ArticleDetailViewController.h */,
 				1CFBF9801F4E717A00BEFF7F /* ArticleDetailViewController.m */,
+				1C49EED11F9057AD00499740 /* SearchTableViewController.h */,
+				1C49EED21F9057AD00499740 /* SearchTableViewController.m */,
+				1C49EED81F908A0F00499740 /* SGQRCodeScanningVC.h */,
+				1C49EEDA1F908A0F00499740 /* SGQRCodeScanningVC.m */,
 				1C3FEB3A1F8B530400D9BC4C /* NewHome */,
 			);
 			name = ViewController;
@@ -1245,6 +1255,7 @@
 				1C3FEB971F8C5E2400D9BC4C /* FSPageContentView.h in Sources */,
 				1C42FF651F8E158900F7658C /* CDetailViewController.m in Sources */,
 				1C3FEB981F8C5E2400D9BC4C /* FSPageContentView.m in Sources */,
+				1C49EEDC1F908A0F00499740 /* SGQRCodeScanningVC.m in Sources */,
 				1C3FEB991F8C5E2400D9BC4C /* FSScrollContentView.h in Sources */,
 				1C3FEB9A1F8C5E2400D9BC4C /* FSSegmentTitleView.h in Sources */,
 				1C3FEB9B1F8C5E2400D9BC4C /* FSSegmentTitleView.m in Sources */,
@@ -1264,6 +1275,7 @@
 				1CFBF9681F4D848B00BEFF7F /* UINavigationController+ZFPlayerRotation.m in Sources */,
 				1CFBF97E1F4D85A400BEFF7F /* ZFPVideoResolution.m in Sources */,
 				1C3FEB811F8C5CDC00D9BC4C /* FSBaseTableView.m in Sources */,
+				1C49EED31F9057AD00499740 /* SearchTableViewController.m in Sources */,
 				1CF6568F1F456D3D00DBD64D /* BaseNaviViewController.m in Sources */,
 				1CFBF91E1F4D838600BEFF7F /* LoginViewController.m in Sources */,
 				1CFBF9691F4D848B00BEFF7F /* UITabBarController+ZFPlayerRotation.m in Sources */,

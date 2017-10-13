@@ -279,14 +279,13 @@
         make.width.equalTo(@30);
         make.top.equalTo(self.view).offset(30);
     }];
+    backBtn.hidden = YES;
 
-    
     self.userNameTF = userNameTF;
     self.passwordTF = passwordTF;
     self.userNameTF.delegate = self;
     self.passwordTF.delegate = self;
     self.headerImageView = headerView;
-    
 }
 - (void)back:(UIButton *)btn{
     [self dismissViewControllerAnimated:YES completion:nil];

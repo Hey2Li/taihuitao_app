@@ -26,6 +26,7 @@
 #import "UIImage+JQImage.h"
 #import "LTHttpManager.h"
 #import "ZFPlayer.h"
+#import "SGQRCode.h"
 
 #define DebugLog(s, ...) NSLog(@"%s(%d): %@", __FUNCTION__, __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
 

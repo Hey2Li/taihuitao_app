@@ -194,7 +194,7 @@ static NSString *videoCell = @"playerCell";
         WeakSelf
         _pageNum++;
         if (/* DISABLES CODE */ (1)) {
-              [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_pageNum) Cid:@0 Type:@2 Complete:^(LTHttpResult result, NSString *message, id data){
+              [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_pageNum) Cid:@0 Title:@"" Type:@2 Complete:^(LTHttpResult result, NSString *message, id data){
                 if (LTHttpResultSuccess == result) {
                     NSArray *videoList = [data[@"responseData"] objectForKey:@"data"];
                     for (NSDictionary *dataDic in videoList) {
@@ -209,7 +209,7 @@ static NSString *videoCell = @"playerCell";
                 }
             }];
         }else{
-            [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_pageNum) Cid:@0 Type:@2 Complete:^(LTHttpResult result, NSString *message, id data){
+           [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_pageNum) Cid:@0 Title:@"" Type:@2 Complete:^(LTHttpResult result, NSString *message, id data){
                 if (LTHttpResultSuccess == result) {
                     NSArray *videoList = [data[@"responseData"]objectForKey:@"data"];
                     for (NSDictionary *dataDic in videoList) {
@@ -228,7 +228,7 @@ static NSString *videoCell = @"playerCell";
     self.liveTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         WeakSelf
         _livePageNum++;
-        [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_livePageNum) Cid:@0 Type:@5 Complete:^(LTHttpResult result, NSString *message, id data) {
+        [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_pageNum) Cid:@0 Title:@"" Type:@5 Complete:^(LTHttpResult result, NSString *message, id data) {
             if (LTHttpResultSuccess == result) {
                 NSArray *videoList = [data[@"responseData"] objectForKey:@"data"];
                 for (NSDictionary *dataDic in videoList) {
@@ -318,11 +318,13 @@ static NSString *videoCell = @"playerCell";
         VideoModel *model = self.dataSource[indexPath.section];
         ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
         vc.articleId = model.ID;
+        vc.isVideo = @"yes";
         [self.navigationController pushViewController:vc animated:YES];
     }else{
         VideoModel *model = self.liveDataSource[indexPath.section];
         ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
         vc.articleId = model.ID;
+        vc.isVideo = @"yes";
         [self.navigationController pushViewController:vc animated:YES];
     }
  

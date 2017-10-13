@@ -16,11 +16,16 @@
 
 
 
-@interface ArticleDetailViewController ()<UITableViewDataSource, UITableViewDelegate>
+@interface ArticleDetailViewController ()<UITableViewDataSource, UITableViewDelegate, ZFPlayerDelegate>
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) NSMutableArray *goodsMutableArray;
 @property (nonatomic, strong) NSDictionary *infoDataDic;
 @property (nonatomic, strong) NSMutableArray *recommendMutableArrray;
+
+@property (nonatomic, strong) UIView *playerFatherView;
+@property (nonatomic, strong) ZFPlayerView *playerView;
+@property (nonatomic, assign) BOOL isPlaying;
+@property (nonatomic, strong) ZFPlayerModel *playerModel;
 @end
 
 @implementation ArticleDetailViewController
@@ -39,7 +44,7 @@
 }
 - (UITableView *)myTableView{
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44) style:UITableViewStylePlain];
+        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64) style:UITableViewStylePlain];
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
         _myTableView.separatorStyle = NO;
@@ -49,6 +54,45 @@
         _myTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _myTableView;
+}
+- (ZFPlayerModel *)playerModel {
+    if (!_playerModel) {
+        _playerModel                  = [[ZFPlayerModel alloc] init];
+        //        _playerModel.title            = @"这里设置视频标题";
+        //        _playerModel.videoURL         = self.videoURL;
+        _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
+        _playerModel.fatherView       = self.playerFatherView;
+    }
+    return _playerModel;
+}
+
+- (ZFPlayerView *)playerView {
+    if (!_playerView) {
+        _playerView = [[ZFPlayerView alloc] init];
+        
+        /*****************************************************************************************
+         *   // 指定控制层(可自定义)
+         *   // ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
+         *   // 设置控制层和播放模型
+         *   // 控制层传nil，默认使用ZFPlayerControlView(如自定义可传自定义的控制层)
+         *   // 等效于 [_playerView playerModel:self.playerModel];
+         ******************************************************************************************/
+        [_playerView playerControlView:nil playerModel:self.playerModel];
+        
+        // 设置代理
+        _playerView.delegate = self;
+        
+        //（可选设置）可以设置视频的填充模式，内部设置默认（ZFPlayerLayerGravityResizeAspect：等比例填充，直到一个维度到达区域边界）
+        // _playerView.playerLayerGravity = ZFPlayerLayerGravityResize;
+        
+        // 打开下载功能（默认没有这个功能）
+        //        _playerView.hasDownload    = YES;
+        
+        // 打开预览图
+        _playerView.hasPreviewView = YES;
+        
+    }
+    return _playerView;
 }
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -63,12 +107,47 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    if (self.isVideo.length > 2) {
+        if (self.navigationController.viewControllers.count == 2 && self.playerView && self.isPlaying) {
+            self.isPlaying = NO;
+            self.playerView.playerPushedOrPresented = NO;
+        }
+    }
+}
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    if (self.isVideo.length > 2) {
+        // push出下一级页面时候暂停
+        if (self.navigationController.viewControllers.count == 3 && self.playerView && !self.playerView.isPauseByUser)
+        {
+            self.isPlaying = YES;
+            //        [self.playerView pause];
+            self.playerView.playerPushedOrPresented = YES;
+        }else{
+            [self.playerView resetPlayer];
+        }
+    } 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.title = @"详情";
 //    [self loadData];
+}
+- (void)setIsVideo:(NSString *)isVideo{
+    _isVideo = isVideo;
+    self.playerFatherView = [[UIView alloc] init];
+    [self.myTableView addSubview:self.playerFatherView];
+    [self.playerFatherView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.myTableView.mas_top);
+        make.leading.trailing.mas_equalTo(0);
+        make.width.equalTo(@(SCREEN_WIDTH));
+        make.height.mas_equalTo(self.playerFatherView.mas_width).multipliedBy(9.0f/16.0f);
+    }];
+    [self.playerView autoPlayTheVideo];
+}
+- (void)zf_playerBackAction {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)setArticleId:(NSNumber *)articleId{
     _articleId = articleId;
@@ -87,21 +166,13 @@
                 RecommedCellModel *model = [RecommedCellModel mj_objectWithKeyValues:dic];
                 [self.recommendMutableArrray addObject:model];
             }
-            [self.myTableView reloadData];
-        }
-    }];
-}
-- (void)loadData{
-    [LTHttpManager TnewsDetailWithId:self.articleId Value:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
-        if (result == LTHttpResultSuccess) {
-            self.infoDataDic = data[@"responseData"][@"info"];
-            NSArray *dataArray = data[@"responseData"][@"commodity"];
-            [self.goodsMutableArray removeAllObjects];
-            for (NSDictionary *dic in dataArray) {
-                ArticleDetailModel *model = [ArticleDetailModel mj_objectWithKeyValues:dic];
-                [self.goodsMutableArray addObject:model];
+            if (self.isVideo.length > 2) {
+                self.playerModel.videoURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",self.infoDataDic[@"url"]]];
+                [self.playerView resetToPlayNewVideo:self.playerModel];
             }
             [self.myTableView reloadData];
+        }else{
+            [self.playerView resetPlayer];
         }
     }];
 }

@@ -15,4 +15,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *goodsDetailLabel;
 @property (weak, nonatomic) IBOutlet UIButton *buyGoodsBtn;
 @property (nonatomic, strong) ArticleDetailModel *model;
+@property (nonatomic, copy) void (^buyGoodsBlock)(UIButton *);
 @end

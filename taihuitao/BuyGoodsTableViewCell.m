@@ -21,6 +21,11 @@
 
     // Configure the view for the selected state
 }
+- (IBAction)buyGoodsClick:(id)sender {
+    if (self.buyGoodsBlock) {
+        self.buyGoodsBlock(sender);
+    }
+}
 -(void)setModel:(ArticleDetailModel *)model{
     _model = model;
     [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:model.photo] placeholderImage:[UIImage new]];

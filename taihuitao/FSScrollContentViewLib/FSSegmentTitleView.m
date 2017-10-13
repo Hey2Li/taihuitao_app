@@ -106,7 +106,9 @@
     [UIView animateWithDuration:(animated?0.05:0) animations:^{
         switch (_indicatorType) {
             case FSIndicatorTypeDefault:
-                self.indicatorView.frame = CGRectMake(selectBtn.frame.origin.x , CGRectGetHeight(self.scrollView.bounds) - 2, CGRectGetWidth(selectBtn.bounds), 2);
+//                self.indicatorView.frame = CGRectMake(selectBtn.frame.origin.x , CGRectGetHeight(self.scrollView.bounds) - 2, CGRectGetWidth(selectBtn.bounds), 2);
+                self.indicatorView.center = CGPointMake(selectBtn.center.x, CGRectGetHeight(self.scrollView.bounds) - 1);
+                self.indicatorView.bounds = CGRectMake(0, 0, 20, 2);
                 break;
             case FSIndicatorTypeEqualTitle:
                 self.indicatorView.center = CGPointMake(selectBtn.center.x, CGRectGetHeight(self.scrollView.bounds) - 1);
@@ -114,7 +116,8 @@
                 break;
             case FSIndicatorTypeCustom:
                 self.indicatorView.center = CGPointMake(selectBtn.center.x, CGRectGetHeight(self.scrollView.bounds) - 1);
-                self.indicatorView.bounds = CGRectMake(0, 0, indicatorWidth + _indicatorExtension*2, 2);
+                self.indicatorView.bounds = CGRectMake(0, 0, 20, 2);
+                //indicatorWidth + _indicatorExtension*2
                 break;
             case FSIndicatorTypeNone:
                 self.indicatorView.frame = CGRectZero;

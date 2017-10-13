@@ -44,6 +44,9 @@
                         <state key="normal" title="购买">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
+                        <connections>
+                            <action selector="buyGoodsClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Kae-r6-Fde"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="le6-Ru-9d8">
                         <rect key="frame" x="123" y="36" width="241" height="56.5"/>

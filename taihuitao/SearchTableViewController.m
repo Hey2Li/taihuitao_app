@@ -1,49 +1,45 @@
 //
-//  FSScrollContentViewController.m
-//  FSScrollViewNestTableViewDemo
+//  SearchTableViewController.m
+//  taihuitao
 //
-//  Created by huim on 2017/5/23.
-//  Copyright © 2017年 fengshun. All rights reserved.
+//  Created by Tebuy on 2017/10/13.
+//  Copyright © 2017年 Tebuy. All rights reserved.
 //
 
-#import "FSScrollContentViewController.h"
+#import "SearchTableViewController.h"
 #import "HomeTableViewCell.h"
 #import "HomeNewsModel.h"
 #import "ArticleDetailViewController.h"
 
-@interface FSScrollContentViewController ()<UITableViewDelegate,UITableViewDataSource>
-@property (nonatomic, assign) BOOL fingerIsTouch;
+@interface SearchTableViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic ,strong) NSMutableArray *dataMutableArray;
 @property (nonatomic, assign) int pageNum;
 @end
 
-@implementation FSScrollContentViewController
+@implementation SearchTableViewController
 - (NSMutableArray *)dataMutableArray{
     if (!_dataMutableArray) {
         _dataMutableArray = [NSMutableArray array];
     }
     return _dataMutableArray;
 }
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    NSLog(@"---%@",self.title);
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    [self setupSubViews];
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     [self.tableView registerNib:[UINib nibWithNibName:@"HomeTableViewCell" bundle:nil] forCellReuseIdentifier:NSStringFromClass([HomeTableViewCell class])];
-    _pageNum = 1;
+    self.tableView.separatorStyle = NO;
     [self footerLoadData];
-    [self headerLoadData];
+    _pageNum = 1;
 }
 - (void)footerLoadData{
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         _pageNum++;
-        [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_pageNum) Cid:self.cid?self.cid:@0 Title:@"" Type:@1 Complete:^(LTHttpResult result, NSString *message, id data) {
+        [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_pageNum) Cid:@0 Title:self.subTitle Type:@1 Complete:^(LTHttpResult result, NSString *message, id data) {
             if (result == LTHttpResultSuccess) {
                 NSArray *dataArray = data[@"responseData"][@"data"];
                 for (NSDictionary *dic in dataArray) {
@@ -59,9 +55,11 @@
         }];
     }];
 }
-- (void)headerLoadData{
+
+- (void)setSubTitle:(NSString *)subTitle{
+    _subTitle = subTitle;
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [LTHttpManager newsListWithLimit:@10 Cid:self.cid?self.cid:@0 Type:@1 Title:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
+        [LTHttpManager newsListWithLimit:@10 Cid:@0 Type:@1 Title:subTitle Complete:^(LTHttpResult result, NSString *message, id data) {
             if (result == LTHttpResultSuccess) {
                 NSArray *dataArray = data[@"responseData"][@"news"][@"data"];
                 [self.dataMutableArray removeAllObjects];
@@ -78,17 +76,13 @@
     }];
     [self.tableView.mj_header beginRefreshing];
 }
-- (void)setupSubViews
-{
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), SCREEN_HEIGHT - 64 - 44 - 55) style:UITableViewStylePlain];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
-    _tableView.separatorStyle = NO;
-//    _tableView.bounces = NO;
-    [self.view addSubview:_tableView];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
-#pragma mark UITableView
+#pragma mark - Table view data source
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
@@ -112,34 +106,49 @@
     vc.articleId = model.ID;
     [self.navigationController pushViewController:vc animated:YES];
 }
-#pragma mark UIScrollView
-//判断屏幕触碰状态
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    NSLog(@"接触屏幕");
-    self.fingerIsTouch = YES;
-}
 
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
-{
-    DebugLog(@"离开屏幕");
-    self.fingerIsTouch = NO;
+/*
+// Override to support conditional editing of the table view.
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
 }
+*/
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    if (!self.vcCanScroll) {
-        scrollView.contentOffset = CGPointZero;
-    }
-    if (scrollView.contentOffset.y <= 0) {
-//        if (!self.fingerIsTouch) {//这里的作用是在手指离开屏幕后也不让显示主视图，具体可以自己看看效果
-//            return;
-//        }
-        self.vcCanScroll = NO;
-        scrollView.contentOffset = CGPointZero;
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"leaveTop" object:nil];//到顶通知父视图改变状态
-    }
-    self.tableView.showsVerticalScrollIndicator = _vcCanScroll?YES:NO;
+/*
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+    }   
 }
+*/
+
+/*
+// Override to support rearranging the table view.
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+}
+*/
+
+/*
+// Override to support conditional rearranging of the table view.
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the item to be re-orderable.
+    return YES;
+}
+*/
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end

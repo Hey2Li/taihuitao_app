@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface FSBaseTopTableViewCell : UITableViewCell
-
+@property (nonatomic, strong) NSArray *imageArray;
+@property (nonatomic, copy) void (^cycleScrollClick)(NSInteger);
 @end

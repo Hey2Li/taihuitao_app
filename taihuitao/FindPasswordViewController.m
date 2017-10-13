@@ -49,6 +49,8 @@
     [self.findBtn addTarget:self action:@selector(findBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     self.phoneTF.delegate = self;
     self.codeTF.delegate = self;
+    self.phoneTF.keyboardType = UIKeyboardTypePhonePad;
+    self.codeTF.keyboardType = UIKeyboardTypePhonePad;
     self.inputPasswordTF.delegate = self;
     self.inputPasswordAgainTF.delegate = self;
     self.inputPasswordAgainTF.secureTextEntry = YES;
@@ -86,12 +88,12 @@
 //        if ([self.codeTF.text isEqualToString:@"1111"]) {
             if (self.inputPasswordTF.text.length > 7 && self.inputPasswordAgainTF.text.length > 7) {
                 if ([self.inputPasswordTF.text isEqualToString:self.inputPasswordAgainTF.text]) {
-                    [LTHttpManager submitNewPasswordWithMobile:self.phoneTF.text Code:self.codeTF.text Password:self.inputPasswordTF.text Complete:^(LTHttpResult result, NSString *message, id data) {
+                    [LTHttpManager submitNewPasswordWithNumber:self.phoneTF.text Type:@1 Password:self.inputPasswordTF.text Code:self.codeTF.text Complete:^(LTHttpResult result, NSString *message, id data) {
                         if (result == LTHttpResultSuccess) {
                             UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:nil message:@"找回密码成功，请登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
                             [alertView show];
                         }else{
-                           // [self.view makeToast:message];
+                            // [self.view makeToast:message];
                         }
                     }];
                 }else{
@@ -109,7 +111,7 @@
 }
 - (IBAction)postCode:(UIButton *)sender {
     if ([Tool judgePhoneNumber:self.phoneTF.text]) {
-        [LTHttpManager sendCodeWithNumber:self.phoneTF.text Ntype:@1 Type:@2 Complete:^(LTHttpResult result, NSString *message, id data) {
+        [LTHttpManager sendCodeWithNumber:self.phoneTF.text Ntype:@2 Type:@1 Complete:^(LTHttpResult result, NSString *message, id data) {
             if (result == LTHttpResultSuccess) {
                 [self openCountdown];
             }else{

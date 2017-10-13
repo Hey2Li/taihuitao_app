@@ -181,6 +181,18 @@
         if (!cell) {
             cell = [[FSBaseTopTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:FSBaseTopTableViewCellIdentifier];
         }
+        cell.imageArray = self.imageMutaleArray;
+        cell.cycleScrollClick = ^(NSInteger index) {
+            ArticleDetailViewController *vc = [ArticleDetailViewController new];
+            if ([self.imageMutaleArray[index][@"type"] isEqual:@2]) {
+                vc.articleId  = self.imageMutaleArray[index][@"id"];
+                vc.isVideo  = @"yes";
+                [self.navigationController pushViewController:vc animated:YES];
+            }else{
+                vc.articleId  = self.imageMutaleArray[index][@"id"];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
+        };
         return cell;
     }
     return nil;

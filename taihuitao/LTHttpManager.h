@@ -46,17 +46,16 @@
  */
 + (void)loginWithMobile:(NSString *)mobile andPassword:(NSString *) password andUUID:(NSString *)user_uuid  Complete:(completeBlock)complete;
 
-
 /**
- 提交新密码
- 请求地址:api/register/checkcode
+ 找回密码
 
- @param mobile 手机号码
- @param code 验证码
+ @param number 手机号码
+ @param type 1手机 2游戏
  @param password 密码
+ @param code 验证码
+ @param complete block
  */
-+ (void)submitNewPasswordWithMobile:(NSString *)mobile Code:(NSString *)code Password:(NSString *)password Complete:(completeBlock)complete;
-
++ (void)submitNewPasswordWithNumber:(NSString *)number Type:(NSNumber *)type Password:(NSString *)password Code:(NSString *)code Complete:(completeBlock)complete;
 /**
  提交新密码
 
@@ -69,7 +68,7 @@
  @param user_uuid UUID
  @param complete block
  */
-+ (void)submitNewPasswordWithNumber:(NSString *)number Code:(NSString *)code Password:(NSString *)password Type:(NSNumber *)type User_token:(NSString *)user_token User_id:(NSNumber *)user_id User_uuid:(NSString *)user_uuid Complete:(completeBlock)complete;
+//+ (void)submitNewPasswordWithNumber:(NSString *)number Code:(NSString *)code Password:(NSString *)password Type:(NSNumber *)type User_token:(NSString *)user_token User_id:(NSNumber *)user_id User_uuid:(NSString *)user_uuid Complete:(completeBlock)complete;
 
 /**
  首页数据
@@ -359,10 +358,11 @@
  @param limit 查询数量
  @param page 分页
  @param cid 文章类别
+ @param title 栏目名
  @param type 数据类型
  @param complete block
  */
-+ (void)TgetMoreNewsWithLimit:(NSNumber *)limit Page:(NSNumber *)page Cid:(NSNumber *)cid Type:(NSNumber *)type Complete:(completeBlock)complete;
++ (void)TgetMoreNewsWithLimit:(NSNumber *)limit Page:(NSNumber *)page Cid:(NSNumber *)cid Title:(NSString *)title Type:(NSNumber *)type Complete:(completeBlock)complete;
 
 
 /**

@@ -32,11 +32,12 @@
     self.title = @"熊起";
     [self initWithView];
     [self loadData];
+    [self loadFooterData];
     _pageNum = 1;
 }
 - (void)initWithView{
     self.tableView = ({
-        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44 - 64) style:UITableViewStylePlain];
         [self.view addSubview:tableView];
         [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.edges.equalTo(self.view);
@@ -66,11 +67,13 @@
         }];
     }];
     [self.tableView.mj_header beginRefreshing];
+}
+- (void)loadFooterData{
     self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         _pageNum++;
-        [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@2 Cid:@0 Type:@4 Complete:^(LTHttpResult result, NSString *message, id data) {
+        [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@2 Cid:@0 Title:@"" Type:@4 Complete:^(LTHttpResult result, NSString *message, id data) {
             if (result == LTHttpResultSuccess) {
-                NSArray *array = data[@"responseData"][@"news"][@"data"];
+                NSArray *array = data[@"responseData"][@"data"];
                 for (NSDictionary *dic in array) {
                     HomeNewsModel *model = [HomeNewsModel mj_objectWithKeyValues:dic];
                     [self.dataMutableArray addObject:model];

@@ -10,4 +10,5 @@
 
 @interface ArticleDetailViewController : UIViewController
 @property (nonatomic, strong) NSNumber *articleId;
+@property (nonatomic, strong) NSString *isVideo;
 @end

@@ -10,5 +10,6 @@ pod 'SVProgressHUD' ,'~>2.1.2'
 pod 'SDCycleScrollView','~> 1.64'
 pod 'IQKeyboardManager', '~> 3.3.4'
 pod 'PYSearch'
+pod 'SGQRCode'
 
 end
