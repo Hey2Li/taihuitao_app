@@ -57,37 +57,37 @@
     }
     return _welcomeDataArray;
 }
-//- (UIView *)navigtionBar{
-//    if (!_navigtionBar) {
-//        _navigtionBar =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
-//        _navigtionBar.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
-//        [self.view addSubview:_navigtionBar];
-//        UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [backBtn setImage:[UIImage imageNamed:@"返回白"] forState:UIControlStateNormal];
-//        [_navigtionBar addSubview:backBtn];
-//        [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.equalTo(_navigtionBar.mas_left).offset(5);
-//            make.height.equalTo(@50);
-//            make.width.equalTo(@30);
-//            make.centerY.equalTo(_navigtionBar).offset(10);
-//        }];
-//        [backBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-//        
-//        UILabel *titleLabel = [UILabel new];
-//        titleLabel.text = @"";
-//        titleLabel.textAlignment = NSTextAlignmentCenter;
-//        titleLabel.textColor = [UIColor whiteColor];
-//        [_navigtionBar addSubview:titleLabel];
-//        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.centerY.equalTo(backBtn.mas_centerY);
-//            make.centerX.equalTo(_navigtionBar.mas_centerX);
-//            make.height.equalTo(@25);
-//            make.width.equalTo(@200);
-//        }];
-//        self.naviTitle = titleLabel;
-//    }
-//    return _navigtionBar;
-//}
+- (UIView *)navigtionBar{
+    if (!_navigtionBar) {
+        _navigtionBar =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 64)];
+        _navigtionBar.backgroundColor = [UIColor colorWithWhite:1 alpha:0];
+        [self.view addSubview:_navigtionBar];
+        UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [backBtn setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+        [_navigtionBar addSubview:backBtn];
+        [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_navigtionBar.mas_left).offset(5);
+            make.height.equalTo(@50);
+            make.width.equalTo(@30);
+            make.centerY.equalTo(_navigtionBar).offset(10);
+        }];
+        [backBtn addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UILabel *titleLabel = [UILabel new];
+        titleLabel.text = @"";
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.textColor = [UIColor whiteColor];
+        [_navigtionBar addSubview:titleLabel];
+        [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerY.equalTo(backBtn.mas_centerY);
+            make.centerX.equalTo(_navigtionBar.mas_centerX);
+            make.height.equalTo(@25);
+            make.width.equalTo(@200);
+        }];
+        self.naviTitle = titleLabel;
+    }
+    return _navigtionBar;
+}
 - (ZFPlayerView *)playerView {
     if (!_playerView) {
         _playerView = [ZFPlayerView sharedPlayerView];
@@ -110,6 +110,9 @@
         _controlView = [[ZFPlayerControlView alloc] init];
     }
     return _controlView;
+}
+- (void)back:(UIButton *)btn{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -377,7 +380,6 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (_selectIndex == 1001) {
-        
         HomePageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
         if (!cell) {
             cell = [[HomePageTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];

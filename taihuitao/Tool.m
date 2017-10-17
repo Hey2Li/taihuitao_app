@@ -9,8 +9,51 @@
 #import "Tool.h"
 #import <CommonCrypto/CommonDigest.h>
 
+#define iPhone4Height (480.f)
+#define iPhone4Width  (320.f)
+
+#define iPhone5Height (568.f)
+#define iPhone5Width  (320.f)
+
+#define iPhone6Height (667.f)
+#define iPhone6Width  (375.f)
+
+#define iPhone6PlusHeight (736.f)
+#define iPhone6PlusWidth  (414.f)
+
 
 @implementation Tool
+
++ (CGFloat)layoutForAlliPhoneHeight:(CGFloat)height {
+    CGFloat layoutHeight = 0.0f;
+    if (UI_IS_IPHONE4) {
+        layoutHeight = ( height / iPhone6Height ) * iPhone4Height;
+    } else if (UI_IS_IPHONE5) {
+        layoutHeight = ( height / iPhone6Height ) * iPhone5Height;
+    } else if (UI_IS_IPHONE6) {
+        layoutHeight = ( height / iPhone6Height ) * iPhone6Height;
+    } else if (UI_IS_IPHONE6PLUS) {
+        layoutHeight = ( height / iPhone6Height ) * iPhone6PlusHeight;
+    } else {
+        layoutHeight = height;
+    }
+    return layoutHeight;
+}
+
++ (CGFloat)layoutForAlliPhoneWidth:(CGFloat)width {
+    CGFloat layoutWidth = 0.0f;
+    if (UI_IS_IPHONE4) {
+        layoutWidth = ( width / iPhone6Width ) * iPhone4Width;
+    } else if (UI_IS_IPHONE5) {
+        layoutWidth = ( width / iPhone6Width ) * iPhone5Width;
+    } else if (UI_IS_IPHONE6) {
+        layoutWidth = ( width / iPhone6Width ) * iPhone6Width;
+    } else if (UI_IS_IPHONE6PLUS) {
+        layoutWidth = ( width / iPhone6Width ) * iPhone6PlusWidth;
+    }
+    return layoutWidth;
+}
+
 void SVProgressShow(){
     [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeGradient];
     [SVProgressHUD setDefaultStyle:SVProgressHUDStyleDark];

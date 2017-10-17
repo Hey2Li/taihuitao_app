@@ -642,4 +642,12 @@
 + (void)brandShowWithID:(NSNumber *)ID Limit:(NSNumber *)limit Complete:(completeBlock)complete;
 
 
+/**
+ 获取类型中的品牌数据
+
+ @param ID 类型ID
+ @param limit 显示数量
+ @param complete block
+ */
++ (void)brandSearchWithID:(NSNumber *)ID Limit:(NSNumber *)limit Complete:(completeBlock)complete;
 @end

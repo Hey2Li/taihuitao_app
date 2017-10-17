@@ -14,6 +14,7 @@
 #import "BearupViewController.h"
 #import "PersonalTableViewController.h"
 #import "FSBaseViewController.h"
+#import "NCategoryViewController.h"
 
 @interface BaseTabBarViewController ()
 @property (nonatomic, strong) BaseNaviViewController *homeTab;
@@ -33,7 +34,7 @@
 - (void)createTabBar{
     _homeTab = [[BaseNaviViewController alloc]initWithRootViewController:[FSBaseViewController new]];
     _videoTab = [[BaseNaviViewController alloc]initWithRootViewController:[VideoViewController new]];
-    _categoryTab = [[BaseNaviViewController alloc]initWithRootViewController:[CategoryViewController new]];
+    _categoryTab = [[BaseNaviViewController alloc]initWithRootViewController:[NCategoryViewController new]];
     _mineTab = [[BaseNaviViewController alloc]initWithRootViewController:[PersonalTableViewController new]];
     _bearupTab  =[[BaseNaviViewController alloc]initWithRootViewController:[BearupViewController new]];
     self.viewControllers = @[_homeTab, _videoTab, _bearupTab,_categoryTab, _mineTab];

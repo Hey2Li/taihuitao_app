@@ -1079,4 +1079,19 @@
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
     [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/brand/show",BaseURL] parameters:paramters complete:complete];
 }
+
+/**
+ 获取类型中的品牌数据
+ 
+ @param ID 类型ID
+ @param limit 显示数量
+ @param complete block
+ */
++ (void)brandSearchWithID:(NSNumber *)ID Limit:(NSNumber *)limit Complete:(completeBlock)complete{
+    LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
+    NSMutableDictionary *paramters = [NSMutableDictionary dictionaryWithObjectsAndKeys:ID,@"id",
+                                      limit,@"limit",nil];
+    [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
+    [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/brand/search",BaseURL] parameters:paramters complete:complete];
+}
 @end

@@ -35,6 +35,12 @@
 		1C49EED01F8EF8A800499740 /* newDetail.js in Resources */ = {isa = PBXBuildFile; fileRef = 1C42FF6C1F8E15EC00F7658C /* newDetail.js */; };
 		1C49EED31F9057AD00499740 /* SearchTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C49EED21F9057AD00499740 /* SearchTableViewController.m */; };
 		1C49EEDC1F908A0F00499740 /* SGQRCodeScanningVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C49EEDA1F908A0F00499740 /* SGQRCodeScanningVC.m */; };
+		1C49EEDF1F947DDA00499740 /* IndexingAlphabetSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C49EEDD1F947DD800499740 /* IndexingAlphabetSliderView.m */; };
+		1C49EEE21F94839200499740 /* BrandNameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C49EEE11F94839200499740 /* BrandNameModel.m */; };
+		1C49EEE51F9485C000499740 /* BrandName.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C49EEE41F9485C000499740 /* BrandName.m */; };
+		1C49EEEF1F94961C00499740 /* BrandCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C49EEED1F94961C00499740 /* BrandCollectionViewCell.m */; };
+		1C49EEF01F94961C00499740 /* BrandCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C49EEEE1F94961C00499740 /* BrandCollectionViewCell.xib */; };
+		1C49EEF41F959ACB00499740 /* NCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C49EEF31F959ACB00499740 /* NCategoryViewController.m */; };
 		1C7626321F54F77C00DFA5B8 /* CACollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */; };
 		1C7626361F57A6A000DFA5B8 /* HorizontalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626351F57A6A000DFA5B8 /* HorizontalTableViewCell.m */; };
 		1C76263C1F5D00E500DFA5B8 /* BrandDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C76263B1F5D00E500DFA5B8 /* BrandDetailViewController.m */; };
@@ -203,6 +209,17 @@
 		1C49EED21F9057AD00499740 /* SearchTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchTableViewController.m; sourceTree = "<group>"; };
 		1C49EED81F908A0F00499740 /* SGQRCodeScanningVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGQRCodeScanningVC.h; sourceTree = "<group>"; };
 		1C49EEDA1F908A0F00499740 /* SGQRCodeScanningVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGQRCodeScanningVC.m; sourceTree = "<group>"; };
+		1C49EEDD1F947DD800499740 /* IndexingAlphabetSliderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IndexingAlphabetSliderView.m; sourceTree = "<group>"; };
+		1C49EEDE1F947DD900499740 /* IndexingAlphabetSliderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndexingAlphabetSliderView.h; sourceTree = "<group>"; };
+		1C49EEE01F94839200499740 /* BrandNameModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrandNameModel.h; sourceTree = "<group>"; };
+		1C49EEE11F94839200499740 /* BrandNameModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrandNameModel.m; sourceTree = "<group>"; };
+		1C49EEE31F9485C000499740 /* BrandName.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrandName.h; sourceTree = "<group>"; };
+		1C49EEE41F9485C000499740 /* BrandName.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrandName.m; sourceTree = "<group>"; };
+		1C49EEEC1F94961C00499740 /* BrandCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BrandCollectionViewCell.h; sourceTree = "<group>"; };
+		1C49EEED1F94961C00499740 /* BrandCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BrandCollectionViewCell.m; sourceTree = "<group>"; };
+		1C49EEEE1F94961C00499740 /* BrandCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrandCollectionViewCell.xib; sourceTree = "<group>"; };
+		1C49EEF21F959ACB00499740 /* NCategoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NCategoryViewController.h; sourceTree = "<group>"; };
+		1C49EEF31F959ACB00499740 /* NCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NCategoryViewController.m; sourceTree = "<group>"; };
 		1C76262F1F54F77C00DFA5B8 /* CACollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACollectionReusableView.h; sourceTree = "<group>"; };
 		1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACollectionReusableView.m; sourceTree = "<group>"; };
 		1C7626341F57A6A000DFA5B8 /* HorizontalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalTableViewCell.h; sourceTree = "<group>"; };
@@ -492,10 +509,15 @@
 		1C76262D1F54F74A00DFA5B8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1C49EEDE1F947DD900499740 /* IndexingAlphabetSliderView.h */,
+				1C49EEDD1F947DD800499740 /* IndexingAlphabetSliderView.m */,
 				1C76263D1F5E9FA800DFA5B8 /* HomePageTableViewCell.h */,
 				1C76263E1F5E9FA800DFA5B8 /* HomePageTableViewCell.m */,
 				1C76262F1F54F77C00DFA5B8 /* CACollectionReusableView.h */,
 				1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */,
+				1C49EEEC1F94961C00499740 /* BrandCollectionViewCell.h */,
+				1C49EEED1F94961C00499740 /* BrandCollectionViewCell.m */,
+				1C49EEEE1F94961C00499740 /* BrandCollectionViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -507,6 +529,8 @@
 				1CF656AA1F4584B400DBD64D /* CategoryViewController.m */,
 				1C76263A1F5D00E500DFA5B8 /* BrandDetailViewController.h */,
 				1C76263B1F5D00E500DFA5B8 /* BrandDetailViewController.m */,
+				1C49EEF21F959ACB00499740 /* NCategoryViewController.h */,
+				1C49EEF31F959ACB00499740 /* NCategoryViewController.m */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -516,6 +540,10 @@
 			children = (
 				1C7626411F5E9FF400DFA5B8 /* HomeModel.h */,
 				1C7626421F5E9FF400DFA5B8 /* HomeModel.m */,
+				1C49EEE01F94839200499740 /* BrandNameModel.h */,
+				1C49EEE11F94839200499740 /* BrandNameModel.m */,
+				1C49EEE31F9485C000499740 /* BrandName.h */,
+				1C49EEE41F9485C000499740 /* BrandName.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1147,6 +1175,7 @@
 				1CFBF8C91F4AC9CF00BEFF7F /* recomand_09.jpg in Resources */,
 				1CFBF8C51F4AC9CF00BEFF7F /* recomand_05.jpg in Resources */,
 				1C9195EC1F734BA700A7038E /* PersonalTableViewController.xib in Resources */,
+				1C49EEF01F94961C00499740 /* BrandCollectionViewCell.xib in Resources */,
 				1C3FEBA01F8C62F400D9BC4C /* HomeTableViewCell.xib in Resources */,
 				1CFBF9871F4EA93200BEFF7F /* GoodsDetailsTableViewCell.xib in Resources */,
 				1CCA19D41F83906C000A8B81 /* RecommendCollectionViewCell.xib in Resources */,
@@ -1250,6 +1279,7 @@
 				1C42FF6E1F8E176C00F7658C /* DataInfo.m in Sources */,
 				1C3FEB931F8C5E2400D9BC4C /* FSBaseTopTableViewCell.h in Sources */,
 				1C3FEB941F8C5E2400D9BC4C /* FSBaseTopTableViewCell.m in Sources */,
+				1C49EEE21F94839200499740 /* BrandNameModel.m in Sources */,
 				1C3FEB951F8C5E2400D9BC4C /* FSBottomTableViewCell.h in Sources */,
 				1C3FEB961F8C5E2400D9BC4C /* FSBottomTableViewCell.m in Sources */,
 				1C3FEB971F8C5E2400D9BC4C /* FSPageContentView.h in Sources */,
@@ -1259,6 +1289,7 @@
 				1C3FEB991F8C5E2400D9BC4C /* FSScrollContentView.h in Sources */,
 				1C3FEB9A1F8C5E2400D9BC4C /* FSSegmentTitleView.h in Sources */,
 				1C3FEB9B1F8C5E2400D9BC4C /* FSSegmentTitleView.m in Sources */,
+				1C49EEEF1F94961C00499740 /* BrandCollectionViewCell.m in Sources */,
 				1C3FEB2E1F83D6B100D9BC4C /* TYPagerController.m in Sources */,
 				1C3FEB2F1F83D6B100D9BC4C /* TYTabButtonPagerController.m in Sources */,
 				1C3FEB301F83D6B100D9BC4C /* TYTabPagerController.m in Sources */,
@@ -1270,6 +1301,7 @@
 				1C897B021F83D56700212F58 /* TYTabButtonPagerController.h in Sources */,
 				1CFBF4621F4AB85400BEFF7F /* UIView+Extension.m in Sources */,
 				1CFBF97D1F4D85A400BEFF7F /* ZFVideoModel.m in Sources */,
+				1C49EEDF1F947DDA00499740 /* IndexingAlphabetSliderView.m in Sources */,
 				1CFBF9651F4D848B00BEFF7F /* ASValueTrackingSlider.m in Sources */,
 				1CCA19D71F839187000A8B81 /* RecommedCellModel.m in Sources */,
 				1CFBF9681F4D848B00BEFF7F /* UINavigationController+ZFPlayerRotation.m in Sources */,
@@ -1277,6 +1309,7 @@
 				1C3FEB811F8C5CDC00D9BC4C /* FSBaseTableView.m in Sources */,
 				1C49EED31F9057AD00499740 /* SearchTableViewController.m in Sources */,
 				1CF6568F1F456D3D00DBD64D /* BaseNaviViewController.m in Sources */,
+				1C49EEF41F959ACB00499740 /* NCategoryViewController.m in Sources */,
 				1CFBF91E1F4D838600BEFF7F /* LoginViewController.m in Sources */,
 				1CFBF9691F4D848B00BEFF7F /* UITabBarController+ZFPlayerRotation.m in Sources */,
 				1CFBF96C1F4D848B00BEFF7F /* UIWindow+CurrentViewController.m in Sources */,
@@ -1308,6 +1341,7 @@
 				1CF6569E1F456D8000DBD64D /* UIView+Frame.m in Sources */,
 				1CFBF9661F4D848B00BEFF7F /* UIAlertController+ZFPlayerRotation.m in Sources */,
 				1CCA19D31F83906C000A8B81 /* RecommendCollectionViewCell.m in Sources */,
+				1C49EEE51F9485C000499740 /* BrandName.m in Sources */,
 				1CFBF96B1F4D848B00BEFF7F /* UIViewController+ZFPlayerRotation.m in Sources */,
 				1CFBF5DB1F4AC8C100BEFF7F /* JSDTHomeRecomandModel.m in Sources */,
 				1CFBF96E1F4D848B00BEFF7F /* ZFBrightnessView.m in Sources */,
