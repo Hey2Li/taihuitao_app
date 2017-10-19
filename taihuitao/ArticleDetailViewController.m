@@ -182,10 +182,10 @@
 }
 #pragma mark tableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0 || section == 2) {
+    if (section == 0 || section == 2 || section == 3) {
         return 1;
     }else{
         return self.goodsMutableArray.count;
@@ -205,6 +205,7 @@
         nameLabel.text = @"猜你喜欢";
         nameLabel.textColor = [UIColor blackColor];
         nameLabel.textAlignment = NSTextAlignmentCenter;
+        nameLabel.font = [UIFont systemFontOfSize:14];
         [view addSubview:nameLabel];
         [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.center.equalTo(view);
@@ -241,7 +242,9 @@
 //        self.myTableView.rowHeight = UITableViewAutomaticDimension;
         return 120;
     }else if (indexPath.section == 2){
-        return 100;
+        return [Tool layoutForAlliPhoneHeight:120];
+    }else if (indexPath.section == 3){
+        return 50;
     }else{
         return 0;
     }
@@ -273,6 +276,11 @@
             [self.navigationController pushViewController:vc animated:YES];
         };
         cell.modelArray = self.recommendMutableArrray;
+        return cell;
+    }else if (indexPath.section == 3){
+        UITableViewCell *cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        cell.userInteractionEnabled = NO;
+        cell.backgroundColor = [UIColor whiteColor];
         return cell;
     }else{
         return 0;

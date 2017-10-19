@@ -25,7 +25,7 @@
     _dataDic = dataDic;
     self.dateLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"time"]];
     self.introduceLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"introduct"]];
-    [self.goodsBkImageView sd_setImageWithURL:[NSURL URLWithString:dataDic[@"photo"]] placeholderImage:[UIImage new]];
+    [self.goodsBkImageView sd_setImageWithURL:[NSURL URLWithString:dataDic[@"photo"]] placeholderImage:[UIImage imageNamed:@"未加载好图片长"]];
     self.titleLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"title"]];
     self.readNumLabel.text = [NSString stringWithFormat:@"阅读:%@",dataDic[@"hits"]];
 }

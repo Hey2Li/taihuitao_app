@@ -267,7 +267,7 @@ static NSString *videoCell = @"playerCell";
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 270;
+    return [Tool layoutForAlliPhoneHeight:270];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 10;

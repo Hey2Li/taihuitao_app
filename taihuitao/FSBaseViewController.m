@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSMutableArray *imageMutaleArray;
 @property (nonatomic, strong) NSMutableArray *keywordMutableArray;
 @property (nonatomic, strong) UIButton *contactUsBtn;
+@property (nonatomic, strong) NSString *telephoneStr;
 @end
 
 @implementation FSBaseViewController
@@ -53,23 +54,25 @@
     }
     return _controllersArray;
 }
-//- (UIButton *)contactUsBtn{
-//    if (_contactUsBtn) {
-//        _contactUsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [self.tableView bringSubviewToFront:_contactUsBtn];
-//        [_contactUsBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.right.equalTo(self.tableView.mas_right);
-//            make.centerY.equalTo(self.tableView.mas_centerY);
-//            make.width.equalTo(@80);
-//            make.height.equalTo(@35);
-//        }];
-//        [_contactUsBtn setTitle:@"联系我们" forState:UIControlStateNormal];
-//        [_contactUsBtn setTitleColor:DRGBCOLOR forState:UIControlStateNormal];
-//        _contactUsBtn.backgroundColor = [UIColor blackColor];
-//        [_contactUsBtn addTarget:self action:@selector(contactUsClick) forControlEvents:UIControlEventTouchUpInside];
-//    }
-//    return _contactUsBtn;
-//}
+- (UIButton *)contactUsBtn{
+    if (!_contactUsBtn) {
+        _contactUsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [self.view addSubview:self.contactUsBtn];
+        [_contactUsBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(self.view.mas_right);
+            make.centerY.equalTo(self.view.mas_centerY);
+            make.width.equalTo(@80);
+            make.height.equalTo(@35);
+        }];
+        [self.view bringSubviewToFront:self.contactUsBtn];
+        [_contactUsBtn setTitle:@"联系我们" forState:UIControlStateNormal];
+        [_contactUsBtn setTitleColor:DRGBCOLOR forState:UIControlStateNormal];
+        _contactUsBtn.backgroundColor = [UIColor blackColor];
+        [_contactUsBtn addTarget:self action:@selector(contactUsClick) forControlEvents:UIControlEventTouchUpInside];
+        [_contactUsBtn setBackgroundColor:[UIColor whiteColor]];
+    }
+    return _contactUsBtn;
+}
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -107,6 +110,10 @@
             for (NSDictionary *dic in array) {
                 NSString *keyword = dic[@"name"];
                 [self.keywordMutableArray addObject:keyword];
+            }
+            self.telephoneStr = data[@"responseData"][@"sy_freewebtel"];
+            if (self.telephoneStr.length > 7) {
+                [self contactUsBtn];
             }
             [self.tableView reloadData];
         }
@@ -204,21 +211,6 @@
     self.canScroll = YES;
     self.tableView.backgroundColor = [UIColor whiteColor];
     
-    self.contactUsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.view addSubview:self.contactUsBtn];
-    [self.contactUsBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.view.mas_right);
-        make.centerY.equalTo(self.view.mas_centerY);
-        make.width.equalTo(@80);
-        make.height.equalTo(@35);
-    }];
-    [self.contactUsBtn setTitle:@"联系我们" forState:UIControlStateNormal];
-    [self.contactUsBtn setTitleColor:DRGBCOLOR forState:UIControlStateNormal];
-    self.contactUsBtn.titleLabel.font = [UIFont systemFontOfSize:14];
-    self.contactUsBtn.backgroundColor = [UIColor whiteColor];
-    [self.contactUsBtn addTarget:self action:@selector(contactUsClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view bringSubviewToFront:self.contactUsBtn];
-
 }
 
 - (void)insertRowAtTop{
@@ -251,7 +243,7 @@
 {
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            return 200;
+            return [Tool layoutForAlliPhoneHeight:200];
         }
     }
     return CGRectGetHeight(self.view.bounds);

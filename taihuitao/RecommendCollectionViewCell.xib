@@ -12,22 +12,22 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RecommendCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="188" height="91"/>
+            <rect key="frame" x="0.0" y="0.0" width="188" height="120"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="188" height="91"/>
+                <rect key="frame" x="0.0" y="0.0" width="188" height="120"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Joc-W5-o2B">
                         <rect key="frame" x="0.0" y="0.0" width="188" height="70"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCd-JI-dKE">
-                        <rect key="frame" x="0.0" y="70" width="188" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCd-JI-dKE">
+                        <rect key="frame" x="0.0" y="70" width="188" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="rKT-Hf-F4a"/>
+                            <constraint firstAttribute="height" constant="50" id="rKT-Hf-F4a"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                        <color key="textColor" red="0.2781479657" green="0.2823043764" blue="0.28649967910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -42,12 +42,12 @@
                 <constraint firstItem="NCd-JI-dKE" firstAttribute="top" secondItem="Joc-W5-o2B" secondAttribute="bottom" id="cRf-lE-nb4"/>
                 <constraint firstAttribute="bottom" secondItem="NCd-JI-dKE" secondAttribute="bottom" id="wcO-0K-N8d"/>
             </constraints>
-            <size key="customSize" width="188" height="91"/>
+            <size key="customSize" width="188" height="120"/>
             <connections>
                 <outlet property="recommendImageView" destination="Joc-W5-o2B" id="tId-o6-2m1"/>
                 <outlet property="recommendTitleLabel" destination="NCd-JI-dKE" id="FO4-xg-3LQ"/>
             </connections>
-            <point key="canvasLocation" x="83" y="118.5"/>
+            <point key="canvasLocation" x="83" y="124"/>
         </collectionViewCell>
     </objects>
 </document>

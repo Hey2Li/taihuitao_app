@@ -22,7 +22,7 @@
 }
 - (void)setModel:(HomeNewsModel *)model{
     _model = model;
-    [self.contentImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.photo]] placeholderImage:[UIImage new]];
+    [self.contentImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.photo]] placeholderImage:[UIImage imageNamed:@"未加载好图片长"]];
     self.authorLabel.text = [NSString stringWithFormat:@"%@",model.author];
     self.readNumLabel.text = [NSString stringWithFormat:@"%@",model.hits];
     self.titleLabel.text = [NSString stringWithFormat:@"%@",model.title];

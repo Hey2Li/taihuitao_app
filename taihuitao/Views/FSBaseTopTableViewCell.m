@@ -27,8 +27,8 @@
         
         CAShapeLayer *layer = [[CAShapeLayer alloc]init];
         UIBezierPath *path = [[UIBezierPath alloc]init];
-        [path moveToPoint:CGPointMake(0, 200)];
-        [path addQuadCurveToPoint:CGPointMake(ScreenWidth, 200) controlPoint:CGPointMake(ScreenWidth / 2, 200 - layerHeight)];
+        [path moveToPoint:CGPointMake(0, [Tool layoutForAlliPhoneHeight:200])];
+        [path addQuadCurveToPoint:CGPointMake(ScreenWidth, [Tool layoutForAlliPhoneHeight:200]) controlPoint:CGPointMake(ScreenWidth / 2, [Tool layoutForAlliPhoneHeight:200] - layerHeight)];
         layer.path = path.CGPath;
         layer.fillColor = [UIColor whiteColor].CGColor;
         [self.layer addSublayer:layer];
@@ -39,7 +39,7 @@
     if (!_cycleScrollView) {
         _cycleScrollView.showPageControl = NO;
         _cycleScrollView.pageControlStyle = SDCycleScrollViewPageContolStyleAnimated;
-        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 200) delegate:self placeholderImage:[UIImage new]];
+        _cycleScrollView = [SDCycleScrollView cycleScrollViewWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, [Tool layoutForAlliPhoneHeight:200]) delegate:self placeholderImage:[UIImage imageNamed:@"未加载好图片长"]];
     }
     return _cycleScrollView;
 }

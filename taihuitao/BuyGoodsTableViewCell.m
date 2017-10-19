@@ -28,7 +28,7 @@
 }
 -(void)setModel:(ArticleDetailModel *)model{
     _model = model;
-    [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:model.photo] placeholderImage:[UIImage new]];
+    [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:model.photo] placeholderImage:[UIImage imageNamed:@"未加载好图片长"]];
     self.goodsNameLabel.text = [NSString stringWithFormat:@"%@",model.name];
     self.goodsDetailLabel.text = [NSString stringWithFormat:@"%@",model.introduct];
     self.buyGoodsBtn.tag = [model.ID integerValue];
