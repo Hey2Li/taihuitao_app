@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,22 +20,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cycle_07.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="6TA-x9-OLx">
-                        <rect key="frame" x="13" y="13" width="100" height="116.5"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="100" id="zlq-eU-wre"/>
-                        </constraints>
+                        <rect key="frame" x="13" y="13" width="221" height="117"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ulr-h6-Boi">
-                        <rect key="frame" x="123" y="13" width="241" height="21"/>
+                        <rect key="frame" x="244" y="13" width="120" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="wc4-Cj-PEm"/>
+                            <constraint firstAttribute="width" constant="120" id="TWo-yW-Jgf"/>
+                            <constraint firstAttribute="height" constant="21" id="ee7-mc-NOd"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.4939831495" green="0.49811440709999999" blue="0.5019184351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pO9-S8-VII">
-                        <rect key="frame" x="274" y="94.5" width="90" height="30"/>
+                        <rect key="frame" x="274" y="99.5" width="90" height="30"/>
                         <color key="backgroundColor" red="0.98682707548141479" green="0.27554106712341309" blue="0.4014970064163208" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="90" id="54s-6j-RSx"/>
@@ -49,25 +47,25 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="le6-Ru-9d8">
-                        <rect key="frame" x="123" y="36" width="241" height="56.5"/>
+                        <rect key="frame" x="244" y="36" width="120" height="61.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="6TA-x9-OLx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="Hbh-uN-1k6"/>
-                    <constraint firstItem="le6-Ru-9d8" firstAttribute="top" secondItem="Ulr-h6-Boi" secondAttribute="bottom" constant="2" id="XdU-bf-buZ"/>
-                    <constraint firstItem="le6-Ru-9d8" firstAttribute="leading" secondItem="Ulr-h6-Boi" secondAttribute="leading" id="eUT-JJ-HrI"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="6TA-x9-OLx" secondAttribute="bottom" constant="5" id="fGQ-8c-Sod"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="pO9-S8-VII" secondAttribute="bottom" constant="10" id="mAT-2i-B9x"/>
-                    <constraint firstItem="Ulr-h6-Boi" firstAttribute="leading" secondItem="6TA-x9-OLx" secondAttribute="trailing" constant="10" id="mkn-2Z-BYq"/>
+                    <constraint firstItem="pO9-S8-VII" firstAttribute="top" secondItem="le6-Ru-9d8" secondAttribute="bottom" constant="2" id="4zq-Fq-viU"/>
+                    <constraint firstItem="Ulr-h6-Boi" firstAttribute="leading" secondItem="6TA-x9-OLx" secondAttribute="trailing" constant="10" id="OQ9-IE-xGG"/>
+                    <constraint firstItem="6TA-x9-OLx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="S5M-Vu-Zau"/>
+                    <constraint firstItem="le6-Ru-9d8" firstAttribute="top" secondItem="Ulr-h6-Boi" secondAttribute="bottom" constant="2" id="VqD-pB-8nt"/>
+                    <constraint firstItem="le6-Ru-9d8" firstAttribute="leading" secondItem="Ulr-h6-Boi" secondAttribute="leading" id="dWs-kH-Yxt"/>
+                    <constraint firstItem="le6-Ru-9d8" firstAttribute="trailing" secondItem="Ulr-h6-Boi" secondAttribute="trailing" id="e3K-Hr-JpE"/>
+                    <constraint firstItem="Ulr-h6-Boi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="f39-Ts-2Nm"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="6TA-x9-OLx" secondAttribute="bottom" constant="4.5" id="gQ5-NB-aGg"/>
+                    <constraint firstItem="6TA-x9-OLx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="laT-p0-u3n"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="pO9-S8-VII" secondAttribute="bottom" constant="5" id="mAT-2i-B9x"/>
                     <constraint firstAttribute="trailingMargin" secondItem="pO9-S8-VII" secondAttribute="trailing" constant="10" id="muB-Yd-Es5"/>
-                    <constraint firstItem="le6-Ru-9d8" firstAttribute="trailing" secondItem="Ulr-h6-Boi" secondAttribute="trailing" id="nrp-gm-ILN"/>
-                    <constraint firstItem="pO9-S8-VII" firstAttribute="top" secondItem="le6-Ru-9d8" secondAttribute="bottom" constant="2" id="o8q-5C-JZu"/>
-                    <constraint firstItem="6TA-x9-OLx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="plq-J6-6UE"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Ulr-h6-Boi" secondAttribute="trailing" constant="10" id="ppk-Z9-Rlf"/>
-                    <constraint firstItem="Ulr-h6-Boi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="z0D-Zo-541"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Ulr-h6-Boi" secondAttribute="trailing" constant="10" id="pJY-Pc-o1p"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

@@ -45,7 +45,7 @@
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="文章图文混排介绍" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ob0-Bc-1YO">
                         <rect key="frame" x="10" y="268" width="301" height="107.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                         <color key="textColor" red="0.2781479657" green="0.2823043764" blue="0.28649967910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -54,7 +54,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="dSG-QY-Ryy"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                         <color key="textColor" red="0.2781479657" green="0.2823043764" blue="0.28649967910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>

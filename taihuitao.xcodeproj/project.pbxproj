@@ -41,6 +41,7 @@
 		1C49EEEF1F94961C00499740 /* BrandCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C49EEED1F94961C00499740 /* BrandCollectionViewCell.m */; };
 		1C49EEF01F94961C00499740 /* BrandCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C49EEEE1F94961C00499740 /* BrandCollectionViewCell.xib */; };
 		1C49EEF41F959ACB00499740 /* NCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C49EEF31F959ACB00499740 /* NCategoryViewController.m */; };
+		1C50E2EA1FA6D2B800D7C75F /* BottomBuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C50E2E91FA6D2B800D7C75F /* BottomBuyView.m */; };
 		1C7626321F54F77C00DFA5B8 /* CACollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */; };
 		1C7626361F57A6A000DFA5B8 /* HorizontalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626351F57A6A000DFA5B8 /* HorizontalTableViewCell.m */; };
 		1C76263C1F5D00E500DFA5B8 /* BrandDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C76263B1F5D00E500DFA5B8 /* BrandDetailViewController.m */; };
@@ -220,6 +221,8 @@
 		1C49EEEE1F94961C00499740 /* BrandCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrandCollectionViewCell.xib; sourceTree = "<group>"; };
 		1C49EEF21F959ACB00499740 /* NCategoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NCategoryViewController.h; sourceTree = "<group>"; };
 		1C49EEF31F959ACB00499740 /* NCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NCategoryViewController.m; sourceTree = "<group>"; };
+		1C50E2E81FA6D2B800D7C75F /* BottomBuyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomBuyView.h; sourceTree = "<group>"; };
+		1C50E2E91FA6D2B800D7C75F /* BottomBuyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomBuyView.m; sourceTree = "<group>"; };
 		1C76262F1F54F77C00DFA5B8 /* CACollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACollectionReusableView.h; sourceTree = "<group>"; };
 		1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACollectionReusableView.m; sourceTree = "<group>"; };
 		1C7626341F57A6A000DFA5B8 /* HorizontalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalTableViewCell.h; sourceTree = "<group>"; };
@@ -791,6 +794,8 @@
 				1CCA19D01F83906C000A8B81 /* RecommendCollectionViewCell.h */,
 				1CCA19D11F83906C000A8B81 /* RecommendCollectionViewCell.m */,
 				1CCA19D21F83906C000A8B81 /* RecommendCollectionViewCell.xib */,
+				1C50E2E81FA6D2B800D7C75F /* BottomBuyView.h */,
+				1C50E2E91FA6D2B800D7C75F /* BottomBuyView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1297,6 +1302,7 @@
 				1C3FEB321F83D6B100D9BC4C /* TYTabTitleViewCell.h in Sources */,
 				1C3FEB331F83D6B100D9BC4C /* TYTabTitleViewCell.m in Sources */,
 				1C897B031F83D57C00212F58 /* TYPagerController.h in Sources */,
+				1C50E2EA1FA6D2B800D7C75F /* BottomBuyView.m in Sources */,
 				1C897B041F83D57C00212F58 /* TYTabPagerController.h in Sources */,
 				1C897B021F83D56700212F58 /* TYTabButtonPagerController.h in Sources */,
 				1CFBF4621F4AB85400BEFF7F /* UIView+Extension.m in Sources */,
