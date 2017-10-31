@@ -637,9 +637,10 @@
 
  @param ID 品牌id
  @param limit 查询文章个数
+ @param type 1文章2视频3图集5直播
  @param complete block
  */
-+ (void)brandShowWithID:(NSNumber *)ID Limit:(NSNumber *)limit Complete:(completeBlock)complete;
++ (void)brandShowWithID:(NSNumber *)ID Limit:(NSNumber *)limit Type:(NSNumber *)type Complete:(completeBlock)complete;
 
 
 /**

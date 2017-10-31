@@ -42,6 +42,7 @@
 		1C49EEF01F94961C00499740 /* BrandCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C49EEEE1F94961C00499740 /* BrandCollectionViewCell.xib */; };
 		1C49EEF41F959ACB00499740 /* NCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C49EEF31F959ACB00499740 /* NCategoryViewController.m */; };
 		1C50E2EA1FA6D2B800D7C75F /* BottomBuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C50E2E91FA6D2B800D7C75F /* BottomBuyView.m */; };
+		1C50E2ED1FA849DA00D7C75F /* ScrollBannerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C50E2EB1FA849DA00D7C75F /* ScrollBannerTableViewCell.m */; };
 		1C7626321F54F77C00DFA5B8 /* CACollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */; };
 		1C7626361F57A6A000DFA5B8 /* HorizontalTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626351F57A6A000DFA5B8 /* HorizontalTableViewCell.m */; };
 		1C76263C1F5D00E500DFA5B8 /* BrandDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C76263B1F5D00E500DFA5B8 /* BrandDetailViewController.m */; };
@@ -223,6 +224,8 @@
 		1C49EEF31F959ACB00499740 /* NCategoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NCategoryViewController.m; sourceTree = "<group>"; };
 		1C50E2E81FA6D2B800D7C75F /* BottomBuyView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomBuyView.h; sourceTree = "<group>"; };
 		1C50E2E91FA6D2B800D7C75F /* BottomBuyView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomBuyView.m; sourceTree = "<group>"; };
+		1C50E2EB1FA849DA00D7C75F /* ScrollBannerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollBannerTableViewCell.m; sourceTree = "<group>"; };
+		1C50E2EC1FA849DA00D7C75F /* ScrollBannerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollBannerTableViewCell.h; sourceTree = "<group>"; };
 		1C76262F1F54F77C00DFA5B8 /* CACollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACollectionReusableView.h; sourceTree = "<group>"; };
 		1C7626301F54F77C00DFA5B8 /* CACollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CACollectionReusableView.m; sourceTree = "<group>"; };
 		1C7626341F57A6A000DFA5B8 /* HorizontalTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HorizontalTableViewCell.h; sourceTree = "<group>"; };
@@ -866,6 +869,8 @@
 		1CFBF90B1F4D82FF00BEFF7F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1C50E2EC1FA849DA00D7C75F /* ScrollBannerTableViewCell.h */,
+				1C50E2EB1FA849DA00D7C75F /* ScrollBannerTableViewCell.m */,
 				1CFBF90D1F4D833600BEFF7F /* VideoTableViewCell.h */,
 				1CFBF90E1F4D833600BEFF7F /* VideoTableViewCell.m */,
 			);
@@ -1357,6 +1362,7 @@
 				1CFBF90F1F4D833600BEFF7F /* VideoTableViewCell.m in Sources */,
 				1C3FEBA31F8C9AAF00D9BC4C /* HomeNewsModel.m in Sources */,
 				1CCA19CF1F7E46C6000A8B81 /* ArticleDetailModel.m in Sources */,
+				1C50E2ED1FA849DA00D7C75F /* ScrollBannerTableViewCell.m in Sources */,
 				1CFBF9201F4D838600BEFF7F /* FindPasswordViewController.m in Sources */,
 				1C7626461F5F990C00DFA5B8 /* BURefreshGifHeader.m in Sources */,
 				1CF6569C1F456D8000DBD64D /* WebContentViewController.m in Sources */,

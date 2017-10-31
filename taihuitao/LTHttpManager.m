@@ -1070,12 +1070,13 @@
  
  @param ID 品牌id
  @param limit 查询文章个数
+ @param type 1文章2视频3图集5直播
  @param complete block
  */
-+ (void)brandShowWithID:(NSNumber *)ID Limit:(NSNumber *)limit Complete:(completeBlock)complete{
++ (void)brandShowWithID:(NSNumber *)ID Limit:(NSNumber *)limit Type:(NSNumber *)type Complete:(completeBlock)complete{
     LTHTTPSessionManager *manager = [LTHTTPSessionManager new];
     NSMutableDictionary *paramters = [NSMutableDictionary dictionaryWithObjectsAndKeys:ID,@"id",
-                                      limit,@"limit",nil];
+                                      limit,@"limit",type,@"type",nil];
     [paramters addEntriesFromDictionary:[Tool MD5Dictionary:paramters]];
     [manager POSTWithParameters:[NSString stringWithFormat:@"%@api/brand/show",BaseURL] parameters:paramters complete:complete];
 }
