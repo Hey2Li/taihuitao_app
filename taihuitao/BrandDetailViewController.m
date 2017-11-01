@@ -85,6 +85,7 @@
             make.width.equalTo(@200);
         }];
         self.naviTitle = titleLabel;
+        self.naviTitle.hidden = YES;
     }
     return _navigtionBar;
 }
@@ -124,7 +125,7 @@
     [self loadData];
 }
 - (void)loadData{
-    [LTHttpManager brandShowWithID:self.brandId Limit:@10 Complete:^(LTHttpResult result, NSString *message, id data) {
+    [LTHttpManager brandShowWithID:self.brandId Limit:@10 Type:@1 Complete:^(LTHttpResult result, NSString *message, id data) {
         if (result == LTHttpResultSuccess) {
             //分类详情
             self.dataDic = [NSMutableDictionary dictionaryWithDictionary:data[@"responseData"][@"info"]];

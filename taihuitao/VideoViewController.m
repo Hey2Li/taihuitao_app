@@ -16,6 +16,7 @@
 #import "ArticleDetailViewController.h"
 #import "BURefreshGifHeader.h"
 #import "ScrollBannerTableViewCell.h"
+#import "VideoDetailViewController.h"
 
 @interface VideoViewController ()<UITableViewDelegate, UITableViewDataSource,ZFPlayerControlViewDelagate, ZFPlayerDelegate>
 @property (nonatomic, strong) UISegmentedControl *segControl;
@@ -313,15 +314,13 @@ static NSString *videoCell = @"playerCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == self.videoTableView) {
         VideoModel *model = self.dataSource[indexPath.section - 1];
-        ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
-        vc.articleId = model.ID;
-        vc.isVideo = @"yes";
+        VideoDetailViewController *vc = [[VideoDetailViewController alloc]init];
+        vc.videoId = model.ID;
         [self.navigationController pushViewController:vc animated:YES];
     }else{
-        VideoModel *model = self.liveDataSource[indexPath.section - 1];
-        ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
-        vc.articleId = model.ID;
-        vc.isVideo = @"yes";
+        VideoModel *model = self.dataSource[indexPath.section - 1];
+        VideoDetailViewController *vc = [[VideoDetailViewController alloc]init];
+        vc.videoId = model.ID;
         [self.navigationController pushViewController:vc animated:YES];
     }
  

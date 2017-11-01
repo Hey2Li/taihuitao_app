@@ -417,20 +417,34 @@
     btn.selected = !btn.selected;
     if (btn.selected) {
         self.maskView.hidden = NO;
+        UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [self.maskView addSubview:self.buyGoodsTableView];
         [self.buyGoodsTableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.maskView).offset(30);
             make.right.equalTo(self.maskView).offset(-30);
             make.centerX.equalTo(self.maskView.mas_centerX);
-            make.centerY.equalTo(self.maskView.mas_centerY);
+            make.bottom.equalTo(self.maskView.mas_bottom);
             make.height.equalTo(@(ScreenHeight/2));
         }];
+        [self.maskView addSubview:closeBtn];
+        [closeBtn setImage:[UIImage imageNamed:@"buysign_close_30x30_"] forState:UIControlStateNormal];
+        [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(_buyGoodsTableView.mas_right);
+            make.top.equalTo(_buyGoodsTableView);
+            make.width.equalTo(@30);
+            make.height.equalTo(@30);
+        }];
+        [self.maskView bringSubviewToFront:closeBtn];
+        [closeBtn addTarget:self action:@selector(closeTableView) forControlEvents:UIControlEventTouchUpInside];
     }else{
         self.maskView.hidden = YES;
     }
 }
 - (void)backWithBtnClick:(UIButton *)btn{
     [self.navigationController popViewControllerAnimated:YES];
+}
+- (void)closeTableView{
+     self.maskView.hidden = YES;
 }
 #pragma mark tableViewDelegate
 
