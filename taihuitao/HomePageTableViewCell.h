@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HomeModel.h"
+#import "BrandDetailModel.h"
 
 @interface HomePageTableViewCell : UITableViewCell
 @property (nonatomic, strong) UIImageView *contentImageView;
@@ -15,4 +16,5 @@
 @property (nonatomic, strong) UIImageView *hotImageView;
 @property (nonatomic, strong) UILabel *hotNumLabel;
 @property (nonatomic, strong) HomeModel *model;
+@property (nonatomic, strong) BrandDetailModel *brandDetailModel;
 @end

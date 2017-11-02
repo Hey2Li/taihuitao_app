@@ -89,6 +89,11 @@
     [self.contentImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.photo]] placeholderImage:[UIImage imageNamed:@"未加载好图片长"]];
     self.hotNumLabel.text = [NSString stringWithFormat:@"%@",model.hits];
 }
+- (void)setBrandDetailModel:(BrandDetailModel *)brandDetailModel{
+    _brandDetailModel = brandDetailModel;
+    self.titleLabel.text = [NSString stringWithFormat:@"%@",brandDetailModel.title];
+    [self.contentImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",brandDetailModel.photo]] placeholderImage:[UIImage imageNamed:@"未加载好图片长"]];
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

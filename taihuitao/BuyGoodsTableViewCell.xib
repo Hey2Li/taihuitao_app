@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,13 +21,15 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cycle_07.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="6TA-x9-OLx">
-                        <rect key="frame" x="13" y="13" width="221" height="117"/>
+                        <rect key="frame" x="10" y="13" width="158" height="117"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="6TA-x9-OLx" secondAttribute="height" multiplier="158:117" id="t7F-WS-4qa"/>
+                        </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="商品名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ulr-h6-Boi">
-                        <rect key="frame" x="244" y="13" width="120" height="21"/>
+                        <rect key="frame" x="178" y="13" width="191" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="120" id="TWo-yW-Jgf"/>
-                            <constraint firstAttribute="height" constant="21" id="ee7-mc-NOd"/>
+                            <constraint firstAttribute="height" constant="21" id="dEH-OK-1tJ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.4939831495" green="0.49811440709999999" blue="0.5019184351" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -36,8 +39,8 @@
                         <rect key="frame" x="274" y="99.5" width="90" height="30"/>
                         <color key="backgroundColor" red="0.98682707548141479" green="0.27554106712341309" blue="0.4014970064163208" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="90" id="54s-6j-RSx"/>
-                            <constraint firstAttribute="height" constant="30" id="hLE-ON-Ajd"/>
+                            <constraint firstAttribute="height" constant="30" id="Rv9-ZE-xai"/>
+                            <constraint firstAttribute="width" constant="90" id="Wmj-OP-cN1"/>
                         </constraints>
                         <state key="normal" title="购买">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -47,25 +50,25 @@
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="le6-Ru-9d8">
-                        <rect key="frame" x="244" y="36" width="120" height="61.5"/>
+                        <rect key="frame" x="178" y="36" width="191" height="61.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="pO9-S8-VII" firstAttribute="top" secondItem="le6-Ru-9d8" secondAttribute="bottom" constant="2" id="4zq-Fq-viU"/>
-                    <constraint firstItem="Ulr-h6-Boi" firstAttribute="leading" secondItem="6TA-x9-OLx" secondAttribute="trailing" constant="10" id="OQ9-IE-xGG"/>
-                    <constraint firstItem="6TA-x9-OLx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="S5M-Vu-Zau"/>
-                    <constraint firstItem="le6-Ru-9d8" firstAttribute="top" secondItem="Ulr-h6-Boi" secondAttribute="bottom" constant="2" id="VqD-pB-8nt"/>
-                    <constraint firstItem="le6-Ru-9d8" firstAttribute="leading" secondItem="Ulr-h6-Boi" secondAttribute="leading" id="dWs-kH-Yxt"/>
-                    <constraint firstItem="le6-Ru-9d8" firstAttribute="trailing" secondItem="Ulr-h6-Boi" secondAttribute="trailing" id="e3K-Hr-JpE"/>
-                    <constraint firstItem="Ulr-h6-Boi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="f39-Ts-2Nm"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="6TA-x9-OLx" secondAttribute="bottom" constant="4.5" id="gQ5-NB-aGg"/>
-                    <constraint firstItem="6TA-x9-OLx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="laT-p0-u3n"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="pO9-S8-VII" secondAttribute="bottom" constant="5" id="mAT-2i-B9x"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="pO9-S8-VII" secondAttribute="trailing" constant="10" id="muB-Yd-Es5"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Ulr-h6-Boi" secondAttribute="trailing" constant="10" id="pJY-Pc-o1p"/>
+                    <constraint firstItem="pO9-S8-VII" firstAttribute="top" secondItem="le6-Ru-9d8" secondAttribute="bottom" constant="2" id="DAX-JE-eFP"/>
+                    <constraint firstItem="le6-Ru-9d8" firstAttribute="top" secondItem="Ulr-h6-Boi" secondAttribute="bottom" constant="2" id="EtX-Vx-DsS"/>
+                    <constraint firstItem="Ulr-h6-Boi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="KTR-wO-Rrl"/>
+                    <constraint firstItem="le6-Ru-9d8" firstAttribute="trailing" secondItem="Ulr-h6-Boi" secondAttribute="trailing" id="PRF-TD-ZcC"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="6TA-x9-OLx" secondAttribute="bottom" constant="4.5" id="a6n-CJ-azJ"/>
+                    <constraint firstItem="6TA-x9-OLx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="2" id="bNH-fp-gUH"/>
+                    <constraint firstItem="6TA-x9-OLx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="5" id="ilQ-Ld-IXW"/>
+                    <constraint firstItem="le6-Ru-9d8" firstAttribute="leading" secondItem="Ulr-h6-Boi" secondAttribute="leading" id="jaX-cD-ode"/>
+                    <constraint firstItem="Ulr-h6-Boi" firstAttribute="leading" secondItem="6TA-x9-OLx" secondAttribute="trailing" constant="10" id="qRv-xV-pQ7"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="pO9-S8-VII" secondAttribute="trailing" constant="10" id="s1E-b9-eeV"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Ulr-h6-Boi" secondAttribute="trailing" constant="5" id="vYu-s6-zgL"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="pO9-S8-VII" secondAttribute="bottom" constant="5" id="xYG-iT-0O6"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

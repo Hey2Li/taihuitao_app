@@ -10,8 +10,11 @@
 #import "VideoTableViewCell.h"
 #import "HomePageTableViewCell.h"
 #import "ArticleDetailViewController.h"
+#import "VideoDetailViewController.h"
+#import "BrandDetailModel.h"
+#import "XLPhotoBrowser.h"
 
-@interface BrandDetailViewController ()<UIGestureRecognizerDelegate,UITableViewDelegate, UITableViewDataSource,UIGestureRecognizerDelegate,ZFPlayerDelegate, ZFPlayerControlViewDelagate>
+@interface BrandDetailViewController ()<UIGestureRecognizerDelegate,UITableViewDelegate, UITableViewDataSource,UIGestureRecognizerDelegate>
 @property (nonatomic, strong) UITableView *myTableView;
 @property (nonatomic, strong) UILabel *lineLabel;
 @property (nonatomic, strong) UIButton *tempBtn;
@@ -26,13 +29,17 @@
 @property (nonatomic, strong) NSMutableArray *updateDataArray;
 @property (nonatomic, strong) NSMutableArray *welcomeDataArray;
 @property (nonatomic, strong) NSMutableArray *dataArray;
-@property (nonatomic, strong) ZFPlayerView        *playerView;
-@property (nonatomic, strong) ZFPlayerControlView *controlView;
 @property (nonatomic, strong) UIButton *focusButton;
-
+@property (nonatomic, strong) NSMutableArray *dataSourceMutableArray;
 @end
 
 @implementation BrandDetailViewController
+- (NSMutableArray *)dataSourceMutableArray{
+    if (!_dataSourceMutableArray) {
+        _dataSourceMutableArray = [NSMutableArray array];
+    }
+    return _dataSourceMutableArray;
+}
 - (NSMutableArray *)dataArray{
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
@@ -89,29 +96,6 @@
     }
     return _navigtionBar;
 }
-- (ZFPlayerView *)playerView {
-    if (!_playerView) {
-        _playerView = [ZFPlayerView sharedPlayerView];
-        _playerView.delegate = self;
-        // 当cell播放视频由全屏变为小屏时候，不回到中间位置
-        //        _playerView.cellPlayerOnCenter = NO;
-        
-        // 当cell划出屏幕的时候停止播放
-        // _playerView.stopPlayWhileCellNotVisable = YES;
-        //（可选设置）可以设置视频的填充模式，默认为（等比例填充，直到一个维度到达区域边界）
-        // _playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
-        // 静音
-        // _playerView.mute = YES;
-    }
-    return _playerView;
-}
-
-- (ZFPlayerControlView *)controlView {
-    if (!_controlView) {
-        _controlView = [[ZFPlayerControlView alloc] init];
-    }
-    return _controlView;
-}
 - (void)back:(UIButton *)btn{
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -123,6 +107,20 @@
     [self initWithView];
     _selectIndex = 1001;
     [self loadData];
+}
+- (void)loadDataWithType:(NSNumber *)type{
+    [LTHttpManager brandShowWithID:self.brandId Limit:@10 Type:type Complete:^(LTHttpResult result, NSString *message, id data) {
+        if (result == LTHttpResultSuccess) {
+            [self.dataSourceMutableArray removeAllObjects];
+            for (NSDictionary *dic in data[@"responseData"][@"rows"]) {
+                BrandDetailModel *model = [BrandDetailModel mj_objectWithKeyValues:dic];
+                [self.dataSourceMutableArray addObject:model];
+            }
+            [self.myTableView reloadData];
+        }else{
+            
+        }
+    }];
 }
 - (void)loadData{
     [LTHttpManager brandShowWithID:self.brandId Limit:@10 Type:@1 Complete:^(LTHttpResult result, NSString *message, id data) {
@@ -146,10 +144,12 @@
             [self.categoryHederBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",self.dataDic[@"photo"]]] forState:UIControlStateNormal];
             self.focusPeopleLabel.text = [NSString stringWithFormat:@"已关注人数：%@",self.dataDic[@"atten_num"]];
             self.categoryDetailLabel.text = [NSString stringWithFormat:@"%@",self.dataDic[@"introduct"]];
-            //最受欢迎
-            self.welcomeDataArray = [NSMutableArray arrayWithArray:data[@"responseData"][@"comment"]];
-            //最近更新
-            self.updateDataArray = [NSMutableArray arrayWithArray:data[@"responseData"][@"new"]];
+            //数据
+            [self.dataSourceMutableArray removeAllObjects];
+            for (NSDictionary *dic in data[@"responseData"][@"rows"]) {
+                BrandDetailModel *model = [BrandDetailModel mj_objectWithKeyValues:dic];
+                [self.dataSourceMutableArray addObject:model];
+            }
             [self.myTableView reloadData];
         }else{
             
@@ -253,7 +253,7 @@
     }];
     
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [leftBtn setTitle:@"最近更新" forState:UIControlStateNormal];
+    [leftBtn setTitle:@"文章" forState:UIControlStateNormal];
     [leftBtn setTitleColor:UIColorFromRGB(0xaeaeae) forState:UIControlStateNormal];
     [leftBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateSelected];
     leftBtn.selected = YES;
@@ -261,19 +261,47 @@
     [tableViewHeaderView addSubview:leftBtn];
     [leftBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(tableViewHeaderView);
-        make.right.equalTo(tableViewHeaderView.mas_centerX);
+        make.width.equalTo(@(SCREEN_WIDTH/4));
+        make.top.equalTo(blurView.mas_bottom);
+        make.bottom.equalTo(tableViewHeaderView);
+    }];
+    
+    UIButton *secondBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [secondBtn setTitle:@"视频" forState:UIControlStateNormal];
+    [secondBtn setTitleColor:UIColorFromRGB(0xaeaeae) forState:UIControlStateNormal];
+    [secondBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateSelected];
+    secondBtn.selected = NO;
+    _tempBtn = secondBtn;
+    [tableViewHeaderView addSubview:secondBtn];
+    [secondBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(leftBtn.mas_right);
+        make.width.equalTo(@(SCREEN_WIDTH/4));
+        make.top.equalTo(blurView.mas_bottom);
+        make.bottom.equalTo(tableViewHeaderView);
+    }];
+    
+    UIButton *thirdBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [thirdBtn setTitle:@"图集" forState:UIControlStateNormal];
+    [thirdBtn setTitleColor:UIColorFromRGB(0xaeaeae) forState:UIControlStateNormal];
+    [thirdBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateSelected];
+    thirdBtn.selected = NO;
+    _tempBtn = thirdBtn;
+    [tableViewHeaderView addSubview:thirdBtn];
+    [thirdBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(secondBtn.mas_right);
+        make.width.equalTo(@(SCREEN_WIDTH/4));
         make.top.equalTo(blurView.mas_bottom);
         make.bottom.equalTo(tableViewHeaderView);
     }];
     
     UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [rightBtn setTitle:@"最受欢迎" forState:UIControlStateNormal];
+    [rightBtn setTitle:@"直播" forState:UIControlStateNormal];
     [rightBtn setTitleColor:UIColorFromRGB(0xaeaeae) forState:UIControlStateNormal];
     [rightBtn setTitleColor:UIColorFromRGB(0x000000) forState:UIControlStateSelected];
     [tableViewHeaderView addSubview:rightBtn];
     [rightBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(tableViewHeaderView.mas_centerX);
-        make.right.equalTo(tableViewHeaderView.mas_right);
+        make.left.equalTo(thirdBtn.mas_right);
+        make.width.equalTo(@(SCREEN_WIDTH/4));
         make.top.equalTo(blurView.mas_bottom);
         make.bottom.equalTo(tableViewHeaderView);
     }];
@@ -282,7 +310,7 @@
     lineLable.backgroundColor = UIColorFromRGB(0xff4466);
     [tableViewHeaderView addSubview:lineLable];
     [lineLable mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.width.equalTo(@80);
+        make.width.equalTo(@40);
         make.height.equalTo(@1);
         make.centerX.equalTo(leftBtn.mas_centerX);
         make.bottom.equalTo(leftBtn);
@@ -290,8 +318,12 @@
     self.lineLabel = lineLable;
     [leftBtn addTarget:self action:@selector(leftBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     [rightBtn addTarget:self action:@selector(leftBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [secondBtn addTarget:self action:@selector(leftBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [thirdBtn addTarget:self action:@selector(leftBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     leftBtn.tag = 1001;
-    rightBtn.tag = 1002;
+    secondBtn.tag = 1002;
+    thirdBtn.tag = 1003;
+    rightBtn.tag = 1005;
     self.categoryHederBtn = headerBtn;
     self.categoryDetailLabel = detailLabel;
     self.categoryBackgroundImageView = backgroundImageView;
@@ -315,9 +347,6 @@
             // [self.view makeToast:message];
         }
     }];
-    //    [btn setBackgroundColor:UIColorFromRGB(0xff4466)];
-    //    [btn setTitleColor:UIColorFromRGB(0xaeaeae) forState:UIControlStateSelected];
-    
 }
 - (void)leftBtnClick:(UIButton *)btn{
     if (_tempBtn == nil) {
@@ -332,13 +361,13 @@
     }
     if (btn.selected) {
         [self.lineLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
-            make.width.equalTo(@80);
+            make.width.equalTo(@40);
             make.height.equalTo(@1);
             make.centerX.equalTo(btn.mas_centerX);
             make.bottom.equalTo(btn);
         }];
         [self.lineLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-            make.width.equalTo(@80);
+            make.width.equalTo(@40);
             make.height.equalTo(@1);
             make.centerX.equalTo(btn.mas_centerX);
             make.bottom.equalTo(btn);
@@ -347,31 +376,20 @@
             [self.lineLabel.superview layoutIfNeeded];
         }];
         _selectIndex = btn.tag;
+        [self loadDataWithType:@(_selectIndex - 1000)];
         [self.myTableView reloadData];
     }
 }
 
 #pragma mark TableViewDelage
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    if (_selectIndex == 1001) {
-        return self.updateDataArray.count;
-    }else if (_selectIndex == 1002){
-        return self.welcomeDataArray.count;
-    }else{
-        return 0;
-    }
+    return self.dataSourceMutableArray.count;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (_selectIndex == 1001) {
-        return 200;
-    }else if (_selectIndex == 1002){
-        return 200;
-    }else{
-        return 0;
-    }
+    return [Tool layoutForAlliPhoneHeight:220];
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 5;
@@ -379,37 +397,47 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
     return CGFLOAT_MIN;
 }
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    return [[UIView alloc] init];
+}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    return [[UIView alloc] init];
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (_selectIndex == 1001) {
-        HomePageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-        if (!cell) {
-            cell = [[HomePageTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        }
-        [cell.contentImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"%@",self.updateDataArray[indexPath.section][@"photo"]]]]];
-        cell.titleLabel.text = [NSString stringWithFormat:@"%@",self.updateDataArray[indexPath.section][@"title"]];
-        cell.hotImageView.hidden = YES;
-        cell.hotNumLabel.hidden = YES;
-        return cell;
-        
-    }else{
-        //        VideoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"welcomeCell"];
-        //        cell.playBtn.hidden = YES;
-        //        return cell;
-        HomePageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-        if (!cell) {
-            cell = [[HomePageTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        }
-        [cell.contentImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@", [NSString stringWithFormat:@"%@",self.welcomeDataArray[indexPath.section][@"photo"]]]]];
-        cell.titleLabel.text = [NSString stringWithFormat:@"%@",self.welcomeDataArray[indexPath.section][@"title"]];
-        cell.hotImageView.hidden = YES;
-        cell.hotNumLabel.hidden = YES;
-        return cell;
+    HomePageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (!cell) {
+        cell = [[HomePageTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
+    cell.brandDetailModel = self.dataSourceMutableArray[indexPath.section];
+    cell.hotImageView.hidden = YES;
+    cell.hotNumLabel.hidden = YES;
+    return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
-    vc.articleId = @([[NSString stringWithFormat:@"%@",self.updateDataArray[indexPath.section][@"id"]] integerValue]);
-    [self.navigationController pushViewController:vc animated:YES];
+    BrandDetailModel *model = self.dataSourceMutableArray[indexPath.section];
+    if (_selectIndex == 1002 || _selectIndex == 1005) {
+        VideoDetailViewController *vc = [VideoDetailViewController new];
+        vc.videoId = model.ID;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else if (_selectIndex == 1003){
+        [LTHttpManager TnewsDetailWithId:model.ID Value:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
+            if (result == LTHttpResultSuccess) {
+                NSArray *imageArray = data[@"responseData"][@"info"][@"images"];
+                NSLog(@"%@",imageArray);
+                NSMutableArray *imageMutableArray = [NSMutableArray array];
+                [imageArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                    NSString *imageUrl = obj[@"photo"];
+                    [imageMutableArray addObject:imageUrl];
+                }];
+                XLPhotoBrowser *browser = [XLPhotoBrowser showPhotoBrowserWithImages:imageMutableArray currentImageIndex:0];
+                browser.browserStyle = XLPhotoBrowserStyleIndexLabel; // 微博样式
+            }
+        }];
+    }else{
+        ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
+        vc.articleId = model.ID;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
  }
 
 - (void)didReceiveMemoryWarning {
