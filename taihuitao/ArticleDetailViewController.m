@@ -17,6 +17,7 @@
 #import "DataInfo.h"
 #import "ImageInfo.h"
 #import "BottomBuyView.h"
+#import "XLPhotoBrowser.h"
 
 
 @interface ArticleDetailViewController ()<UITableViewDataSource, UITableViewDelegate, ZFPlayerDelegate, WKNavigationDelegate,WKUIDelegate,WKScriptMessageHandler,BottomBuyViewDelegate>
@@ -38,6 +39,7 @@
 @end
 
 @implementation ArticleDetailViewController
+static NSString * const picMethodName = @"openBigPicture:";
 
 - (UIView *)maskView{
     if (!_maskView) {
@@ -241,7 +243,62 @@
     
     self.myTableView.tableHeaderView = self.wkWebView;
 }
-
+#pragma mark - WKScriptMessageHandler
+    
+    /*
+     1、js调用原生的方法就会走这个方法
+     2、message参数里面有2个参数我们比较有用，name和body，
+     2.1 :其中name就是之前已经通过addScriptMessageHandler:name:方法注入的js名称
+     2.2 :其中body就是我们传递的参数了，我在js端传入的是一个字典，所以取出来也是字典，字典里面包含原生方法名以及被点击图片的url
+     */
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message{
+     NSLog(@"JS 调用了 %@ 方法，传回参数 %@",message.name,message.body);
+    NSDictionary *imageDict = message.body;
+    NSString *src = [NSString string];
+    if (imageDict[@"imageSrc"]) {
+        src = imageDict[@"imageSrc"];
+    }else{
+        src = imageDict[@"videoSrc"];
+    }
+    NSString *name = imageDict[@"methodName"];
+    
+    //如果方法名是我们需要的，那么说明是时候调用原生对应的方法了
+    if ([picMethodName isEqualToString:name]) {
+        SEL sel = NSSelectorFromString(picMethodName);
+        
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored"-Warc-performSelector-leaks"
+        //写在这个中间的代码,都不会被编译器提示PerformSelector may cause a leak because its selector is unknown类型的警告
+        [self performSelector:sel withObject:src];
+#pragma clang diagnostic pop
+    }
+}
+#pragma mark - JS调用 OC的方法进行图片浏览
+- (void)openBigPicture:(NSString *)imageSrc{
+        NSLog(@"%@",imageSrc);
+    UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
+    [self.view addSubview:imageView];
+    imageView.contentMode = UIViewContentModeCenter;
+    imageView.backgroundColor = [UIColor blackColor];
+    [imageView sd_setImageWithURL:[NSURL URLWithString:imageSrc]];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(removeImageView:)];
+    [imageView addGestureRecognizer: tap];
+    imageView.userInteractionEnabled = YES;
+}
+- (void)removeImageView:(UITapGestureRecognizer *)tap{
+    tap.view.hidden = !tap.view.hidden;
+    [tap.view removeFromSuperview];
+}
+    
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
+    SVProgressShow();
+}
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
+    SVProgressHiden();
+}
+- (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{
+    SVProgressShowStuteText(@"加载失败", NO);
+}
 - (void)loadingHtmlNews:(DataInfo *)data{
     NSMutableString *body = [data.content mutableCopy];
     
@@ -259,7 +316,6 @@
     //发布时间
     NSString *sourceTime = data.ptime ? data.ptime : @"";
     //文章里面的图片
-    //    NSArray *imagArray = data.images;
     
     [data.images enumerateObjectsUsingBlock:^(NSDictionary *info, NSUInteger idx, BOOL * _Nonnull stop) {
         NSRange range = [body rangeOfString:info[@"ref"]];
@@ -342,15 +398,12 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     CGFloat top = scrollView.contentOffset.y;
     if ([scrollView isKindOfClass:[UITableView class]]) {
-        NSLog(@"self.myTableView%f",self.myTableView.contentOffset.y);
-
         if (top  > (self.myTableView.contentSize.height - SCREEN_HEIGHT - 100)) {
             self.myTableView.bounces = YES;
         }else{
             self.myTableView.bounces = NO;
         }
     }else if(scrollView == self.wkWebView.scrollView){
-        NSLog(@"self.wkWebView%f",self.wkWebView.scrollView.contentOffset.y);
         if (top > 30) {
             self.myTableView.bounces = NO;
         }else{

@@ -260,16 +260,16 @@ static NSString *videoCell = @"playerCell";
             cell.imageURLStringsGroup = self.liveBannerArray;
             WeakSelf
             cell.BannerImageClick = ^(NSInteger index) {
-                ArticleDetailViewController *vc = [ArticleDetailViewController new];
-                vc.articleId = @([[NSString stringWithFormat:@"%@",weakSelf.liveBannerArray[index][@"id"]] integerValue]);
+               VideoDetailViewController *vc = [VideoDetailViewController new];
+                vc.videoId = @([[NSString stringWithFormat:@"%@",weakSelf.liveBannerArray[index][@"id"]] integerValue]);
                 [weakSelf.navigationController pushViewController:vc animated:YES];
             };
         }else{
             cell.imageURLStringsGroup = self.videoBannerArray;
             WeakSelf
             cell.BannerImageClick = ^(NSInteger index) {
-                ArticleDetailViewController *vc = [ArticleDetailViewController new];
-                vc.articleId = @([[NSString stringWithFormat:@"%@",weakSelf.videoBannerArray[index][@"id"]] integerValue]);
+                VideoDetailViewController *vc = [VideoDetailViewController new];
+                vc.videoId = @([[NSString stringWithFormat:@"%@",weakSelf.liveBannerArray[index][@"id"]] integerValue]);
                 [weakSelf.navigationController pushViewController:vc animated:YES];
             };
         }
