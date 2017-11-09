@@ -1,5 +1,5 @@
 window.onload = function(){
-    alert('感谢你的支持');
+//    alert('感谢你的支持');
 
     var imageArray = document.getElementsByTagName("img");
     var message;
