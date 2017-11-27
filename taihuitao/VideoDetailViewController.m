@@ -228,7 +228,8 @@
         //        self.myTableView.rowHeight = UITableViewAutomaticDimension;
         return 120;
     }else if (indexPath.section == 2){
-        return [Tool layoutForAlliPhoneHeight:120];
+        return  [Tool layoutForAlliPhoneHeight:250]
+        ;
     }else if (indexPath.section == 3){
         return 50;
     }else{

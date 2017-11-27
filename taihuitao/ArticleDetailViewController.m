@@ -295,6 +295,10 @@ static NSString * const picMethodName = @"openBigPicture:";
 }
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     SVProgressHiden();
+    CGFloat height = 0.0;
+    [webView sizeToFit];
+    height = webView.scrollView.contentSize.height;
+    NSLog(@"%f",height);
 }
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{
     SVProgressShowStuteText(@"加载失败", NO);
@@ -307,14 +311,17 @@ static NSString * const picMethodName = @"openBigPicture:";
     self.title = data.title;
     //来源
     NSString *sourceName = [NSString string];
-    if (self.htmlDict[@"articleTags"]) {
-        sourceName = self.htmlDict[@"articleTags"];
-    }else {
-        sourceName = data.source ? data.source : @"";
+//    if (self.htmlDict[@"articleTags"]) {
+//        sourceName = self.htmlDict[@"articleTags"];
+//    }else {
+//        sourceName = data.source ? data.source : @"";
+//    }
+     NSString *sourceTime;
+    if (self.htmlDict[@"time"]) {
+        sourceTime = self.htmlDict[@"time"];
     }
-    
     //发布时间
-    NSString *sourceTime = data.ptime ? data.ptime : @"";
+   
     //文章里面的图片
     
     [data.images enumerateObjectsUsingBlock:^(NSDictionary *info, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -330,30 +337,7 @@ static NSString * const picMethodName = @"openBigPicture:";
         [body replaceOccurrencesOfString:info[@"ref"] withString:imageStr options:NSCaseInsensitiveSearch range:range];
         
     }];
-    //    [self getImageFromDownloaderOrDiskByImageUrlArray:data.images];
-    
-    //    for (ImageInfo *imageDict in data.images) {
-    //        //图片在body中的占位标识，比如"<!--IMG#3-->"
-    //        NSString *imageRef = imageDict.ref;
-    //        //图片的url
-    //        NSString *imageSrc = imageDict.url;
-    //        //图片下面的文字说明
-    //        NSString *imageAlt = imageDict.alt;
-    //
-    //        NSString *imageHtml  = [NSString string];
-    //
-    //        //把对应的图片url转换成html里面显示图片的代码
-    //        if (imageAlt) {
-    //
-    //            imageHtml = [NSString stringWithFormat:@"<div><img width=\"100%%\" src=\"%@\"><div class=\"picDescribe\">%@</div></div>",imageSrc,imageAlt];
-    //        }else{
-    //            imageHtml = [NSString stringWithFormat:@"<div><img width=\"100%%\" src=\"%@\"></div>",imageSrc];
-    //        }
-    //
-    //        //这一步是显示图片的关键，主要就是把body里面的图片的占位标识给替换成上一步已经生成的html语法格式的图片代码，这样WKWebview加载html之后图片就可以被加载显示出来了
-    ////        body = [[body stringByReplacingOccurrencesOfString:imageRef withString:imageHtml] copy];
-    //    }
-    
+   
     //css文件的全路径
     NSURL *cssPath = [[NSBundle mainBundle] URLForResource:@"newDetail" withExtension:@"css"];
     
@@ -437,6 +421,7 @@ static NSString * const picMethodName = @"openBigPicture:";
     [LTHttpManager TnewsDetailWithId:articleId Value:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
         if (result == LTHttpResultSuccess) {
             DataInfo *model = [DataInfo mj_objectWithKeyValues:[data objectForKey:@"responseData"][@"info"]];
+            self.htmlDict = data[@"responseData"][@"info"];
             [weakSelf loadingHtmlNews:model];
 //            self.infoDataDic = data[@"responseData"][@"info"];
             NSArray *dataArray = data[@"responseData"][@"commodity"];
@@ -566,7 +551,7 @@ static NSString * const picMethodName = @"openBigPicture:";
         return 120;
     }
   if (indexPath.section == 0){
-      return [Tool layoutForAlliPhoneHeight:120];
+      return [Tool layoutForAlliPhoneHeight:250];
     }else if (indexPath.section == 1){
         return 50;
     }else{

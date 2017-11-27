@@ -360,7 +360,7 @@ static NSString *commentCell = @"commentCell";
 //            if (LTHttpResultSuccess == result) {
 //                SVProgressShowStuteText(@"收藏成功", YES);
 //                btn.selected = YES;
-//                [btn setImage:[UIImage imageNamed:@"收藏红"] forState:UIControlStateSelected];
+//                [btn setImage:[UIImageimageNamed:@"收藏红"] forState:UIControlStateSelected];
 //            }else{
 //
 //            }
@@ -443,7 +443,6 @@ static NSString *commentCell = @"commentCell";
                     //第三方原始返回的数据
                     UMSocialLogInfo(@"response originalResponse data is %@",resp.originalResponse);
                     SVProgressShowStuteText(@"分享成功", YES);
-                    
                 }else{
                     UMSocialLogInfo(@"response data is %@",data);
                 }

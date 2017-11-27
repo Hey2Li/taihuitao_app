@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.recommendImageView.clipsToBounds = YES;
+    self.recommendImageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 - (void)setModel:(RecommedCellModel *)model{
     _model = model;

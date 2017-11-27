@@ -22,7 +22,7 @@
         self.selectionStyle = UITableViewCellSelectionStyleNone;
         UICollectionViewFlowLayout *flowlayout = [[UICollectionViewFlowLayout alloc]init];
         flowlayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, [Tool layoutForAlliPhoneHeight:120]) collectionViewLayout:flowlayout];
+        UICollectionView *collectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, [Tool layoutForAlliPhoneHeight:300]) collectionViewLayout:flowlayout];
         collectionView.dataSource = self;
         collectionView.delegate = self;
         [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"collectionCell"];
@@ -39,7 +39,7 @@
     return  self.modelArray.count;
 }
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-    return CGSizeMake([Tool layoutForAlliPhoneWidth:150] ,CGRectGetHeight(self.bounds));
+    return CGSizeMake([Tool layoutForAlliPhoneWidth:(SCREEN_WIDTH-30)/2] ,CGRectGetHeight(self.bounds));
 }
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section{
     return UIEdgeInsetsMake(0, 10, 0, 5);

@@ -120,6 +120,7 @@ static NSString *videoCell = @"playerCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.translucent = NO;
     [self footerLoadData];
     [self headerLoadData];
     _pageNum = 1;

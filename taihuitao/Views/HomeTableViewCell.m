@@ -23,9 +23,18 @@
 - (void)setModel:(HomeNewsModel *)model{
     _model = model;
     [self.contentImageView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",model.photo]] placeholderImage:[UIImage imageNamed:@"未加载好图片长"]];
-    self.authorLabel.text = [NSString stringWithFormat:@"%@",model.author];
-    self.readNumLabel.text = [NSString stringWithFormat:@"%@",model.hits];
+//    self.authorLabel.text = [NSString stringWithFormat:@"%@",model.author];
+    self.authorLabel.text = [NSString stringWithFormat:@"熊起"];
+//    self.readNumLabel.text = [NSString stringWithFormat:@"%@",model.hits];
+    CGFloat count =  [model.hits intValue];
+    if (count > 10000) {
+          self.readNumLabel.text = [NSString stringWithFormat:@"%.0f万",count/10000];
+    }else{
+          self.readNumLabel.text = [NSString stringWithFormat:@"%.1f万",count/100];
+    }
     self.titleLabel.text = [NSString stringWithFormat:@"%@",model.title];
-    self.likeNumLabel.text = [NSString stringWithFormat:@"%@",model.collection];
+//    self.likeNumLabel.text = [NSString stringWithFormat:@"%@",model.collection];
+    int value = (arc4random() % 10000) + 1000;
+    self.likeNumLabel.text = [NSString stringWithFormat:@"%d",value];
 }
 @end

@@ -49,6 +49,7 @@
     
     UILabel *videoTitleLabel = [UILabel new];
     [bottomView addSubview:videoTitleLabel];
+    videoTitleLabel.textAlignment = NSTextAlignmentCenter;
     videoTitleLabel.font = [UIFont systemFontOfSize:14];
     videoTitleLabel.textColor = UIColorFromRGB(0x6b6b6b);
     videoTitleLabel.text = @"工作这么辛苦，老板有奖金发吗，我已经做了这么多的";
@@ -67,27 +68,26 @@
     hotBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     [hotBtn.imageView setContentMode:UIViewContentModeScaleAspectFit];
     [hotBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(videoTitleLabel.mas_left);
+        make.centerX.equalTo(videoTitleLabel.mas_centerX);
         make.top.equalTo(videoTitleLabel.mas_bottom).offset(5);
         make.height.equalTo(@20);
         make.width.equalTo(@70);
     }];
     
     UIButton *praiseBtn = [UIButton new];
-    [praiseBtn setImage:[UIImage imageNamed:@"点赞灰"] forState:UIControlStateNormal];
-    [praiseBtn setImage:[UIImage imageNamed:@"点赞红"] forState:UIControlStateSelected];
+    [praiseBtn setImage:[UIImage imageNamed:@"home_likes_icon_10x9_@2x"] forState:UIControlStateNormal];
+//    [praiseBtn setImage:[UIImage imageNamed:@"点赞红"] forState:UIControlStateSelected];
     [praiseBtn setTitle:@"6548" forState:UIControlStateNormal];
     [praiseBtn setTitleColor:UIColorFromRGB(0xaeaeae) forState:UIControlStateNormal];
     praiseBtn.titleLabel.font = [UIFont systemFontOfSize:13];
     [praiseBtn.imageView setContentMode:UIViewContentModeScaleAspectFit];
     [bottomView addSubview:praiseBtn];
     [praiseBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(hotBtn.mas_right).offset(10);
+        make.right.equalTo(self.mas_right).offset(-10);
         make.height.equalTo(hotBtn.mas_height);
         make.width.equalTo(@70);
         make.centerY.equalTo(hotBtn.mas_centerY);
     }];
-    praiseBtn.hidden = YES;
     
     UIButton *commendBtn = [UIButton new];
     [commendBtn setImage:[UIImage imageNamed:@"评论灰"] forState:UIControlStateNormal];
@@ -116,21 +116,21 @@
         make.width.equalTo(@70);
         make.centerY.equalTo(hotBtn.mas_centerY);
     }];
+    shareBtn.hidden = YES;
     
-//    UILabel *playAmountLabel = [UILabel new];
-//    playAmountLabel.textAlignment = NSTextAlignmentLeft;
-//    playAmountLabel.font = [UIFont systemFontOfSize:12];
-//    playAmountLabel.backgroundColor = [UIColor clearColor];
-//    playAmountLabel.textColor = [UIColor whiteColor];
-//    playAmountLabel.text = @"4123播放";
-//    [bottomView addSubview:playAmountLabel];
-//    [playAmountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(bottomView.mas_left).offset(10);
-//        make.centerY.equalTo(bottomView.mas_centerY);
-//        make.width.equalTo(@100);
-//        make.height.equalTo(@15);
-//    }];
-//    
+    UILabel *playAmountLabel = [UILabel new];
+    playAmountLabel.textAlignment = NSTextAlignmentLeft;
+    playAmountLabel.font = [UIFont systemFontOfSize:13];
+    playAmountLabel.textColor = UIColorFromRGB(0xaeaeae);
+    playAmountLabel.text = @"熊起";
+    [bottomView addSubview:playAmountLabel];
+    [playAmountLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(bottomView.mas_left).offset(10);
+        make.centerY.equalTo(hotBtn.mas_centerY);
+        make.width.equalTo(@100);
+        make.height.equalTo(@15);
+    }];
+//
 //    UILabel *playTimeLabel = [UILabel new];
 //    playTimeLabel.textAlignment = NSTextAlignmentRight;
 //    playTimeLabel.font = [UIFont systemFontOfSize:12];
@@ -163,19 +163,21 @@
 - (void)setModel:(VideoModel *)model {
     _model = model;
     [self.picView sd_setImageWithURL:[NSURL URLWithString:model.photo] placeholderImage:[UIImage imageNamed:@"loading_bgView"]];
-    [self.hotBtn setTitle:[NSString stringWithFormat:@"%@",model.hits] forState:UIControlStateNormal];
+//    [self.hotBtn setTitle:[NSString stringWithFormat:@"%@",model.hits] forState:UIControlStateNormal];
     [self.commentBtn setTitle:[NSString stringWithFormat:@"%@",model.comment] forState:UIControlStateNormal];
-    [self.praiseBtn setTitle:[NSString stringWithFormat:@"%@",model.agree] forState:UIControlStateNormal];
+//    [self.praiseBtn setTitle:[NSString stringWithFormat:@"%@",model.agree] forState:UIControlStateNormal];
     self.titleLabel.text = [NSString stringWithFormat:@"%@",model.title];
-    if ([model.is_agree isEqual:@1]) {
-        self.praiseBtn.selected = YES;
-        [self.praiseBtn setImage:[UIImage imageNamed:@"点赞红"] forState:UIControlStateSelected];
-        self.praiseBtn.userInteractionEnabled = NO;
+    CGFloat count =  [model.hits intValue];
+    //hot parise play
+    if (count > 10000) {
+        [self.hotBtn setTitle:[NSString stringWithFormat:@"%.0f万",count/10000] forState:UIControlStateNormal];
     }else{
-        self.praiseBtn.selected = NO;
-        [self.praiseBtn setImage:[UIImage imageNamed:@"点赞灰"] forState:UIControlStateSelected];
-        self.praiseBtn.userInteractionEnabled = YES;
+         [self.hotBtn setTitle:[NSString stringWithFormat:@"%.1f万",count/100] forState:UIControlStateNormal];
     }
+    self.titleLabel.text = [NSString stringWithFormat:@"%@",model.title];
+    //    self.likeNumLabel.text = [NSString stringWithFormat:@"%@",model.collection];
+    int value = (arc4random() % 10000) + 1000;
+    [self.praiseBtn setTitle:[NSString stringWithFormat:@"%d",value] forState:UIControlStateNormal];
 }
 - (void)play:(UIButton *)sender{
     if (self.playBlock) {

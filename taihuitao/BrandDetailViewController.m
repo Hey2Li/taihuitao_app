@@ -426,7 +426,7 @@
                 NSLog(@"%@",imageArray);
                 NSMutableArray *imageMutableArray = [NSMutableArray array];
                 [imageArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    NSString *imageUrl = obj[@"photo"];
+                    NSString *imageUrl = obj[@"url"];
                     [imageMutableArray addObject:imageUrl];
                 }];
                 XLPhotoBrowser *browser = [XLPhotoBrowser showPhotoBrowserWithImages:imageMutableArray currentImageIndex:0];

@@ -26,7 +26,7 @@
 @property (nonatomic, strong) FSBottomTableViewCell *contentCell;
 @property (nonatomic, strong) FSSegmentTitleView *titleView;
 @property (nonatomic, assign) BOOL canScroll;
-@property (nonatomic, strong) NSArray *topTitleArray;
+@property (nonatomic, strong) NSMutableArray *topTitleArray;
 @property (nonatomic, strong) NSMutableArray *controllersArray;
 @property (nonatomic, strong) NSMutableArray *imageMutaleArray;
 @property (nonatomic, strong) NSMutableArray *keywordMutableArray;
@@ -36,6 +36,12 @@
 
 @implementation FSBaseViewController
 
+- (NSMutableArray *)topTitleArray{
+    if (!_topTitleArray) {
+        _topTitleArray = [NSMutableArray array];
+    }
+    return _topTitleArray;
+}
 - (NSMutableArray *)keywordMutableArray{
     if (!_keywordMutableArray) {
         _keywordMutableArray = [NSMutableArray array];
@@ -61,11 +67,12 @@
         [_contactUsBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(self.view.mas_right);
             make.centerY.equalTo(self.view.mas_centerY);
-            make.width.equalTo(@80);
+            make.width.equalTo(@35);
             make.height.equalTo(@35);
         }];
         [self.view bringSubviewToFront:self.contactUsBtn];
-        [_contactUsBtn setTitle:@"联系我们" forState:UIControlStateNormal];
+//        [_contactUsBtn setTitle:@"联系我们" forState:UIControlStateNormal];
+        [_contactUsBtn setImage:[UIImage imageNamed:@"联系我们"] forState:UIControlStateNormal];
         [_contactUsBtn setTitleColor:DRGBCOLOR forState:UIControlStateNormal];
         _contactUsBtn.backgroundColor = [UIColor blackColor];
         [_contactUsBtn addTarget:self action:@selector(contactUsClick) forControlEvents:UIControlEventTouchUpInside];
@@ -88,6 +95,7 @@
     [self setupSubViews];
     [self initWithNavi];
     [self loadData];
+    self.title = @"TAIHUITAO";
 //    [self contactUsBtn];
 }
 - (void)contactUsClick{
@@ -97,7 +105,8 @@
 - (void)loadData{
     [LTHttpManager THomeDataWithLimit:@5 Page:@1 Nlimit:@10 Complete:^(LTHttpResult result, NSString *message, id data) {
         if (result == LTHttpResultSuccess) {
-            self.topTitleArray = data[@"responseData"][@"column"];
+            [self.topTitleArray addObject:@{@"id":@"-1",@"name":@"推荐"}];
+            [self.topTitleArray addObjectsFromArray:data[@"responseData"][@"column"]];
             self.imageMutaleArray = [NSMutableArray arrayWithArray:data[@"responseData"][@"top"]];
             [self.controllersArray removeAllObjects];
             for (NSDictionary *dic in self.topTitleArray) {
