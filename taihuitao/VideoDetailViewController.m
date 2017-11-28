@@ -25,6 +25,8 @@
 @property (nonatomic, strong) ZFPlayerView *playerView;
 @property (nonatomic, assign) BOOL isPlaying;
 @property (nonatomic, strong) ZFPlayerModel *playerModel;
+@property (nonatomic, strong) ZFPlayerControlView *controlView;
+@property (nonatomic, strong) NSMutableArray *dataSource;
 @end
 
 @implementation VideoDetailViewController
@@ -53,42 +55,35 @@
     }
     return _myTableView;
 }
-- (ZFPlayerModel *)playerModel {
-    if (!_playerModel) {
-        _playerModel                  = [[ZFPlayerModel alloc] init];
-        //        _playerModel.title            = @"这里设置视频标题";
-        //        _playerModel.videoURL         = self.videoURL;
-        _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
-        _playerModel.fatherView       = self.playerFatherView;
+//- (ZFPlayerModel *)playerModel {
+//    if (!_playerModel) {
+//        _playerModel                  = [[ZFPlayerModel alloc] init];
+//        //        _playerModel.title            = @"这里设置视频标题";
+//        //        _playerModel.videoURL         = self.videoURL;
+//        _playerModel.placeholderImage = [UIImage imageNamed:@"loading_bgView1"];
+//        _playerModel.fatherView       = self.playerFatherView;
+//    }
+//    return _playerModel;
+//}
+- (ZFPlayerControlView *)controlView {
+    if (!_controlView) {
+        _controlView = [[ZFPlayerControlView alloc] init];
     }
-    return _playerModel;
+    return _controlView;
 }
-
 - (ZFPlayerView *)playerView {
     if (!_playerView) {
-        _playerView = [[ZFPlayerView alloc] init];
-        
-        /*****************************************************************************************
-         *   // 指定控制层(可自定义)
-         *   // ZFPlayerControlView *controlView = [[ZFPlayerControlView alloc] init];
-         *   // 设置控制层和播放模型
-         *   // 控制层传nil，默认使用ZFPlayerControlView(如自定义可传自定义的控制层)
-         *   // 等效于 [_playerView playerModel:self.playerModel];
-         ******************************************************************************************/
-        [_playerView playerControlView:nil playerModel:self.playerModel];
-        
-        // 设置代理
+        _playerView = [ZFPlayerView sharedPlayerView];
         _playerView.delegate = self;
+        // 当cell播放视频由全屏变为小屏时候，不回到中间位置
+        _playerView.cellPlayerOnCenter = NO;
         
-        //（可选设置）可以设置视频的填充模式，内部设置默认（ZFPlayerLayerGravityResizeAspect：等比例填充，直到一个维度到达区域边界）
-        // _playerView.playerLayerGravity = ZFPlayerLayerGravityResize;
-        
-        // 打开下载功能（默认没有这个功能）
-        //        _playerView.hasDownload    = YES;
-        
-        // 打开预览图
-        _playerView.hasPreviewView = YES;
-        
+        // 当cell划出屏幕的时候停止播放
+        // _playerView.stopPlayWhileCellNotVisable = YES;
+        //（可选设置）可以设置视频的填充模式，默认为（等比例填充，直到一个维度到达区域边界）
+        // _playerView.playerLayerGravity = ZFPlayerLayerGravityResizeAspect;
+        // 静音
+        // _playerView.mute = YES;
     }
     return _playerView;
 }
@@ -132,7 +127,6 @@
 }
 - (void)setVideoId:(NSNumber *)videoId{
     _videoId = videoId;
-    WeakSelf
     [LTHttpManager TnewsDetailWithId:videoId Value:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
         if (result == LTHttpResultSuccess) {
             self.infoDataDic = data[@"responseData"][@"info"];
@@ -148,30 +142,36 @@
                 RecommedCellModel *model = [RecommedCellModel mj_objectWithKeyValues:dic];
                 [self.recommendMutableArrray addObject:model];
             }
-            self.playerModel.videoURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",self.infoDataDic[@"url"]]];
-            [self.playerView resetToPlayNewVideo:self.playerModel];
+            self.dataSource = @[].mutableCopy;
+            ZFVideoModel *model = [[ZFVideoModel alloc]init];
+            [model setValuesForKeysWithDictionary:self.infoDataDic];
+            [self.dataSource addObject:model];
+//            self.playerModel.videoURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",self.infoDataDic[@"url"]]];
+//            [self.playerView resetToPlayNewVideo:self.playerModel];
             [self.myTableView reloadData];
         }else{
             [self.playerView resetPlayer];
         }
     }];
-    self.playerFatherView = [[UIView alloc] init];
-    [self.myTableView addSubview:self.playerFatherView];
-    [self.playerFatherView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.myTableView.mas_top);
-        make.leading.trailing.mas_equalTo(0);
-        make.width.equalTo(@(SCREEN_WIDTH));
-        make.height.mas_equalTo(self.playerFatherView.mas_width).multipliedBy(9.0f/16.0f);
-    }];
-    [self.playerView autoPlayTheVideo];
+//    self.playerFatherView = [[UIView alloc] init];
+//    [self.myTableView addSubview:self.playerFatherView];
+//    [self.playerFatherView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.top.equalTo(self.myTableView.mas_top);
+//        make.leading.trailing.mas_equalTo(0);
+//        make.width.equalTo(@(SCREEN_WIDTH));
+//        make.height.mas_equalTo(self.playerFatherView.mas_width).multipliedBy(9.0f/16.0f);
+//    }];
+//    [self.playerView autoPlayTheVideo];
 }
 #pragma mark tableViewDelegate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 4;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0 || section == 2 || section == 3) {
+    if (section == 2 || section == 3) {
         return 1;
+    }else if (section == 0){
+        return self.dataSource.count;
     }else{
         return self.goodsMutableArray.count;
     }
@@ -238,8 +238,25 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
-        GoodsDetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"gooddetailcell"];
+        static NSString *identifier        = @"gooddetailcell";
+        GoodsDetailsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];
         cell.dataDic = self.infoDataDic;
+       __block ZFVideoModel *model    = self.dataSource[indexPath.row];
+        //赋值model
+        cell.model = model;
+        __block NSIndexPath *weakIndexPath = indexPath;
+        __block GoodsDetailsTableViewCell *weakCell = cell;
+        __weak typeof(self)  weakSelf = self;
+        //点击播放的回调
+        cell.playBlock = ^(UIButton *btn){
+            ZFPlayerModel *playerModel = [[ZFPlayerModel alloc]init];
+            playerModel.fatherViewTag = weakCell.picView.tag;
+            playerModel.videoURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",model.url]];
+            playerModel.scrollView = weakSelf.myTableView;
+            playerModel.indexPath = weakIndexPath;
+            [weakSelf.playerView playerControlView:nil playerModel:playerModel];
+            [weakSelf.playerView autoPlayTheVideo];
+        };
         return cell;
     }else if (indexPath.section == 1){
         BuyGoodsTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"buygoodcell"];

@@ -276,14 +276,14 @@ static NSString * const picMethodName = @"openBigPicture:";
 #pragma mark - JS调用 OC的方法进行图片浏览
 - (void)openBigPicture:(NSString *)imageSrc{
         NSLog(@"%@",imageSrc);
-    UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
-    [self.view addSubview:imageView];
-    imageView.contentMode = UIViewContentModeCenter;
-    imageView.backgroundColor = [UIColor blackColor];
-    [imageView sd_setImageWithURL:[NSURL URLWithString:imageSrc]];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(removeImageView:)];
-    [imageView addGestureRecognizer: tap];
-    imageView.userInteractionEnabled = YES;
+//    UIImageView *imageView = [[UIImageView alloc]initWithFrame:self.view.bounds];
+//    [self.view addSubview:imageView];
+//    imageView.contentMode = UIViewContentModeCenter;
+//    imageView.backgroundColor = [UIColor blackColor];
+//    [imageView sd_setImageWithURL:[NSURL URLWithString:imageSrc]];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(removeImageView:)];
+//    [imageView addGestureRecognizer: tap];
+//    imageView.userInteractionEnabled = YES;
 }
 - (void)removeImageView:(UITapGestureRecognizer *)tap{
     tap.view.hidden = !tap.view.hidden;

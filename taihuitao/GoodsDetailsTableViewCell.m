@@ -8,12 +8,27 @@
 
 #import "GoodsDetailsTableViewCell.h"
 
+
 @implementation GoodsDetailsTableViewCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
     self.selectionStyle = NO;
+
+    // 设置imageView的tag，在PlayerView中取（建议设置100以上）
+    self.picView.tag = 101;
+    self.picView.userInteractionEnabled = YES;
+    
+    // 代码添加playerBtn到imageView上
+    self.playBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.playBtn setImage:[UIImage imageNamed:@"video_list_cell_big_icon"] forState:UIControlStateNormal];
+    [self.playBtn addTarget:self action:@selector(play:) forControlEvents:UIControlEventTouchUpInside];
+    [self.picView addSubview:self.playBtn];
+    [self.playBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self.picView);
+        make.width.height.mas_equalTo(50);
+    }];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -23,6 +38,7 @@
 }
 - (void)setDataDic:(NSDictionary *)dataDic{
     _dataDic = dataDic;
+     [self.picView sd_setImageWithURL:[NSURL URLWithString:dataDic[@"photo"]] placeholderImage:[UIImage imageNamed:@"loading_bgView"]];
     self.dateLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"time"]];
     NSMutableParagraphStyle  *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     
@@ -39,9 +55,14 @@
     }else{
         self.introduceLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"introduct"]];
     }
-//    self.introduceLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"introduct"]];
-    [self.goodsBkImageView sd_setImageWithURL:[NSURL URLWithString:dataDic[@"photo"]] placeholderImage:[UIImage imageNamed:@"未加载好图片长"]];
     self.titleLabel.text = [NSString stringWithFormat:@"%@",dataDic[@"title"]];
-    self.readNumLabel.text = [NSString stringWithFormat:@"阅读:%@",dataDic[@"hits"]];
+}
+- (void)setModel:(ZFVideoModel *)model {
+//    [self.picView sd_setImageWithURL:[NSURL URLWithString:model.url] placeholderImage:[UIImage imageNamed:@"loading_bgView"]];
+}
+- (void)play:(UIButton *)sender {
+    if (self.playBlock) {
+        self.playBlock(sender);
+    }
 }
 @end
