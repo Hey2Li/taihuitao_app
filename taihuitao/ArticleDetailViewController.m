@@ -157,7 +157,6 @@ static NSString * const picMethodName = @"openBigPicture:";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-    [self.tabBarController.tabBar setHidden:YES];
     if (self.isVideo.length > 2) {
         if (self.navigationController.viewControllers.count == 2 && self.playerView && self.isPlaying) {
             self.isPlaying = NO;
@@ -167,7 +166,6 @@ static NSString * const picMethodName = @"openBigPicture:";
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.tabBarController.tabBar setHidden:NO];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 - (void)viewDidDisappear:(BOOL)animated{

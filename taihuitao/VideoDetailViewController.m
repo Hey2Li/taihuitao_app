@@ -44,7 +44,7 @@
 }
 - (UITableView *)myTableView{
     if (!_myTableView) {
-       _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
+       _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44) style:UITableViewStylePlain];
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
         _myTableView.separatorStyle = NO;
@@ -99,7 +99,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.translucent = NO;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     if (self.navigationController.viewControllers.count == 2 && self.playerView && self.isPlaying) {
         self.isPlaying = NO;
@@ -276,9 +276,29 @@
         WeakSelf
         cell.HorCollectionCellClick = ^(NSIndexPath *indexPath) {
             RecommedCellModel *model = weakSelf.recommendMutableArrray[indexPath.row];
-            ArticleDetailViewController *vc = [ArticleDetailViewController new];
-            vc.articleId = model.ID;
-            [self.navigationController pushViewController:vc animated:YES];
+            if ([model.type isEqual: @1]) {
+                ArticleDetailViewController *vc = [ArticleDetailViewController new];
+                vc.articleId = model.ID;
+                [self.navigationController pushViewController:vc animated:YES];
+            }else if ([model.type isEqual: @2] || [model.type isEqual: @5]){
+                VideoDetailViewController *vc = [VideoDetailViewController new];
+                vc.videoId = model.ID;
+                [self.navigationController pushViewController:vc animated:YES];
+            }else if ([model.type isEqual:@3]){
+                [LTHttpManager TnewsDetailWithId:model.ID Value:@"" Complete:^(LTHttpResult result, NSString *message, id data) {
+                    if (result == LTHttpResultSuccess) {
+                        NSArray *imageArray = data[@"responseData"][@"info"][@"images"];
+                        NSLog(@"%@",imageArray);
+                        NSMutableArray *imageMutableArray = [NSMutableArray array];
+                        [imageArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                            NSString *imageUrl = obj[@"url"];
+                            [imageMutableArray addObject:imageUrl];
+                        }];
+                        XLPhotoBrowser *browser = [XLPhotoBrowser showPhotoBrowserWithImages:imageMutableArray currentImageIndex:0];
+                        browser.browserStyle = XLPhotoBrowserStyleIndexLabel; // 微博样式
+                    }
+                }];
+            }
         };
         cell.modelArray = self.recommendMutableArrray;
         return cell;

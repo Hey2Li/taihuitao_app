@@ -25,9 +25,9 @@
     }
     return _dataMutableArray;
 }
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.translucent = NO;
     NSLog(@"---%@",self.title);
 }
 
