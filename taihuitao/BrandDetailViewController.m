@@ -177,12 +177,10 @@
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
-    [self.tabBarController.tabBar setHidden:YES];
 }
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:animated];
-    [self.tabBarController.tabBar setHidden:NO];
 }
 - (UIView *)tableViewHeaderView{
     UIView *tableViewHeaderView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT/2)];
@@ -417,6 +415,7 @@
     BrandDetailModel *model = self.dataSourceMutableArray[indexPath.section];
     if (_selectIndex == 1002 || _selectIndex == 1005) {
         VideoDetailViewController *vc = [VideoDetailViewController new];
+        vc.hidesBottomBarWhenPushed = YES;
         vc.videoId = model.ID;
         [self.navigationController pushViewController:vc animated:YES];
     }else if (_selectIndex == 1003){

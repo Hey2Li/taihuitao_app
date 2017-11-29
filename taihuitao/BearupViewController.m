@@ -105,6 +105,7 @@
     CDetailViewController *vc = [CDetailViewController new];
     HomeNewsModel *model = self.dataMutableArray[indexPath.row];
     vc.cid = model.ID;
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)didReceiveMemoryWarning {

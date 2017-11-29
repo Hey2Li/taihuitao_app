@@ -188,6 +188,7 @@
     BrandDetailViewController *vc =[[BrandDetailViewController alloc]init];
     BrandNameModel *model = self.subCategoryMutableArray[indexPath.row];
     vc.brandId = model.ID;
+    vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)didReceiveMemoryWarning {

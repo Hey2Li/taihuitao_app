@@ -44,7 +44,7 @@
 }
 - (UITableView *)myTableView{
     if (!_myTableView) {
-        _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 50) style:UITableViewStylePlain];
+       _myTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
         _myTableView.delegate = self;
         _myTableView.dataSource = self;
         _myTableView.separatorStyle = NO;
@@ -99,6 +99,7 @@
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.translucent = YES;
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     if (self.navigationController.viewControllers.count == 2 && self.playerView && self.isPlaying) {
         self.isPlaying = NO;

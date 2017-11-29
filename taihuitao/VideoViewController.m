@@ -115,12 +115,12 @@ static NSString *videoCell = @"playerCell";
 }
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    self.navigationController.navigationBar.translucent = NO;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.view setBackgroundColor:[UIColor whiteColor]];
-    self.navigationController.navigationBar.translucent = NO;
     [self footerLoadData];
     [self headerLoadData];
     _pageNum = 1;
@@ -263,6 +263,7 @@ static NSString *videoCell = @"playerCell";
             cell.BannerImageClick = ^(NSInteger index) {
                VideoDetailViewController *vc = [VideoDetailViewController new];
                 vc.videoId = @([[NSString stringWithFormat:@"%@",weakSelf.liveBannerArray[index][@"id"]] integerValue]);
+                vc.hidesBottomBarWhenPushed = YES;
                 [weakSelf.navigationController pushViewController:vc animated:YES];
             };
         }else{
@@ -271,6 +272,7 @@ static NSString *videoCell = @"playerCell";
             cell.BannerImageClick = ^(NSInteger index) {
                 VideoDetailViewController *vc = [VideoDetailViewController new];
                 vc.videoId = @([[NSString stringWithFormat:@"%@",weakSelf.liveBannerArray[index][@"id"]] integerValue]);
+                vc.hidesBottomBarWhenPushed = YES;
                 [weakSelf.navigationController pushViewController:vc animated:YES];
             };
         }
@@ -317,11 +319,13 @@ static NSString *videoCell = @"playerCell";
         VideoModel *model = self.dataSource[indexPath.section - 1];
         VideoDetailViewController *vc = [[VideoDetailViewController alloc]init];
         vc.videoId = model.ID;
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }else{
         VideoModel *model = self.dataSource[indexPath.section - 1];
         VideoDetailViewController *vc = [[VideoDetailViewController alloc]init];
         vc.videoId = model.ID;
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
  

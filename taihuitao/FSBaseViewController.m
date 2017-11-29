@@ -255,7 +255,7 @@
             return [Tool layoutForAlliPhoneHeight:200];
         }
     }
-    return CGRectGetHeight(self.view.bounds);
+    return SCREEN_HEIGHT;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
