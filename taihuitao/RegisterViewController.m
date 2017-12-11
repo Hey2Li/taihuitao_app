@@ -115,7 +115,7 @@
                     }
                 }];
             }else{
-                SVProgressShowStuteText(@"请输入正确的密码", NO);
+                SVProgressShowStuteText(@"密码格式错误，请输入6-16位字母数字组合密码", NO);
             }
 //        }else{
 //            SVProgressShowStuteText(@"请输入正确的验证码", NO);
