@@ -107,11 +107,11 @@
     if ([model.type isEqual: @1]) {
         ArticleDetailViewController *vc = [ArticleDetailViewController new];
         vc.articleId = model.ID;
+        vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }else if ([model.type isEqual: @2] || [model.type isEqual: @5]){
         VideoDetailViewController *vc = [VideoDetailViewController new];
         vc.videoId = model.ID;
-        vc.hidesBottomBarWhenPushed = YES;
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }else if ([model.type isEqual:@3]){

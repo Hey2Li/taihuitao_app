@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C1D194A1FDE556F00945AC2 /* InfoSettingTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1C1D19471FDE556E00945AC2 /* InfoSettingTableViewController.xib */; };
+		1C1D194B1FDE556F00945AC2 /* InfoSettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C1D19481FDE556F00945AC2 /* InfoSettingTableViewController.m */; };
 		1C3FEB2E1F83D6B100D9BC4C /* TYPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA19DA1F83CC87000A8B81 /* TYPagerController.m */; };
 		1C3FEB2F1F83D6B100D9BC4C /* TYTabButtonPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA19DC1F83CC87000A8B81 /* TYTabButtonPagerController.m */; };
 		1C3FEB301F83D6B100D9BC4C /* TYTabPagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA19DE1F83CC87000A8B81 /* TYTabPagerController.m */; };
@@ -62,6 +64,8 @@
 		1C76263F1F5E9FA800DFA5B8 /* HomePageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C76263E1F5E9FA800DFA5B8 /* HomePageTableViewCell.m */; };
 		1C7626431F5E9FF400DFA5B8 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626421F5E9FF400DFA5B8 /* HomeModel.m */; };
 		1C7626461F5F990C00DFA5B8 /* BURefreshGifHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C7626451F5F990C00DFA5B8 /* BURefreshGifHeader.m */; };
+		1C85A3691FD53C2F00388BC8 /* SettingTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C85A3671FD53C2E00388BC8 /* SettingTableViewController.m */; };
+		1C85A36C1FD54E9200388BC8 /* NoContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C85A36B1FD54E9200388BC8 /* NoContentViewController.m */; };
 		1C897B021F83D56700212F58 /* TYTabButtonPagerController.h in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA19DB1F83CC87000A8B81 /* TYTabButtonPagerController.h */; };
 		1C897B031F83D57C00212F58 /* TYPagerController.h in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA19D91F83CC87000A8B81 /* TYPagerController.h */; };
 		1C897B041F83D57C00212F58 /* TYTabPagerController.h in Sources */ = {isa = PBXBuildFile; fileRef = 1CCA19DD1F83CC87000A8B81 /* TYTabPagerController.h */; };
@@ -192,6 +196,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C1D19471FDE556E00945AC2 /* InfoSettingTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoSettingTableViewController.xib; sourceTree = "<group>"; };
+		1C1D19481FDE556F00945AC2 /* InfoSettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoSettingTableViewController.m; sourceTree = "<group>"; };
+		1C1D19491FDE556F00945AC2 /* InfoSettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoSettingTableViewController.h; sourceTree = "<group>"; };
 		1C3FEB7B1F8C5CDB00D9BC4C /* FSBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSBaseViewController.h; sourceTree = "<group>"; };
 		1C3FEB7C1F8C5CDB00D9BC4C /* FSBaseTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSBaseTableView.h; sourceTree = "<group>"; };
 		1C3FEB7D1F8C5CDB00D9BC4C /* FSBaseTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FSBaseTableView.m; sourceTree = "<group>"; };
@@ -277,6 +284,10 @@
 		1C7626421F5E9FF400DFA5B8 /* HomeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
 		1C7626441F5F990C00DFA5B8 /* BURefreshGifHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BURefreshGifHeader.h; sourceTree = "<group>"; };
 		1C7626451F5F990C00DFA5B8 /* BURefreshGifHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BURefreshGifHeader.m; sourceTree = "<group>"; };
+		1C85A3671FD53C2E00388BC8 /* SettingTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTableViewController.m; sourceTree = "<group>"; };
+		1C85A3681FD53C2F00388BC8 /* SettingTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTableViewController.h; sourceTree = "<group>"; };
+		1C85A36A1FD54E9200388BC8 /* NoContentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoContentViewController.h; sourceTree = "<group>"; };
+		1C85A36B1FD54E9200388BC8 /* NoContentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoContentViewController.m; sourceTree = "<group>"; };
 		1C9195E81F734BA700A7038E /* PersonalTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalTableViewController.h; sourceTree = "<group>"; };
 		1C9195E91F734BA700A7038E /* PersonalTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalTableViewController.m; sourceTree = "<group>"; };
 		1C9195EA1F734BA700A7038E /* PersonalTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalTableViewController.xib; sourceTree = "<group>"; };
@@ -648,6 +659,37 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		1C85A3641FD53BCD00388BC8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		1C85A3651FD53C1B00388BC8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1C1D19491FDE556F00945AC2 /* InfoSettingTableViewController.h */,
+				1C1D19481FDE556F00945AC2 /* InfoSettingTableViewController.m */,
+				1C1D19471FDE556E00945AC2 /* InfoSettingTableViewController.xib */,
+				1C85A3681FD53C2F00388BC8 /* SettingTableViewController.h */,
+				1C85A3671FD53C2E00388BC8 /* SettingTableViewController.m */,
+				1C9195E81F734BA700A7038E /* PersonalTableViewController.h */,
+				1C9195E91F734BA700A7038E /* PersonalTableViewController.m */,
+				1C9195EA1F734BA700A7038E /* PersonalTableViewController.xib */,
+				1C85A36A1FD54E9200388BC8 /* NoContentViewController.h */,
+				1C85A36B1FD54E9200388BC8 /* NoContentViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		1C85A3661FD53C2200388BC8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		1CCA19CC1F7E466A000A8B81 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -865,9 +907,9 @@
 		1CF656A21F45846F00DBD64D /* Personal */ = {
 			isa = PBXGroup;
 			children = (
-				1C9195E81F734BA700A7038E /* PersonalTableViewController.h */,
-				1C9195E91F734BA700A7038E /* PersonalTableViewController.m */,
-				1C9195EA1F734BA700A7038E /* PersonalTableViewController.xib */,
+				1C85A3661FD53C2200388BC8 /* Model */,
+				1C85A3651FD53C1B00388BC8 /* ViewController */,
+				1C85A3641FD53BCD00388BC8 /* View */,
 			);
 			name = Personal;
 			sourceTree = "<group>";
@@ -1224,8 +1266,8 @@
 				TargetAttributes = {
 					1CF655061F4538F900DBD64D = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 2S69QY28US;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = 5VFC77CT8S;
+						ProvisioningStyle = Automatic;
 					};
 					1CF6551F1F4538F900DBD64D = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -1291,6 +1333,7 @@
 				1CFBF93F1F4D83AB00BEFF7F /* UMSocialSDKPromptResources.bundle in Resources */,
 				1CFBF8D11F4AC9CF00BEFF7F /* recomand_17.jpg in Resources */,
 				1CFBF8C11F4AC9CF00BEFF7F /* recomand_01.jpg in Resources */,
+				1C1D194A1FDE556F00945AC2 /* InfoSettingTableViewController.xib in Resources */,
 				1CFBF8C71F4AC9CF00BEFF7F /* recomand_07.jpg in Resources */,
 				1CFBF8A61F4AC9C400BEFF7F /* cycle_03.jpg in Resources */,
 				1CFBF8C81F4AC9CF00BEFF7F /* recomand_08.jpg in Resources */,
@@ -1446,6 +1489,7 @@
 				1CFBF9701F4D848B00BEFF7F /* ZFPlayerControlView.m in Sources */,
 				1CFBF98F1F500E4100BEFF7F /* NavigationGradientBar.m in Sources */,
 				1CFBF4851F4AC88000BEFF7F /* JSDTableViewController.m in Sources */,
+				1C1D194B1FDE556F00945AC2 /* InfoSettingTableViewController.m in Sources */,
 				1CF656A81F45849F00DBD64D /* VideoViewController.m in Sources */,
 				1CFBF9211F4D838600BEFF7F /* LaunchScrollViewController.m in Sources */,
 				1CF6569B1F456D8000DBD64D /* Tool.m in Sources */,
@@ -1457,12 +1501,14 @@
 				1CF656A51F45849200DBD64D /* HomeViewController.m in Sources */,
 				1CF6569E1F456D8000DBD64D /* UIView+Frame.m in Sources */,
 				1CFBF9661F4D848B00BEFF7F /* UIAlertController+ZFPlayerRotation.m in Sources */,
+				1C85A36C1FD54E9200388BC8 /* NoContentViewController.m in Sources */,
 				1CCA19D31F83906C000A8B81 /* RecommendCollectionViewCell.m in Sources */,
 				1C49EEE51F9485C000499740 /* BrandName.m in Sources */,
 				1CFBF96B1F4D848B00BEFF7F /* UIViewController+ZFPlayerRotation.m in Sources */,
 				1CFBF5DB1F4AC8C100BEFF7F /* JSDTHomeRecomandModel.m in Sources */,
 				1CFBF96E1F4D848B00BEFF7F /* ZFBrightnessView.m in Sources */,
 				1C44E6771FAAF0B6007929B7 /* XLPhotoBrowser.m in Sources */,
+				1C85A3691FD53C2F00388BC8 /* SettingTableViewController.m in Sources */,
 				1CF656931F456D6500DBD64D /* LTHTTPSessionManager.m in Sources */,
 				1CFBF9811F4E717A00BEFF7F /* ArticleDetailViewController.m in Sources */,
 				1CF655121F4538F900DBD64D /* ViewController.m in Sources */,
@@ -1640,9 +1686,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 2S69QY28US;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5VFC77CT8S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/taihuitao/BearUp/UMSocial/UMSocialSDK",
@@ -1667,10 +1713,10 @@
 					"$(PROJECT_DIR)/taihuitao/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/taihuitao/UMSocial/UMSocialSDKPlugin",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tebuy.tht;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tebuy.taihuitao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c0dbfdf1-da34-4ccf-b081-86dbb0f0667f";
-				PROVISIONING_PROFILE_SPECIFIER = "太会淘测试";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1681,9 +1727,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 2S69QY28US;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5VFC77CT8S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/taihuitao/BearUp/UMSocial/UMSocialSDK",
@@ -1708,10 +1754,10 @@
 					"$(PROJECT_DIR)/taihuitao/UMSocial/SocialLibraries/WeChat",
 					"$(PROJECT_DIR)/taihuitao/UMSocial/UMSocialSDKPlugin",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.tebuy.tht;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tebuy.taihuitao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c0dbfdf1-da34-4ccf-b081-86dbb0f0667f";
-				PROVISIONING_PROFILE_SPECIFIER = "太会淘测试";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

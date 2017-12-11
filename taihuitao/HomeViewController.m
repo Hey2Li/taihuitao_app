@@ -162,6 +162,7 @@
         // Call this Block when completion search automatically
         // Such as: Push to a view controller
         ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
+        vc.hidesBottomBarWhenPushed = YES;
         [searchViewController.navigationController pushViewController:vc animated:YES];
     }];
     

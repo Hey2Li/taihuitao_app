@@ -278,6 +278,7 @@
             RecommedCellModel *model = weakSelf.recommendMutableArrray[indexPath.row];
             if ([model.type isEqual: @1]) {
                 ArticleDetailViewController *vc = [ArticleDetailViewController new];
+                vc.hidesBottomBarWhenPushed = YES;
                 vc.articleId = model.ID;
                 [self.navigationController pushViewController:vc animated:YES];
             }else if ([model.type isEqual: @2] || [model.type isEqual: @5]){

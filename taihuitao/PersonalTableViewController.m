@@ -7,9 +7,15 @@
 //
 
 #import "PersonalTableViewController.h"
+#import "SettingTableViewController.h"
+#import "NoContentViewController.h"
+#import "LoginViewController.h"
+#import "InfoSettingTableViewController.h"
 
 @interface PersonalTableViewController ()
 @property (weak, nonatomic) IBOutlet UIView *tableViewHeaderView;
+@property (weak, nonatomic) IBOutlet UIButton *userHeaderImageBtn;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 
 @end
 
@@ -19,14 +25,46 @@
     [super viewDidLoad];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:NSStringFromClass([UITableViewCell class])];
     self.tableView.backgroundColor = RGBCOLOR(248, 248, 248);
-    self.tableView.separatorStyle = NO;
+    self.tableView.separatorStyle = YES;
     self.automaticallyAdjustsScrollViewInsets = NO;
     self.view.backgroundColor = [UIColor whiteColor];
+    [self.userHeaderImageBtn addTarget:self action:@selector(gotoLogin:) forControlEvents:UIControlEventTouchUpInside];
 //    self.tableView.frame = CGRectMake(-64, 0, ScreenWidth, ScreenHeight);
+}
+- (void)gotoLogin:(UIButton *)btn{
+    if (USER_ID) {
+        InfoSettingTableViewController *vc = [InfoSettingTableViewController new];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        
+        UIViewController *presentVC = self.parentViewController;
+        if ([presentVC isKindOfClass:[LoginViewController class]]) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else{
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"BearUp" bundle:nil];
+            LoginViewController *lvc = [storyBoard instantiateViewControllerWithIdentifier:@"loginNavi"];
+            [self presentViewController:lvc animated:YES completion:nil];
+        }
+    }
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:animated];
+    if ([[NSUserDefaults standardUserDefaults]objectForKey:USER_PHOTO]) {
+        [self.userHeaderImageBtn sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:USER_PHOTO]]] forState:UIControlStateNormal];
+        if ([[NSUserDefaults standardUserDefaults]objectForKey:USER_NICKNAME]) {
+             self.userNameLabel.text = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:USER_NICKNAME]];
+        }
+    }else{
+        if (USER_ID) {
+            [self.userHeaderImageBtn setImage:[UIImage imageNamed:@"btg_icon_avatar_placeholder"] forState:UIControlStateNormal];
+            self.userNameLabel.text = @"填写资料";
+        }else{
+            [self.userHeaderImageBtn setImage:[UIImage imageNamed:@"btg_icon_avatar_placeholder"] forState:UIControlStateNormal];
+            self.userNameLabel.text = @"去登录";
+        }
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -36,7 +74,7 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -45,7 +83,7 @@
     }else if (section == 1){
         return 1;
     }else{
-        return 1;
+        return 0;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -62,7 +100,7 @@
     cell.selectionStyle = NO;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.font = [UIFont systemFontOfSize:14];
-            cell.textLabel.textColor = RGBCOLOR(93, 93, 93);
+    cell.textLabel.textColor = RGBCOLOR(93, 93, 93);
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             cell.textLabel.text = @"我的收藏";
@@ -76,16 +114,43 @@
             cell.imageView.image = [UIImage imageNamed:@"我的原创_17x17_"];
             self.tableView.separatorStyle = YES;
         }
-    }else if (indexPath.section == 1){
-        cell.textLabel.text = @"礼品兑换";
-        cell.imageView.image = [UIImage imageNamed:@"礼品兑换_17x17_"];
-    }else{
+    }
+   else{
         cell.textLabel.text = @"设置";
         cell.imageView.image = [UIImage imageNamed:@"设置_17x17_"];
     }
+//    }else if (indexPath.section == 1){
+//        cell.textLabel.text = @"礼品兑换";
+//        cell.imageView.image = [UIImage imageNamed:@"礼品兑换_17x17_"];
+//    }
     return cell;
 }
-
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //分割线补全
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]){
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (USER_ID) {
+        if (indexPath.section == 1 ) {
+            SettingTableViewController *vc = [SettingTableViewController new];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES];
+        }else{
+            NoContentViewController *vc = [NoContentViewController new];
+            vc.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:vc animated:YES
+             ];
+        }
+    }else{
+      SVProgressShowStuteText(@"请先登录", NO);
+    }
+}
 
 /*
 // Override to support conditional editing of the table view.

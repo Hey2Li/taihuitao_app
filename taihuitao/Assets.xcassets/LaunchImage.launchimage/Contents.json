@@ -2,9 +2,18 @@
   "images" : [
     {
       "extent" : "full-screen",
+      "orientation" : "portrait",
+      "idiom" : "iphone",
+      "filename" : "启动页iPhoneXPortraitiOS11_375x812pt@3x.png",
+      "minimum-system-version" : "11.0",
+      "subtype" : "2436h",
+      "scale" : "3x"
+    },
+    {
+      "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "736h",
-      "filename" : "启动页1@3x.png",
+      "filename" : "启动页iPhonePortraitiOS89_414x736pt@3x.png",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
       "scale" : "3x"
@@ -13,25 +22,47 @@
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "667h",
-      "filename" : "启动页1@2x.png",
+      "filename" : "启动页iPhonePortraitiOS89_375x667pt@2x.png",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
       "scale" : "2x"
     },
     {
-      "orientation" : "portrait",
-      "idiom" : "iphone",
-      "filename" : "启动页@2x.png",
       "extent" : "full-screen",
+      "idiom" : "iphone",
+      "filename" : "启动页iPhonePortraitiOS789_320x480pt@2x.png",
       "minimum-system-version" : "7.0",
-      "scale" : "2x"
+      "scale" : "2x",
+      "orientation" : "portrait"
     },
     {
       "extent" : "full-screen",
       "idiom" : "iphone",
       "subtype" : "retina4",
-      "filename" : "启动页@3x.png",
+      "filename" : "启动页iPhonePortraitiOS789_320x568pt@2x.png",
       "minimum-system-version" : "7.0",
+      "orientation" : "portrait",
+      "scale" : "2x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
+      "filename" : "启动页iPhonePortraitiOS56_320x480pt.png",
+      "orientation" : "portrait",
+      "scale" : "1x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
+      "filename" : "启动页iPhonePortraitiOS56_320x480pt@2x.png",
+      "orientation" : "portrait",
+      "scale" : "2x"
+    },
+    {
+      "extent" : "full-screen",
+      "idiom" : "iphone",
+      "filename" : "启动页iPhonePortraitiOS56_320x568pt@2x.png",
+      "subtype" : "retina4",
       "orientation" : "portrait",
       "scale" : "2x"
     }

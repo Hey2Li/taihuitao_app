@@ -434,6 +434,7 @@
         }];
     }else{
         ArticleDetailViewController *vc = [[ArticleDetailViewController alloc]init];
+        vc.hidesBottomBarWhenPushed = YES;
         vc.articleId = model.ID;
         [self.navigationController pushViewController:vc animated:YES];
     }

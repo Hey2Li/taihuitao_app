@@ -335,30 +335,50 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 - (void)loginClick:(UIButton *)btn{
-    if ([Tool judgePhoneNumber:self.userNameTF.text]) {
-        if (self.passwordTF.text.length > 5) {
-          [LTHttpManager loginWithMobile:self.userNameTF.text andPassword:self.passwordTF.text andUUID:GETUUID Complete:^(LTHttpResult result, NSString *message, id data) {
-              if (result == LTHttpResultSuccess) {
-                  SVProgressShowStuteText(@"登录成功", YES);
-                  [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"user_id"] forKey:USERID_KEY];
-                  [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"user_token"]forKey:USERTOKEN_KEY];
-                   [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"photo"] forKey:USER_PHOTO];
-                  [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"mobile"] forKey:USER_MOBILE];
-                  [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"nickname"] forKey:USER_NICKNAME];
-                  [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"read_num"] forKey:USER_READNUM];
-                  [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"sex"] forKey:USER_SEX];
-                   [[NSUserDefaults standardUserDefaults] synchronize];
-                  [[NSNotificationCenter defaultCenter] postNotificationName:@"userlogin" object:nil];
-                  [self presentViewController:[BaseTabBarViewController new] animated:YES completion:nil];
-              }else{
-                  SVProgressShowStuteText(@"登录失败", YES);
-              }
-          }];
-        }else{
-            SVProgressShowStuteText(@"密码不正确", NO);
-        }
+    if ([self.userNameTF.text isEqualToString:@"18812345678"]) {
+        [LTHttpManager loginWithMobile:self.userNameTF.text andPassword:self.passwordTF.text andUUID:GETUUID Complete:^(LTHttpResult result, NSString *message, id data) {
+            if (result == LTHttpResultSuccess) {
+                SVProgressShowStuteText(@"登录成功", YES);
+                [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"user_id"] forKey:USERID_KEY];
+                [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"user_token"]forKey:USERTOKEN_KEY];
+                [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"photo"] forKey:USER_PHOTO];
+                [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"mobile"] forKey:USER_MOBILE];
+                [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"nickname"] forKey:USER_NICKNAME];
+                [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"read_num"] forKey:USER_READNUM];
+                [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"sex"] forKey:USER_SEX];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"userlogin" object:nil];
+                [self presentViewController:[BaseTabBarViewController new] animated:YES completion:nil];
+            }else{
+                SVProgressShowStuteText(@"登录失败", YES);
+            }
+        }];
     }else{
-        SVProgressShowStuteText(@"请输入正确的手机号码", NO);
+        if ([Tool judgePhoneNumber:self.userNameTF.text]) {
+            if (self.passwordTF.text.length > 5) {
+                [LTHttpManager loginWithMobile:self.userNameTF.text andPassword:self.passwordTF.text andUUID:GETUUID Complete:^(LTHttpResult result, NSString *message, id data) {
+                    if (result == LTHttpResultSuccess) {
+                        SVProgressShowStuteText(@"登录成功", YES);
+                        [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"user_id"] forKey:USERID_KEY];
+                        [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"user_token"]forKey:USERTOKEN_KEY];
+                        [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"photo"] forKey:USER_PHOTO];
+                        [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"mobile"] forKey:USER_MOBILE];
+                        [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"nickname"] forKey:USER_NICKNAME];
+                        [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"read_num"] forKey:USER_READNUM];
+                        [[NSUserDefaults standardUserDefaults]setObject:data[@"responseData"][@"sex"] forKey:USER_SEX];
+                        [[NSUserDefaults standardUserDefaults] synchronize];
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"userlogin" object:nil];
+                        [self presentViewController:[BaseTabBarViewController new] animated:YES completion:nil];
+                    }else{
+                        SVProgressShowStuteText(@"登录失败", YES);
+                    }
+                }];
+            }else{
+                SVProgressShowStuteText(@"密码不正确", NO);
+            }
+        }else{
+            SVProgressShowStuteText(@"请输入正确的手机号码", NO);
+        }
     }
 //    if ([Tool judgePhoneNumber:self.userNameTF.text] && self.passwordTF.text.length > 6){
 //       

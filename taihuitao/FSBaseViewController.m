@@ -95,6 +95,35 @@
     [self setupSubViews];
     [self initWithNavi];
     [self loadData];
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [LTHttpManager THomeDataWithLimit:@5 Page:@1 Nlimit:@10 Complete:^(LTHttpResult result, NSString *message, id data) {
+            if (result == LTHttpResultSuccess) {
+                [self.topTitleArray addObject:@{@"id":@"-1",@"name":@"推荐"}];
+                [self.topTitleArray addObjectsFromArray:data[@"responseData"][@"column"]];
+                self.imageMutaleArray = [NSMutableArray arrayWithArray:data[@"responseData"][@"top"]];
+                [self.controllersArray removeAllObjects];
+                for (NSDictionary *dic in self.topTitleArray) {
+                    FSScrollContentViewController *vc = [[FSScrollContentViewController alloc]init];
+                    vc.cid = @([[NSString stringWithFormat:@"%@",dic[@"id"]] integerValue]);
+                    [self.controllersArray addObject:vc];
+                }
+                [self.keywordMutableArray removeAllObjects];
+                NSArray *array = data[@"responseData"][@"keywords"];
+                for (NSDictionary *dic in array) {
+                    NSString *keyword = dic[@"name"];
+                    [self.keywordMutableArray addObject:keyword];
+                }
+                self.telephoneStr = data[@"responseData"][@"sy_freewebtel"];
+                if (self.telephoneStr.length > 7) {
+                    [self contactUsBtn];
+                }
+                [self.tableView.mj_header endRefreshing];
+                [self.tableView reloadData];
+            }else{
+                [self.tableView.mj_header endRefreshing];
+            }
+        }];
+    }];
     self.title = @"TAIHUITAO";
 //    [self contactUsBtn];
 }
@@ -297,6 +326,7 @@
             if ([self.imageMutaleArray[index][@"type"] isEqual:@2]) {
                 vc.articleId  = self.imageMutaleArray[index][@"id"];
                 vc.isVideo  = @"yes";
+                vc.hidesBottomBarWhenPushed = YES;
                 [self.navigationController pushViewController:vc animated:YES];
             }else{
                 vc.articleId  = self.imageMutaleArray[index][@"id"];
