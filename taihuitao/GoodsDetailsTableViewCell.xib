@@ -26,22 +26,22 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="文章图文混排介绍" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ob0-Bc-1YO">
-                        <rect key="frame" x="10" y="256.5" width="301" height="116"/>
+                        <rect key="frame" x="10" y="281.5" width="301" height="91"/>
                         <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="18"/>
                         <color key="textColor" red="0.2781479657" green="0.2823043764" blue="0.28649967910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是标题" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbU-GG-Lj0">
-                        <rect key="frame" x="5" y="190.5" width="311" height="25"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是标题" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IbU-GG-Lj0">
+                        <rect key="frame" x="5" y="190.5" width="311" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="25" id="9Wo-7X-rTZ"/>
+                            <constraint firstAttribute="height" constant="50" id="9Wo-7X-rTZ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                         <color key="textColor" red="0.2781479657" green="0.2823043764" blue="0.28649967910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xxx-xx-xx" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mja-qZ-ulh">
-                        <rect key="frame" x="5" y="225.5" width="311" height="21"/>
+                        <rect key="frame" x="5" y="250.5" width="311" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="aS1-dF-JbT"/>
                         </constraints>

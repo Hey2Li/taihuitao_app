@@ -12,20 +12,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="RecommendCollectionViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="188" height="300"/>
+            <rect key="frame" x="0.0" y="0.0" width="194" height="360"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="188" height="300"/>
+                <rect key="frame" x="0.0" y="0.0" width="194" height="360"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Joc-W5-o2B">
-                        <rect key="frame" x="0.0" y="0.0" width="188" height="188"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="188" id="V0Y-cY-DAC"/>
-                        </constraints>
+                        <rect key="frame" x="0.0" y="0.0" width="194" height="280"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NCd-JI-dKE">
-                        <rect key="frame" x="0.0" y="198" width="188" height="92"/>
+                        <rect key="frame" x="0.0" y="290" width="194" height="60"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                         <color key="textColor" red="0.2781479657" green="0.2823043764" blue="0.28649967910000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -34,20 +31,21 @@
             </view>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="NCd-JI-dKE" firstAttribute="top" secondItem="Joc-W5-o2B" secondAttribute="bottom" constant="10" id="7Z4-B2-JwP"/>
-                <constraint firstItem="NCd-JI-dKE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9yD-pP-Zmk"/>
-                <constraint firstItem="Joc-W5-o2B" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="HEZ-yj-RWZ"/>
-                <constraint firstAttribute="trailing" secondItem="NCd-JI-dKE" secondAttribute="trailing" id="N3v-n0-qjF"/>
-                <constraint firstItem="Joc-W5-o2B" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Q9A-uK-wqW"/>
-                <constraint firstAttribute="bottom" secondItem="NCd-JI-dKE" secondAttribute="bottom" constant="10" id="ht9-9N-jaH"/>
-                <constraint firstAttribute="trailing" secondItem="Joc-W5-o2B" secondAttribute="trailing" id="nWQ-wM-EZV"/>
+                <constraint firstItem="NCd-JI-dKE" firstAttribute="top" secondItem="Joc-W5-o2B" secondAttribute="bottom" constant="10" id="6Hj-Wl-N3Y"/>
+                <constraint firstAttribute="trailing" secondItem="NCd-JI-dKE" secondAttribute="trailing" id="AuZ-P3-806"/>
+                <constraint firstItem="Joc-W5-o2B" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="EpB-f1-9pp"/>
+                <constraint firstItem="Joc-W5-o2B" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ZHW-gs-0Tv"/>
+                <constraint firstAttribute="bottom" secondItem="NCd-JI-dKE" secondAttribute="bottom" constant="10" id="jn6-SL-vu9"/>
+                <constraint firstAttribute="bottom" secondItem="Joc-W5-o2B" secondAttribute="bottom" constant="80" id="mbk-Ef-b83"/>
+                <constraint firstItem="NCd-JI-dKE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="uaI-8X-Egz"/>
+                <constraint firstAttribute="trailing" secondItem="Joc-W5-o2B" secondAttribute="trailing" id="zHs-CL-3lR"/>
             </constraints>
-            <size key="customSize" width="188" height="120"/>
+            <size key="customSize" width="194" height="180"/>
             <connections>
                 <outlet property="recommendImageView" destination="Joc-W5-o2B" id="tId-o6-2m1"/>
                 <outlet property="recommendTitleLabel" destination="NCd-JI-dKE" id="FO4-xg-3LQ"/>
             </connections>
-            <point key="canvasLocation" x="83" y="124"/>
+            <point key="canvasLocation" x="86" y="154"/>
         </collectionViewCell>
     </objects>
 </document>

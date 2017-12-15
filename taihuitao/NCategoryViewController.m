@@ -48,7 +48,7 @@
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
         layout.minimumLineSpacing = 1;
         layout.minimumInteritemSpacing = 1;
-        _rightCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4, 0, SCREEN_WIDTH/4*3, SCREEN_HEIGHT) collectionViewLayout:layout];
+        _rightCollectionView = [[UICollectionView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/4, 0, SCREEN_WIDTH/4*3, SCREEN_HEIGHT - 64) collectionViewLayout:layout];
         _rightCollectionView.backgroundColor = RGBCOLOR(244, 245, 246);
         _rightCollectionView.delegate = self;
         _rightCollectionView.dataSource = self;
@@ -125,9 +125,11 @@
     if (indexPath.row == 0) {
         cell.textLabel.text = @"热门品牌";
         [tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:(UITableViewScrollPositionNone)];
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
     }else{
         BrandName *model = self.categoryMutableArray[indexPath.row - 1];
         cell.textLabel.text = [NSString stringWithFormat:@"%@",model.name];
+        cell.textLabel.adjustsFontSizeToFitWidth = YES;
     }
     return cell;
 }

@@ -31,7 +31,7 @@
             make.centerX.equalTo(self.tableView);
             make.height.equalTo(@36);
             make.width.equalTo(@200);
-            make.bottom.equalTo(self.tableView.mas_bottom).offset(500);
+            make.bottom.equalTo(self.tableView.mas_bottom).offset(400);
         }];
         [quitBtn setTitle:@"退出登录" forState:UIControlStateNormal];
         [quitBtn.layer setMasksToBounds:YES];
@@ -233,9 +233,10 @@
             break;
         case 1:
         {
-            LaunchScrollViewController *vc = [LaunchScrollViewController new];
-            vc.type = @"1";
-            [self presentViewController:vc animated:YES completion:nil];
+            SVProgressShowStuteText(@"暂未开放", NO);
+//            LaunchScrollViewController *vc = [LaunchScrollViewController new];
+//            vc.type = @"1";
+//            [self presentViewController:vc animated:YES completion:nil];
         }
             break;
         case 2:

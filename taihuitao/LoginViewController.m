@@ -164,10 +164,10 @@
     otherLabel.textColor = UIColorFromRGB(0xaeaeae);
     otherLabel.font = [UIFont systemFontOfSize:18];
     [self.view addSubview:otherLabel];
-    if (UI_IS_IPHONE5) {
+    if ([UIScreen mainScreen].bounds.size.height <= 568) {
         [otherLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.centerX.equalTo(self.view.mas_centerX);
-            make.top.equalTo(registerBtn.mas_bottom).offset(50);
+            make.top.equalTo(registerBtn.mas_bottom).offset(20);
             make.width.equalTo(@120);
             make.height.equalTo(@30);
         }];
@@ -206,12 +206,21 @@
     weChatBtn.titleLabel.font = [UIFont systemFontOfSize:12];
     weChatBtn.contentMode = UIViewContentModeCenter;
     [self.view addSubview:weChatBtn];
-    [weChatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(lineLeft.mas_left);
-        make.width.equalTo(@((SCREEN_WIDTH - 30)/4));
-        make.height.equalTo(@55);
-        make.top.equalTo(otherLabel.mas_bottom).offset(30);
-    }];
+    if ([UIScreen mainScreen].bounds.size.height <= 568) {
+        [weChatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(lineLeft.mas_left);
+            make.width.equalTo(@((SCREEN_WIDTH - 30)/4));
+            make.height.equalTo(@55);
+            make.top.equalTo(otherLabel.mas_bottom).offset(5);
+        }];
+    }else{
+        [weChatBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(lineLeft.mas_left);
+            make.width.equalTo(@((SCREEN_WIDTH - 30)/4));
+            make.height.equalTo(@55);
+            make.top.equalTo(otherLabel.mas_bottom).offset(30);
+        }];
+    }
     [self setButtonContentCenter:weChatBtn];
     
     UIButton *weiBoBtn = [UIButton buttonWithType:UIButtonTypeCustom];

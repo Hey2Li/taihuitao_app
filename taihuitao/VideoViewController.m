@@ -66,7 +66,7 @@ static NSString *videoCell = @"playerCell";
 
 - (UITableView *)videoTableView{
     if (!_videoTableView) {
-        _videoTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44) style:UITableViewStylePlain];
+        _videoTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64) style:UITableViewStylePlain];
         _videoTableView.delegate = self;
         _videoTableView.dataSource = self;
         [_videoTableView registerClass:[VideoTableViewCell class] forCellReuseIdentifier:videoCell];
@@ -78,7 +78,7 @@ static NSString *videoCell = @"playerCell";
 }
 - (UITableView *)liveTableView{
     if (!_liveTableView) {
-        _liveTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 44) style:UITableViewStylePlain];
+        _liveTableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64) style:UITableViewStylePlain];
         _liveTableView.delegate = self;
         _liveTableView.dataSource = self;
         [_liveTableView registerClass:[VideoTableViewCell class] forCellReuseIdentifier:videoCell];
@@ -201,7 +201,7 @@ static NSString *videoCell = @"playerCell";
     self.liveTableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         WeakSelf
         _livePageNum++;
-        [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_pageNum) Cid:@0 Title:@"" Type:@5 Complete:^(LTHttpResult result, NSString *message, id data) {
+        [LTHttpManager TgetMoreNewsWithLimit:@10 Page:@(_livePageNum) Cid:@0 Title:@"" Type:@5 Complete:^(LTHttpResult result, NSString *message, id data) {
             if (LTHttpResultSuccess == result) {
                 NSArray *videoList = [data[@"responseData"] objectForKey:@"data"];
                 for (NSDictionary *dataDic in videoList) {
@@ -271,7 +271,7 @@ static NSString *videoCell = @"playerCell";
             WeakSelf
             cell.BannerImageClick = ^(NSInteger index) {
                 VideoDetailViewController *vc = [VideoDetailViewController new];
-                vc.videoId = @([[NSString stringWithFormat:@"%@",weakSelf.liveBannerArray[index][@"id"]] integerValue]);
+                vc.videoId = @([[NSString stringWithFormat:@"%@",weakSelf.videoBannerArray[index][@"id"]] integerValue]);
                 vc.hidesBottomBarWhenPushed = YES;
                 [weakSelf.navigationController pushViewController:vc animated:YES];
             };
@@ -296,7 +296,7 @@ static NSString *videoCell = @"playerCell";
             ZFPlayerModel *playerModel = [[ZFPlayerModel alloc]init];
             playerModel.fatherViewTag = weakCell.picView.tag;
             playerModel.videoURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",model.url]];
-            playerModel.scrollView = weakSelf.videoTableView;
+            playerModel.scrollView = tableView;
             playerModel.indexPath = weakIndexPath;
             [weakSelf.playerView playerControlView:self.controlView playerModel:playerModel];
             [weakSelf.playerView autoPlayTheVideo];
@@ -322,7 +322,7 @@ static NSString *videoCell = @"playerCell";
         vc.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:vc animated:YES];
     }else{
-        VideoModel *model = self.dataSource[indexPath.section - 1];
+        VideoModel *model = self.liveDataSource[indexPath.section - 1];
         VideoDetailViewController *vc = [[VideoDetailViewController alloc]init];
         vc.videoId = model.ID;
         vc.hidesBottomBarWhenPushed = YES;

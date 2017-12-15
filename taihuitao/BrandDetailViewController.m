@@ -195,14 +195,22 @@
     
     UIButton *headerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [headerBtn setImage:[UIImage imageNamed:@"recomand_05"] forState:UIControlStateNormal];
-    [headerBtn.layer setCornerRadius:45];
     [headerBtn.layer setMasksToBounds:YES];
     [blurView.contentView addSubview:headerBtn];
     [headerBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(blurView);
-        make.centerY.equalTo(blurView).offset(-40);
-        make.height.equalTo(@90);
-        make.width.equalTo(headerBtn.mas_height);
+        if ([UIScreen mainScreen].bounds.size.height <= 568) {
+            [headerBtn.layer setCornerRadius:25];
+            make.centerY.equalTo(blurView).offset(-10);
+            make.height.equalTo(@50);
+            make.centerX.equalTo(blurView);
+            make.width.equalTo(headerBtn.mas_height);
+        }else{
+            [headerBtn.layer setCornerRadius:45];
+            make.centerX.equalTo(blurView);
+            make.centerY.equalTo(blurView).offset(-40);
+            make.height.equalTo(@90);
+            make.width.equalTo(headerBtn.mas_height);
+        }
     }];
     
     UILabel *detailLabel = [UILabel new];
@@ -213,11 +221,19 @@
     detailLabel.textAlignment = NSTextAlignmentCenter;
     [blurView.contentView addSubview:detailLabel];
     [detailLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(headerBtn.mas_bottom).offset(10);
-        make.centerX.equalTo(blurView.mas_centerX);
-        make.height.equalTo(@40);
-        make.right.equalTo(blurView.mas_right).offset(-20);
-        make.left.equalTo(blurView.mas_left).offset(20);
+        if ([UIScreen mainScreen].bounds.size.height <= 568) {
+            make.top.equalTo(headerBtn.mas_bottom);
+            make.centerX.equalTo(blurView.mas_centerX);
+            make.height.equalTo(@30);
+            make.right.equalTo(blurView.mas_right).offset(-20);
+            make.left.equalTo(blurView.mas_left).offset(20);
+        }else{
+            make.top.equalTo(headerBtn.mas_bottom).offset(10);
+            make.centerX.equalTo(blurView.mas_centerX);
+            make.height.equalTo(@40);
+            make.right.equalTo(blurView.mas_right).offset(-20);
+            make.left.equalTo(blurView.mas_left).offset(20);
+        }
     }];
     
     UIButton *focusBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -231,10 +247,17 @@
     [focusBtn addTarget:self action:@selector(focusCategory:) forControlEvents:UIControlEventTouchUpInside];
     [blurView.contentView addSubview:focusBtn];
     [focusBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(blurView.mas_centerX);
-        make.height.equalTo(@30);
-        make.width.equalTo(@200);
-        make.top.equalTo(detailLabel.mas_bottom).offset(10);
+        if ([UIScreen mainScreen].bounds.size.height <= 568) {
+            make.centerX.equalTo(blurView.mas_centerX);
+            make.height.equalTo(@30);
+            make.width.equalTo(@200);
+            make.top.equalTo(detailLabel.mas_bottom);
+        }else{
+            make.centerX.equalTo(blurView.mas_centerX);
+            make.height.equalTo(@30);
+            make.width.equalTo(@200);
+            make.top.equalTo(detailLabel.mas_bottom).offset(10);
+        }
     }];
     
     UILabel *focusNum = [UILabel new];
@@ -244,10 +267,17 @@
     focusNum.text = @"已关注人数：2345";
     [blurView.contentView addSubview:focusNum];
     [focusNum mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.centerX.equalTo(blurView.mas_centerX);
-        make.bottom.equalTo(blurView.mas_bottom).offset(-10);
-        make.height.equalTo(@20);
-        make.width.equalTo(@150);
+        if ([UIScreen mainScreen].bounds.size.height <= 568) {
+            make.centerX.equalTo(blurView.mas_centerX);
+            make.bottom.equalTo(blurView.mas_bottom);
+            make.height.equalTo(@20);
+            make.width.equalTo(@150);
+        }else{
+            make.centerX.equalTo(blurView.mas_centerX);
+            make.bottom.equalTo(blurView.mas_bottom).offset(-10);
+            make.height.equalTo(@20);
+            make.width.equalTo(@150);
+        }
     }];
     
     UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -322,6 +352,8 @@
     secondBtn.tag = 1002;
     thirdBtn.tag = 1003;
     rightBtn.tag = 1005;
+    detailLabel.textColor = [UIColor blackColor];
+    focusNum.textColor = [UIColor blackColor];
     self.categoryHederBtn = headerBtn;
     self.categoryDetailLabel = detailLabel;
     self.categoryBackgroundImageView = backgroundImageView;
