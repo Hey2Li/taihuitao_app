@@ -1,7 +1,7 @@
-platform :ios, '7.0'
+platform :ios, '8.0'
 
 target "taihuitao" do
-pod 'AFNetworking', '~> 3.0'
+pod 'AFNetworking', '~> 3.1.0'
 pod 'Masonry', '~>1.0'
 pod 'SDWebImage', '~> 3.8.2'
 pod 'MJRefresh', '~> 3.1.1'
