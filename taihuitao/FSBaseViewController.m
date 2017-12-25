@@ -98,6 +98,7 @@
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [LTHttpManager THomeDataWithLimit:@5 Page:@1 Nlimit:@10 Complete:^(LTHttpResult result, NSString *message, id data) {
             if (result == LTHttpResultSuccess) {
+                [self.topTitleArray removeAllObjects];
                 [self.topTitleArray addObject:@{@"id":@"-1",@"name":@"推荐"}];
                 [self.topTitleArray addObjectsFromArray:data[@"responseData"][@"column"]];
                 self.imageMutaleArray = [NSMutableArray arrayWithArray:data[@"responseData"][@"top"]];

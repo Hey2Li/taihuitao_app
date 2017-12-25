@@ -261,14 +261,13 @@
     self.progressView.mode = XLProgressViewProgressMode;
     self.imageURL = url;
 
-    // TODO 失败点击重新下载功能
-    [weakSelf.photoImageView sd_setImageWithURL:url placeholderImage:placeholder options:SDWebImageRetryFailed| SDWebImageLowPriority| SDWebImageHandleCookies progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+    [weakSelf.photoImageView sd_setImageWithURL:url placeholderImage:placeholder options:SDWebImageRetryFailed| SDWebImageLowPriority| SDWebImageHandleCookies progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         dispatch_async(dispatch_get_main_queue(), ^{
             __strong __typeof(weakSelf)strongSelf = weakSelf;
-            if ([strongSelf.imageURL isEqual:targetURL] && expectedSize > 0) {
+//            if ([strongSelf.imageURL isEqual:targetURL] && expectedSize > 0) {
                 strongSelf.progress = (CGFloat)receivedSize / expectedSize ;
-//                NSLog(@"targetURL %@ , strongSelf %@ , strongSelf.imageURL = %@ , progress = %f",targetURL , strongSelf , strongSelf.imageURL,strongSelf.progress);
-            }
+                //                NSLog(@"targetURL %@ , strongSelf %@ , strongSelf.imageURL = %@ , progress = %f",targetURL , strongSelf , strongSelf.imageURL,strongSelf.progress);
+//            }
         });
     } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
@@ -286,6 +285,31 @@
             }];
         }
     }];
+    // TODO 失败点击重新下载功能
+//    [weakSelf.photoImageView sd_setImageWithURL:url placeholderImage:placeholder options:SDWebImageRetryFailed| SDWebImageLowPriority| SDWebImageHandleCookies progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            __strong __typeof(weakSelf)strongSelf = weakSelf;
+//            if ([strongSelf.imageURL isEqual:targetURL] && expectedSize > 0) {
+//                strongSelf.progress = (CGFloat)receivedSize / expectedSize ;
+////                NSLog(@"targetURL %@ , strongSelf %@ , strongSelf.imageURL = %@ , progress = %f",targetURL , strongSelf , strongSelf.imageURL,strongSelf.progress);
+//            }
+//        });
+//    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//        __strong __typeof(weakSelf)strongSelf = weakSelf;
+//        [strongSelf.progressView removeFromSuperview];
+//        if (error) {
+//            [strongSelf setMaxAndMinZoomScales];
+//            [strongSelf addSubview:strongSelf.stateLabel];
+//            XLPBLog(@"加载图片失败 , 图片链接imageURL = %@ , 错误信息: %@ ,检查是否开启允许HTTP请求",imageURL,error);
+//        } else {
+//            [strongSelf.stateLabel removeFromSuperview];
+//            [UIView animateWithDuration:0.25 animations:^{
+//                [strongSelf setShowImage:image];
+//                [strongSelf.photoImageView setNeedsDisplay];
+//                [strongSelf setMaxAndMinZoomScales];
+//            }];
+//        }
+//    }];
 }
 
 /**

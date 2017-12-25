@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>zh_CN</string>
 	<key>CFBundleDisplayName</key>
 	<string>太会淘</string>
 	<key>CFBundleExecutable</key>
@@ -33,7 +33,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>wxdc1e388c3822c80b</string>
+				<string>wx53ae937e0a531fa5</string>
 			</array>
 		</dict>
 		<dict>
@@ -52,9 +52,10 @@
 				<string>QQ41F4F66C</string>
 			</array>
 		</dict>
+		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.05</string>
+	<string>1.13</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -119,10 +120,6 @@
 	<string>App需要您的同意,才能访问日历</string>
 	<key>NSCameraUsageDescription</key>
 	<string>App需要您的同意,才能访问相机</string>
-	<key>NSHealthShareUsageDescription</key>
-	<string>App需要您的同意,才能访问健康分享</string>
-	<key>NSHealthUpdateUsageDescription</key>
-	<string>App需要您的同意,才能访问健康更新 </string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>App需要您的同意,才能始终访问位置</string>
 	<key>NSLocationUsageDescription</key>
