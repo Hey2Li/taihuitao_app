@@ -24,18 +24,22 @@ PODS:
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
+  - SGQRCode (2.2.0)
   - SVProgressHUD (2.1.2)
+  - TZImagePickerController (2.0.1)
 
 DEPENDENCIES:
-  - AFNetworking (~> 3.0)
+  - AFNetworking (~> 3.1.0)
   - IQKeyboardManager (~> 3.3.4)
   - Masonry (~> 1.0)
   - MJExtension (~> 3.0.7)
   - MJRefresh (~> 3.1.1)
   - PYSearch
   - SDCycleScrollView (~> 1.64)
-  - SDWebImage (~> 3.8.1)
+  - SDWebImage (~> 3.8.2)
+  - SGQRCode
   - SVProgressHUD (~> 2.1.2)
+  - TZImagePickerController
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -46,8 +50,10 @@ SPEC CHECKSUMS:
   PYSearch: 53c239376b392fe0658c2bd002f408e7caf63046
   SDCycleScrollView: f72904c77698a7f93a41bcbbc2d78b073bf7326c
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SGQRCode: 6cd7f03ea6b74d1267820d427b07d1451b387c79
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  TZImagePickerController: 34ecb53af8c349964394407e42b6e54e22589ebe
 
-PODFILE CHECKSUM: 38c73bdfc30cb95e7366cba75d726165a5eaf920
+PODFILE CHECKSUM: 51d815d3099d1a553ccb56e8de04c3a76f1aa309
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.4.0
